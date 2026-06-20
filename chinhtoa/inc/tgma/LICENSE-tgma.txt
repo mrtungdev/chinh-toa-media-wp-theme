@@ -1,0 +1,14 @@
+TGM Plugin Activation
+=====================
+
+The files in this directory (tgma.php, tgma-class.php) are based on the
+"TGM Plugin Activation" library by Thomas Griffin, Gary Jones and contributors.
+
+  Project: https://github.com/TGMPA/TGM-Plugin-Activation
+  License: GNU General Public License v2.0 or later (GPL-2.0-or-later)
+           https://www.gnu.org/licenses/gpl-2.0.html
+
+This component retains its original GPL-2.0-or-later license. The rest of the
+Chính Tòa Media theme is licensed under the MIT License (see ../../LICENSE).
+MIT and GPL-2.0-or-later are compatible: you may redistribute the combined work
+as long as the TGMPA files keep their GPL notice.

@@ -1,0 +1,44 @@
+{
+  "name": "chinh-toa-media-wp-theme",
+  "version": "1.0.0",
+  "description": "Build tooling for the Chính Tòa Media WordPress theme (open-source, MIT).",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "cpcss": "copyfiles -f dist/css/theme-*.css chinhtoa/assets/css/",
+    "build": "webpack --config webpack.config.js --mode production && copyfiles -f dist/css/theme-*.css chinhtoa/assets/css/",
+    "start": "webpack --config webpack.config.js --mode development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrtungdev/chinh-toa-media-wp-theme.git"
+  },
+  "author": "ToiLaTung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrtungdev/chinh-toa-media-wp-theme/issues"
+  },
+  "homepage": "https://github.com/mrtungdev/chinh-toa-media-wp-theme#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@popperjs/core": "^2.11.5",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "copyfiles": "^2.4.1",
+    "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "path": "^0.12.7",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^9.1.0",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.4.3",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

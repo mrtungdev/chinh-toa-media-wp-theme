@@ -1,0 +1,14 @@
+@import "./shared/var";
+/**
+ * OVERRIDE BOOTSTRAP
+ *
+ * Primary is the $cg-custom sentinel. This compiled file is a TEMPLATE: at
+ * runtime the theme replaces the sentinel hex/rgb with the admin-picked color
+ * (see ct_custom_theme_css_url() in inc/utilities/enqueue.php).
+ */
+$theme-colors: (
+  "primary": $cg-custom
+);
+$theme-colors: map-remove($theme-colors, "info", "light", "dark", "warning", "success", "danger");
+
+@import "./global.scss";

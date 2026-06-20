@@ -1,0 +1,229 @@
+/* Native theme-options editor styling */
+.ct-options-wrap .ct-image-radio { display: flex; flex-wrap: wrap; gap: 12px; }
+.ct-options-wrap .ct-image-radio-item { border: 2px solid #dcdcde; border-radius: 8px; padding: 6px; cursor: pointer; line-height: 0; background: #fff; transition: border-color .12s, box-shadow .12s; }
+.ct-options-wrap .ct-image-radio-item:hover { border-color: #8c8f94; }
+.ct-options-wrap .ct-image-radio-item.selected { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.ct-options-wrap .ct-image-radio-item img { max-width: 300px; height: auto; display: block; }
+.ct-options-wrap .ct-image-radio-item input { display: none; }
+
+/* Wide layout previews (e.g. "Kiểu Menu", 800x50) — span the panel, stacked so
+   the two options are easy to compare and click. */
+.ct-options-wrap .ct-image-radio--wide { flex-direction: column; max-width: 680px; }
+.ct-options-wrap .ct-image-radio--wide .ct-image-radio-item { width: 100%; }
+.ct-options-wrap .ct-image-radio--wide .ct-image-radio-item img { width: 100%; max-width: 100%; }
+
+/* Small count icons (one/two/.../four-column, 50x40) — enlarged but compact. */
+.ct-options-wrap .ct-image-radio--icon .ct-image-radio-item img { width: 76px; max-width: 76px; image-rendering: -webkit-optimize-contrast; }
+
+.ct-media-preview img { border: 1px solid #dcdcde; border-radius: 4px; }
+
+/* --- Color-box radio (theme color selector) ------------------------------- */
+.ct-options-wrap .ct-color-radio { display: flex; flex-wrap: wrap; gap: 10px; }
+.ct-options-wrap .ct-color-radio-item {
+  display: flex; align-items: center; gap: 9px;
+  border: 2px solid #dcdcde; border-radius: 8px;
+  padding: 6px 14px 6px 6px; cursor: pointer; background: #fff;
+  min-width: 124px; transition: border-color .12s, box-shadow .12s;
+}
+.ct-options-wrap .ct-color-radio-item:hover { border-color: #8c8f94; }
+.ct-options-wrap .ct-color-radio-item.selected { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.ct-options-wrap .ct-color-radio-item input { display: none; }
+.ct-options-wrap .ct-color-swatch {
+  width: 30px; height: 30px; border-radius: 6px; flex: 0 0 auto;
+  border: 1px solid rgba(0, 0, 0, .18);
+}
+.ct-options-wrap .ct-color-name { font-weight: 600; font-size: 13px; line-height: 1.2; }
+
+/* --- Homepage content-block repeater -------------------------------------- */
+#ct-home-sec { margin: 14px 0 24px; max-width: 900px; }
+#ct-home-sec .ct-sec-list { display: flex; flex-direction: column; gap: 12px; }
+#ct-home-sec .ct-sec-row { margin: 0; padding: 0; border: 1px solid #dcdcde; border-radius: 9px; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .04); }
+
+/* Block header bar */
+#ct-home-sec .ct-sec-head { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #f6f7f7; border-bottom: 1px solid #e6e6e8; border-radius: 9px 9px 0 0; }
+#ct-home-sec .ct-sec-row.is-collapsed .ct-sec-head { border-bottom: 0; border-radius: 9px; }
+#ct-home-sec .ct-sec-row.is-collapsed .ct-sec-body { display: none; }
+#ct-home-sec .ct-sec-drag { cursor: move; color: #787c82; flex: 0 0 auto; }
+#ct-home-sec .ct-sec-toggle { background: none; border: 0; padding: 2px; cursor: pointer; color: #50575e; display: flex; align-items: center; flex: 0 0 auto; }
+#ct-home-sec .ct-sec-toggle:hover { color: #1d2327; }
+#ct-home-sec .ct-sec-toggle .dashicons { transition: transform .15s; }
+#ct-home-sec .ct-sec-row.is-collapsed .ct-sec-toggle .dashicons { transform: rotate(180deg); }
+#ct-home-sec .ct-sec-picker { max-width: 190px; flex: 0 0 auto; }
+#ct-home-sec .ct-sec-summary { flex: 1 1 auto; min-width: 0; color: #646970; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#ct-home-sec .ct-sec-remove { flex: 0 0 auto; margin: 0; }
+
+/* Block body — demo preview + 2-column field grid */
+#ct-home-sec .ct-sec-body { padding: 16px 18px; }
+#ct-home-sec .ct-sec-demo { margin: 0 0 16px; }
+#ct-home-sec .ct-sec-demo-label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; margin-bottom: 6px; }
+#ct-home-sec .ct-sec-demo-img { display: block; max-width: 260px; width: 100%; height: auto; border: 1px solid #dcdcde; border-radius: 6px; background: #fff; }
+#ct-home-sec .ct-tpl-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 22px; align-items: start; }
+#ct-home-sec .ct-tpl-group.is-hidden { display: none; }
+#ct-home-sec .ct-sec-field { margin: 0; }
+#ct-home-sec .ct-sec-field > label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; }
+#ct-home-sec .ct-sec-field input[type="text"], #ct-home-sec .ct-sec-field textarea { width: 100%; max-width: 100%; }
+#ct-home-sec .ct-sec-field--wide, #ct-home-sec .ct-tpl-group > .ct-tablist { grid-column: 1 / -1; }
+#ct-home-sec .ct-slider { width: 130px; }
+
+/* temp6 tab list */
+#ct-home-sec .ct-tablist { border: 1px dashed #c3c4c7; padding: 12px; border-radius: 6px; background: #fafafa; }
+#ct-home-sec .ct-tab-item { display: flex; gap: 8px; align-items: center; margin: 0 0 8px; }
+
+.ct-options-wrap .ct-switch input { margin-right: 6px; }
+
+/* --- Options page: clean two-level tabs + card panel ---------------------- */
+.ct-options-wrap { max-width: 980px; }
+.ct-options-wrap > h1 { margin: 0 0 18px; padding: 0; font-size: 23px; font-weight: 600; color: #1d2327; line-height: 1.3; }
+
+/* Top-level tabs — underline style */
+.ct-options-wrap .ct-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #dcdcde;
+}
+.ct-options-wrap .ct-tab {
+  padding: 11px 18px;
+  text-decoration: none;
+  color: #50575e;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  box-shadow: none;
+  transition: color .12s, border-color .12s;
+}
+.ct-options-wrap .ct-tab:hover { color: #2271b1; }
+.ct-options-wrap .ct-tab:focus { outline: none; box-shadow: none; color: #2271b1; }
+.ct-options-wrap .ct-tab.is-active { color: #1d2327; border-bottom-color: #2271b1; }
+
+/* Panel — clean card */
+.ct-options-wrap .ct-tab-panel {
+  background: #fff;
+  border: 1px solid #e2e2e4;
+  border-radius: 10px;
+  padding: 22px 24px 10px;
+  margin: 16px 0;
+}
+
+/* Sub-level tabs — segmented control */
+.ct-options-wrap .ct-subtabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 0 0 20px;
+  padding: 3px;
+  background: #f0f0f1;
+  border-radius: 9px;
+}
+.ct-options-wrap .ct-subtab {
+  padding: 6px 15px;
+  text-decoration: none;
+  color: #50575e;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: background .12s, color .12s;
+}
+.ct-options-wrap .ct-subtab:hover { color: #1d2327; }
+.ct-options-wrap .ct-subtab:focus { outline: none; box-shadow: none; }
+.ct-options-wrap .ct-subtab.is-active { background: #fff; color: #1d2327; box-shadow: 0 1px 2px rgba(0, 0, 0, .1); }
+
+/* Section headings + guiding descriptions inside panels */
+.ct-options-wrap .ct-subtab-panel h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d2327;
+  margin: 26px 0 4px;
+}
+.ct-options-wrap .ct-subtab-panel h2:first-child { margin-top: 2px; }
+.ct-options-wrap .ct-section-desc {
+  margin: 0 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0f0f1;
+  color: #646970;
+  font-size: 13px;
+  line-height: 1.55;
+  max-width: 780px;
+}
+.ct-options-wrap .ct-section-desc:last-child { border-bottom: 0; }
+
+/* Form rows — light separators, comfortable spacing */
+.ct-options-wrap .form-table { margin-top: 6px; }
+.ct-options-wrap .form-table th { width: 220px; padding: 16px 10px 16px 0; font-weight: 600; color: #1d2327; }
+.ct-options-wrap .form-table td { padding: 14px 10px; }
+.ct-options-wrap .ct-field-row { border-top: 1px solid #f3f3f4; }
+.ct-options-wrap .ct-field-row:first-child { border-top: 0; }
+.ct-options-wrap .form-table .description { color: #646970; }
+
+/* --- Taxonomy (category) multi-select ------------------------------------- */
+.ct-options-wrap .ct-taxonomy-field { display: inline-block; vertical-align: top; }
+.ct-options-wrap .ct-taxonomy { min-width: 240px; max-width: 360px; }
+.ct-options-wrap .ct-taxonomy-hint { display: block; margin-top: 4px; font-style: italic; }
+
+/* --- Slider (range + number) ---------------------------------------------- */
+.ct-options-wrap .ct-slider-field { display: inline-flex; align-items: center; gap: 12px; }
+.ct-options-wrap .ct-slider { width: 200px; max-width: 60vw; }
+.ct-options-wrap .ct-slider-val { width: 70px; }
+
+/* --- Datetime (date + time) ----------------------------------------------- */
+.ct-options-wrap .ct-datetime-field { display: inline-flex; align-items: center; gap: 8px; }
+
+/* --- Per-post / per-term display options (stacked, width-robust) ----------
+   Used by the post side-column meta box AND the wide category edit screen, so
+   the layout must survive ~250px up to full width. Rows stack (label on top,
+   control below); toggles put the switch inline-right of the label. */
+.ct-meta-box { max-width: 560px; }
+.ct-meta-box--term { max-width: 660px; margin-top: 6px; }
+.ct-meta-box .ct-field-row { padding: 12px 0; border-top: 1px solid #f0f0f1; }
+.ct-meta-box .ct-field-row:first-child { border-top: 0; padding-top: 2px; }
+.ct-meta-box .ct-mb-label { font-weight: 600; color: #1d2327; font-size: 13px; line-height: 1.4; }
+.ct-meta-box .ct-mb-control { margin-top: 8px; }
+.ct-meta-box .ct-mb-desc { margin: 6px 0 0; color: #646970; font-size: 12px; line-height: 1.5; }
+.ct-meta-box .ct-mb-input { width: 100%; max-width: 320px; }
+.ct-meta-box select.ct-mb-input { max-width: 220px; }
+.ct-meta-box .ct-mb-section { margin: 18px 0 2px; padding-top: 14px; border-top: 1px solid #e2e2e4; font-weight: 600; font-size: 13px; color: #1d2327; }
+
+/* Toggle row: label left, switch right (no horizontal scroll in narrow cols) */
+.ct-meta-box .ct-mb--toggle .ct-mb-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+
+/* Toggle switch (hidden checkbox drives a pill track + sliding knob) */
+.ct-meta-box .ct-switch { display: inline-flex; align-items: center; cursor: pointer; user-select: none; flex: 0 0 auto; }
+.ct-meta-box .ct-switch-input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.ct-meta-box .ct-switch-track { position: relative; width: 42px; height: 22px; border-radius: 22px; background: #c3c4c7; transition: background .15s ease; flex: 0 0 auto; }
+.ct-meta-box .ct-switch-knob { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .25); transition: transform .15s ease; }
+.ct-meta-box .ct-switch-input:checked ~ .ct-switch-track { background: #2271b1; }
+.ct-meta-box .ct-switch-input:checked ~ .ct-switch-track .ct-switch-knob { transform: translateX(20px); }
+.ct-meta-box .ct-switch-input:focus ~ .ct-switch-track { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2271b1; }
+
+/* Image pickers (sidebar position, columns, display style) */
+.ct-meta-box .ct-image-radio { display: flex; flex-wrap: wrap; gap: 10px; }
+.ct-meta-box .ct-image-radio-item { border: 2px solid #dcdcde; border-radius: 8px; padding: 4px; cursor: pointer; line-height: 0; background: #fff; transition: border-color .12s, box-shadow .12s; }
+.ct-meta-box .ct-image-radio-item:hover { border-color: #8c8f94; }
+.ct-meta-box .ct-image-radio-item.selected { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.ct-meta-box .ct-image-radio-item img { width: 96px; height: auto; display: block; border-radius: 3px; }
+.ct-meta-box .ct-image-radio-item input { display: none; }
+
+/* Media (icon image) field */
+.ct-meta-box .ct-media-actions { display: inline-flex; gap: 6px; margin-top: 6px; }
+.ct-meta-box .ct-media-preview { margin-top: 8px; }
+.ct-meta-box .ct-media-preview img { border: 1px solid #dcdcde; border-radius: 4px; }
+
+/* --- home_sec repeater widgets -------------------------------------------- */
+#ct-home-sec .ct-sec-field .ct-taxonomy { max-width: 320px; }
+#ct-home-sec .ct-sec-field .ct-slider-field { gap: 10px; }
+#ct-home-sec .ct-tab-item { flex-wrap: wrap; }
+#ct-home-sec .ct-tab-item .ct-tab-title { flex: 0 0 160px; }
+#ct-home-sec .ct-tab-item .ct-taxonomy-field { flex: 1 1 220px; }
+#ct-home-sec .ct-tab-item .ct-taxonomy { width: 100%; max-width: none; }
+#ct-home-sec .ct-tab-item .ct-taxonomy-hint { display: none; }
+.ct-options-wrap .ct-repeater .ct-sec-add { margin-top: 6px; }

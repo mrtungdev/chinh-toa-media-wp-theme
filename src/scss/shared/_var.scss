@@ -1,0 +1,38 @@
+$cg-white: #fff;
+$cg-red: #9c0000;
+$cg-green: #38bf26;
+$cg-violet: #9d00ba;
+$cg-pink: #ff36ad;
+$cg-yellow: #a9a50f;
+$cg-black: #000;
+$cg-blue: #1565c0;
+// Sentinel primary for the "custom color" theme. theme-custom.css is built with
+// this color; at runtime ct_custom_theme_css_url() string-replaces it (hex + rgb)
+// with the admin-picked color. Must be a value that does NOT appear elsewhere in
+// the compiled CSS and cannot be shortened to a 3-digit hex.
+$cg-custom: #c0ffee;
+
+$sepLineColor: #eee;
+
+$ct-shadow: 0 1px 5px rgba(0, 0, 0, 0.05) !important;
+// $ct-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.04) !important;
+$ct-bounding: 3px;
+
+$thirdPercent: 33.3333%;
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.2, 1.2, 1.2);
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}

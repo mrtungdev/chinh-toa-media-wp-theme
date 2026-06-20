@@ -1,0 +1,109 @@
+$loichuacolor: #311903;
+#ct__loichua {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  font-family: "Charm", cursive;
+  position: relative;
+  z-index: 10;
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  .ct__loichua {
+    display: flex;
+    margin: 0 -0.5rem;
+    &-leftside {
+      flex: 0 0 49px;
+      background: url("../imgs/loichua/loichua-left.png") no-repeat;
+      z-index: 2;
+      min-height: 200px;
+      background-size: 50px 100%;
+    }
+    &-rightside {
+      flex: 0 0 49px;
+      z-index: 2;
+      min-height: 200px;
+      background: url("../imgs/loichua/loichua-right.png") no-repeat;
+      background-size: 50px 100%;
+    }
+    &-content {
+      flex: 1;
+      z-index: 1;
+      background: url("../imgs/loichua/loichua-content.png") no-repeat 100%;
+      background-size: cover;
+      margin: 16px -28px;
+      padding: 8px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $loichuacolor;
+      position: relative;
+    }
+    &-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.7rem;
+      position: relative;
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      font-family: Lobster, "Charm", cursive;
+      color: #4e3c16;
+      &:after {
+        content: "";
+        background-color: #4e3c16;
+        height: 3px;
+        width: 64px;
+        position: absolute;
+        bottom: -3px;
+        left: calc(50% - 32px);
+      }
+    }
+    &-excerpt {
+      font-size: 1.2rem;
+      text-align: center;
+      text-shadow: 0 0px 3px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      line-height: 1.4;
+    }
+    &-readfull {
+      align-self: flex-end;
+      font-size: 1.1rem;
+      position: absolute;
+      bottom: 5px;
+      right: 20px;
+      text-decoration: underline;
+      a {
+        color: $loichuacolor;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+// @include media-breakpoint-up(sm) {
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @include media-breakpoint-up(md) {
+//   #ct__loichua {
+//     .ct__loichua {
+//       // &-excerpt {
+//       //   font-size: 1.rem;
+//       //   line-height: 1.5;
+//       // }
+//     }
+//   }
+// }
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {
+  #ct__loichua {
+    .ct__loichua {
+      max-width: 700px;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+}

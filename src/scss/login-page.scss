@@ -1,0 +1,63 @@
+@import "./shared/var";
+@import "./shared/mixin";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+body.login {
+  background-color: #e2e2e2;
+  #login {
+    padding: 32px;
+    margin: 8% auto;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: $ct-shadow;
+    h1 {
+      a {
+        background-image: url(../imgs/logo/logo-96x96.png);
+      }
+    }
+    #loginform {
+      box-shadow: none;
+      border: none;
+      padding: 0;
+      overflow: visible;
+      // .forgetmenot {
+      //   display: none;
+      // }
+      p.submit {
+        text-align: center;
+        .button-primary {
+          float: none;
+          background-color: map-get($theme-colors, "primary");
+          color: #fff;
+        }
+      }
+    }
+    #nav {
+      text-align: right;
+      padding-right: 0;
+    }
+    #backtoblog {
+      display: none;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+}
+
+@include media-breakpoint-up(sm) {
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+}
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+}

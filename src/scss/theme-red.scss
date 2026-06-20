@@ -1,0 +1,10 @@
+@import "./shared/var";
+/**
+ * OVERRIDE BOOTSTRAP
+ */
+$theme-colors: (
+  "primary": $cg-red
+);
+$theme-colors: map-remove($theme-colors, "info", "light", "dark", "warning", "success", "danger");
+
+@import "./global.scss";

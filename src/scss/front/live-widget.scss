@@ -1,0 +1,40 @@
+.ct__featured__box {
+  .ct__featured__box-row {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .featured__box-header {
+      padding: 1rem 1.5rem;
+      background: theme-color("primary");
+      .ct__featured__box-title {
+        color: #fff;
+        font-size: 1.2rem;
+        margin: 0;
+      }
+    }
+    .featured__box-content {
+      padding: 1.5rem;
+
+      & > p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@include media-breakpoint-up(sm) {
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+}
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+}

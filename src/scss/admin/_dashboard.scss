@@ -1,0 +1,88 @@
+#wpcontent {
+  padding: 10px !important;
+
+  .wrap {
+    margin: 0;
+  }
+
+  #wpbody {
+    margin-right: 10px;
+  }
+}
+
+
+#loi-chua-admin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem 1rem;
+  min-height: 252px;
+
+
+  .loi-chua-wrap {
+    display: flex;
+    justify-content: space-between;
+    max-width: 340px;
+
+    .loi-chua-leftside {
+      order: 1;
+      background-image: url(../imgs/loichua/leftside.png);
+      background-repeat: no-repeat;
+      width: 75px;
+      height: 250px;
+      flex: 0 0 75px;
+      z-index: 2;
+    }
+
+    .loi-chua-rightside {
+      order: 3;
+      background-image: url(../imgs/loichua/rightside.png);
+      background-repeat: no-repeat;
+      width: 75px;
+      height: 250px;
+      flex: 0 0 75px;
+      z-index: 2;
+    }
+
+    .loi-chua-content {
+      display: flex;
+      padding: 8px;
+      align-items: center;
+      justify-content: center;
+      order: 2;
+      background-image: url(../imgs/loichua/paper.png);
+      background-repeat: no-repeat;
+      margin: 20px -30px;
+      background-size: 100% 240px;
+      z-index: 1;
+
+      span {
+        font-family: 'Dancing Script', cursive;
+        font-size: 25px;
+        color: #311903;
+        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.45);
+        text-align: center;
+        line-height: 30px;
+      }
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up(sm) {
+  #loi-chua-admin {
+    .loi-chua-wrap {
+      max-width: 500px;
+
+      .loi-chua-content {
+        span {
+          font-size: 30px;
+          line-height: 35px;
+        }
+      }
+    }
+
+
+  }
+}
