@@ -93,13 +93,11 @@ chinhtoa/            # Theme (phần được phân phối)
 src/                 # Nguồn SCSS/ảnh để build
 tools/               # make-pot.php (sinh file .pot khi không có WP-CLI)
 tests/               # Test PHP cho engine options (chạy bằng php tests/*.php)
-docs/AUDIT.md        # Báo cáo rà soát bảo mật / tốc độ / chất lượng
 ```
 
 ## Bảo mật & chất lượng
 
-Theme đã qua một đợt rà soát toàn diện (bảo mật, tốc độ, tương thích, i18n). Chi
-tiết các vấn đề đã xử lý và việc nên làm tiếp: [docs/AUDIT.md](docs/AUDIT.md).
+Theme đã qua một đợt rà soát toàn diện (bảo mật, tốc độ, tương thích, i18n).
 Báo lỗi bảo mật: xem [SECURITY.md](SECURITY.md).
 
 ## Giấy phép
@@ -109,5 +107,5 @@ xem [VENDORS.md](VENDORS.md).
 
 ## Ghi công
 
-Phát triển bởi **TRUYỀN THÔNG GIÁO XỨ CHÍNH TÒA ĐÀ NẴNG** (ToiLaTung). Cảm ơn các
+Phát triển bởi **TRUYỀN THÔNG GIÁO XỨ CHÍNH TÒA ĐÀ NẴNG** (Mr Tung). Cảm ơn các
 dự án mã nguồn mở: Bootstrap, Parsedown, lazysizes, swipebox, Font Awesome, TGMPA.
