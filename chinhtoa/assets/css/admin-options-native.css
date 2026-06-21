@@ -57,12 +57,31 @@
 #ct-home-sec .ct-sec-demo { margin: 0 0 16px; }
 #ct-home-sec .ct-sec-demo-label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; margin-bottom: 6px; }
 #ct-home-sec .ct-sec-demo-img { display: block; max-width: 260px; width: 100%; height: auto; border: 1px solid #dcdcde; border-radius: 6px; background: #fff; }
-#ct-home-sec .ct-tpl-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 22px; align-items: start; }
+/* Khối con: xếp dọc các nhóm field (thay cho 1 grid phẳng — dễ đọc, có phân nhóm). */
+#ct-home-sec .ct-tpl-group { display: flex; flex-direction: column; gap: 14px; }
 #ct-home-sec .ct-tpl-group.is-hidden { display: none; }
+
+/* Mỗi nhóm = một thẻ nhỏ: icon + tiêu đề + mô tả ngắn + lưới field. */
+#ct-home-sec .ct-sec-group { border: 1px solid #e6e6e8; border-radius: 8px; background: #fcfcfd; padding: 12px 14px 14px; }
+#ct-home-sec .ct-sec-group-head { display: flex; align-items: center; flex-wrap: wrap; gap: 3px 8px; margin: 0 0 12px; padding-bottom: 9px; border-bottom: 1px solid #eef0f1; }
+#ct-home-sec .ct-sec-group-icon { color: #2271b1; font-size: 18px; width: 18px; height: 18px; }
+#ct-home-sec .ct-sec-group-title { font-weight: 600; font-size: 13px; color: #1d2327; }
+#ct-home-sec .ct-sec-group-desc { flex: 1 1 100%; margin-left: 26px; color: #646970; font-size: 12px; line-height: 1.5; }
+
+/* Lưới field 2 cột bên trong mỗi nhóm. */
+#ct-home-sec .ct-sec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 22px; align-items: start; }
+#ct-home-sec .ct-sec-grid + .ct-sec-grid { margin-top: 12px; }
 #ct-home-sec .ct-sec-field { margin: 0; }
-#ct-home-sec .ct-sec-field > label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; }
+#ct-home-sec .ct-sec-field > label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; margin-bottom: 4px; }
 #ct-home-sec .ct-sec-field input[type="text"], #ct-home-sec .ct-sec-field textarea { width: 100%; max-width: 100%; }
-#ct-home-sec .ct-sec-field--wide, #ct-home-sec .ct-tpl-group > .ct-tablist { grid-column: 1 / -1; }
+#ct-home-sec .ct-sec-field select { max-width: 100%; }
+#ct-home-sec .ct-sec-field--wide { grid-column: 1 / -1; }
+#ct-home-sec .ct-sec-group > .ct-tablist { margin-top: 12px; }
+
+/* Nhóm màu: 3 ô màu xếp 3 cột; ẩn khi đang dùng màu mặc định. */
+#ct-home-sec .ct-sec-colorbody { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#ct-home-sec .ct-sec-colorbody.is-hidden { display: none; }
+#ct-home-sec .ct-sec-field .wp-picker-container { display: block; margin-top: 2px; }
 #ct-home-sec .ct-slider { width: 130px; }
 
 /* temp6 tab list */

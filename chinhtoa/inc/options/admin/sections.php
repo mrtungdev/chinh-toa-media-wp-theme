@@ -30,7 +30,7 @@ function ct_section_intro($text)
 /* ------------------------------------------------------------------ General */
 function ct_section_general($s)
 {
-    echo '<h2>' . esc_html__('Mẫu & Hiển thị chung', 'chinhtoa') . '</h2>';
+    echo '<h2>' . esc_html__('Màu sắc & hiển thị', 'chinhtoa') . '</h2>';
     ct_section_intro(__('Chọn màu chủ đạo, kiểu thanh menu và nền cho toàn bộ website.', 'chinhtoa'));
     echo '<table class="form-table"><tbody>';
 
@@ -106,7 +106,7 @@ function ct_section_header($s)
 /* ------------------------------------------------------------------- Footer */
 function ct_section_footer($s)
 {
-    echo '<h2>' . esc_html__('Cuối trang (Footer)', 'chinhtoa') . '</h2>';
+    echo '<h2>' . esc_html__('Footer (cuối trang)', 'chinhtoa') . '</h2>';
     ct_section_intro(__('Cấu hình khu vực cuối website: các cột widget, dòng bản quyền và màu sắc.', 'chinhtoa'));
     echo '<table class="form-table"><tbody>';
 
@@ -215,6 +215,34 @@ function ct_home_sec_templates()
     );
 }
 
+/** Mở một nhóm field trong khối: icon + tiêu đề + mô tả ngắn (giải thích). */
+function ct_sec_group_open($title, $desc = '', $icon = '', $extraClass = '')
+{
+    echo '<div class="ct-sec-group ' . esc_attr(trim($extraClass)) . '">';
+    echo '<div class="ct-sec-group-head">';
+    if ($icon !== '') {
+        echo '<span class="ct-sec-group-icon dashicons ' . esc_attr($icon) . '"></span>';
+    }
+    echo '<span class="ct-sec-group-title">' . esc_html($title) . '</span>';
+    if ($desc !== '') {
+        echo '<span class="ct-sec-group-desc">' . esc_html($desc) . '</span>';
+    }
+    echo '</div>';
+}
+function ct_sec_group_close()
+{
+    echo '</div>';
+}
+/** Mở/đóng lưới field 2 cột bên trong một nhóm. */
+function ct_sec_grid_open($extraClass = '')
+{
+    echo '<div class="ct-sec-grid ' . esc_attr(trim($extraClass)) . '">';
+}
+function ct_sec_grid_close()
+{
+    echo '</div>';
+}
+
 /**
  * Render one home_sec row. $i is the index (or '__I__' for the JS template).
  */
@@ -254,31 +282,75 @@ function ct_render_home_sec_row($i, $row = array())
         echo '<div class="ct-tpl-group' . ($tpl === $picker ? '' : ' is-hidden') . '" data-tpl="' . esc_attr($tpl) . '">';
         $p = array_merge($base, array($tpl));
 
-        // Shared
+        // ---- Nhóm 1: Thông tin khối (mọi mẫu) ----
+        ct_sec_group_open(__('Thông tin khối', 'chinhtoa'), __('Tên hiển thị ở đầu khối và quyền xem khối này.', 'chinhtoa'), 'dashicons-info-outline');
+        ct_sec_grid_open();
         ct_sec_input($p, 'title', __('Tiêu đề khối', 'chinhtoa'), isset($g['title']) ? $g['title'] : '', 'text', $disabled);
         ct_sec_input($p, 'is_display', __('Hiển thị khối', 'chinhtoa'), isset($g['is_display']) ? $g['is_display'] : 'y', 'yn', $disabled);
-        ct_sec_input($p, 'is_admin_only', __('Chỉ hiện cho Admin', 'chinhtoa'), isset($g['is_admin_only']) ? $g['is_admin_only'] : 'n', 'yn', $disabled);
+        ct_sec_input($p, 'is_admin_only', __('Chỉ Admin thấy', 'chinhtoa'), isset($g['is_admin_only']) ? $g['is_admin_only'] : 'n', 'yn', $disabled);
+        ct_sec_grid_close();
+        ct_sec_group_close();
 
+        // ---- Nhóm 2: Nguồn nội dung ----
         if ('temp0' === $tpl) {
+            ct_sec_group_open(__('Nội dung', 'chinhtoa'), __('Nội dung HTML tự do hiển thị trong khối (hỗ trợ shortcode).', 'chinhtoa'), 'dashicons-edit');
+            ct_sec_grid_open();
             ct_sec_input($p, 'content', __('Nội dung (HTML)', 'chinhtoa'), isset($g['content']) ? $g['content'] : '', 'textarea', $disabled);
-            // default_style
-            ct_sec_input(array_merge($p, array('default_style')), 'is_default_style', __('Dùng style mặc định', 'chinhtoa'), ct_opt_val($g, array('default_style', 'is_default_style'), 'y'), 'yn', $disabled);
-            ct_sec_input(array_merge($p, array('default_style', 'n')), 'bgcolor', __('Màu nền', 'chinhtoa'), ct_opt_val($g, array('default_style', 'n', 'bgcolor'), ''), 'text', $disabled);
-            ct_sec_input(array_merge($p, array('default_style', 'n')), 'textcolor', __('Màu chữ', 'chinhtoa'), ct_opt_val($g, array('default_style', 'n', 'textcolor'), ''), 'text', $disabled);
+            ct_sec_grid_close();
+            ct_sec_group_close();
         } elseif ('temp6' === $tpl) {
-            ct_sec_input($p, 'cats', __('Chuyên mục mặc định', 'chinhtoa'), isset($g['cats']) ? $g['cats'] : '', 'taxonomy', $disabled);
+            ct_sec_group_open(__('Nguồn bài viết', 'chinhtoa'), __('Tab đầu lấy bài từ chuyên mục dưới đây; thêm Tab cho các chuyên mục khác.', 'chinhtoa'), 'dashicons-category');
+            ct_sec_grid_open();
+            ct_sec_input($p, 'cats', __('Chuyên mục (Tab đầu)', 'chinhtoa'), isset($g['cats']) ? $g['cats'] : '', 'taxonomy', $disabled);
+            ct_sec_grid_close();
             ct_render_tab_list($p, isset($g['tab_list']) && is_array($g['tab_list']) ? $g['tab_list'] : array(), $disabled);
+            ct_sec_group_close();
         } else {
+            ct_sec_group_open(__('Nguồn bài viết', 'chinhtoa'), __('Chọn chuyên mục và số bài hiển thị trong khối.', 'chinhtoa'), 'dashicons-category');
+            ct_sec_grid_open();
             ct_sec_input($p, 'cats', __('Chuyên mục', 'chinhtoa'), isset($g['cats']) ? $g['cats'] : '', 'taxonomy', $disabled);
             ct_sec_input($p, 'num_post', __('Số bài hiển thị', 'chinhtoa'), isset($g['num_post']) ? $g['num_post'] : 6, 'slider', $disabled);
+            ct_sec_grid_close();
+            ct_sec_group_close();
         }
 
-        // show_readmore (temp0..temp5)
+        // ---- Nhóm 3: Hiển thị trên thẻ bài (chỉ khối danh sách bài & tabs) ----
+        if ('temp0' !== $tpl) {
+            ct_sec_group_open(__('Hiển thị trên thẻ bài', 'chinhtoa'), __('Bật/tắt các thành phần hiện trên mỗi thẻ bài viết.', 'chinhtoa'), 'dashicons-visibility');
+            ct_sec_grid_open();
+            ct_sec_input(array_merge($p, array('card')), 'post_thumb',  __('Ảnh đại diện', 'chinhtoa'), ct_opt_val($g, array('card', 'post_thumb'), 'y'),  'yn', $disabled);
+            ct_sec_input(array_merge($p, array('card')), 'post_exper',  __('Mô tả ngắn', 'chinhtoa'),   ct_opt_val($g, array('card', 'post_exper'), 'y'),  'yn', $disabled);
+            ct_sec_input(array_merge($p, array('card')), 'post_date',   __('Ngày đăng', 'chinhtoa'),    ct_opt_val($g, array('card', 'post_date'), 'y'),   'yn', $disabled);
+            ct_sec_input(array_merge($p, array('card')), 'post_views',  __('Lượt xem', 'chinhtoa'),     ct_opt_val($g, array('card', 'post_views'), 'y'),  'yn', $disabled);
+            ct_sec_input(array_merge($p, array('card')), 'post_author', __('Tác giả', 'chinhtoa'),      ct_opt_val($g, array('card', 'post_author'), 'n'), 'yn', $disabled);
+            ct_sec_grid_close();
+            ct_sec_group_close();
+        }
+
+        // ---- Nhóm 4: Màu sắc khối (mọi mẫu) ----
+        ct_sec_group_open(__('Màu sắc khối', 'chinhtoa'), __('Mặc định khối theo màu giao diện. Chọn "Không" ở "Dùng màu mặc định" để tự đặt màu bên dưới.', 'chinhtoa'), 'dashicons-art', 'ct-sec-colorset');
+        ct_sec_grid_open();
+        ct_sec_input(array_merge($p, array('default_style')), 'is_default_style', __('Dùng màu mặc định', 'chinhtoa'), ct_opt_val($g, array('default_style', 'is_default_style'), 'y'), 'yn', $disabled);
+        ct_sec_grid_close();
+        ct_sec_grid_open('ct-sec-colorbody');
+        ct_sec_input(array_merge($p, array('default_style', 'n')), 'bgcolor',   __('Màu nền', 'chinhtoa'),  ct_opt_val($g, array('default_style', 'n', 'bgcolor'), ''),   'color', $disabled);
+        ct_sec_input(array_merge($p, array('default_style', 'n')), 'textcolor', __('Màu chữ', 'chinhtoa'),  ct_opt_val($g, array('default_style', 'n', 'textcolor'), ''), 'color', $disabled);
+        if ('temp0' !== $tpl) {
+            ct_sec_input(array_merge($p, array('default_style', 'n')), 'accentcolor', __('Màu nhấn', 'chinhtoa'), ct_opt_val($g, array('default_style', 'n', 'accentcolor'), ''), 'color', $disabled);
+        }
+        ct_sec_grid_close();
+        ct_sec_group_close();
+
+        // ---- Nhóm 5: Nút "Xem thêm" (mọi mẫu trừ Tabs) ----
         if ('temp6' !== $tpl) {
-            ct_sec_input(array_merge($p, array('show_readmore')), 'action_show', __('Hiện nút "Xem thêm"', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'action_show'), 'n'), 'yn', $disabled);
+            ct_sec_group_open(__('Nút "Xem thêm"', 'chinhtoa'), __('Nút đặt cuối khối, dẫn tới trang chuyên mục hoặc liên kết bất kỳ.', 'chinhtoa'), 'dashicons-admin-links');
+            ct_sec_grid_open();
+            ct_sec_input(array_merge($p, array('show_readmore')), 'action_show', __('Hiện nút', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'action_show'), 'n'), 'yn', $disabled);
             ct_sec_input(array_merge($p, array('show_readmore', 'y')), 'readmore_text', __('Chữ trên nút', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'y', 'readmore_text'), ''), 'text', $disabled);
-            ct_sec_input(array_merge($p, array('show_readmore', 'y')), 'readmore_link', __('Link của nút', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'y', 'readmore_link'), ''), 'text', $disabled);
-            ct_sec_input(array_merge($p, array('show_readmore', 'y')), 'readmore_blank', __('Mở ở tab mới', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'y', 'readmore_blank'), 'n'), 'yn', $disabled);
+            ct_sec_input(array_merge($p, array('show_readmore', 'y')), 'readmore_link', __('Liên kết', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'y', 'readmore_link'), ''), 'text', $disabled);
+            ct_sec_input(array_merge($p, array('show_readmore', 'y')), 'readmore_blank', __('Mở tab mới', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'y', 'readmore_blank'), 'n'), 'yn', $disabled);
+            ct_sec_grid_close();
+            ct_sec_group_close();
         }
 
         echo '</div>';
@@ -303,6 +375,9 @@ function ct_sec_input($pathPrefix, $key, $label, $value, $type, $disabled = '')
         ct_taxonomy_control($name, $value, $disabled);
     } elseif ('yn' === $type) {
         printf('<select name="%s"%s><option value="y"%s>Có</option><option value="n"%s>Không</option></select>', esc_attr($name), $disabled, selected($value, 'y', false), selected($value, 'n', false));
+    } elseif ('color' === $type) {
+        // .ct-color-field được admin-options-native.js gắn WP color-picker (cả khi thêm khối mới).
+        printf('<input type="text" class="ct-color-field" name="%s" value="%s" data-default-color=""%s>', esc_attr($name), esc_attr($value), $disabled);
     } else {
         printf('<input type="text" class="regular-text" name="%s" value="%s"%s>', esc_attr($name), esc_attr($value), $disabled);
     }

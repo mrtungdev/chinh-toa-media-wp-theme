@@ -1,7 +1,11 @@
-## Quản lý bài viết và tin tức
+## Viết & quản lý bài viết
 
 Bài viết là nơi đăng **tin tức, thông báo, bản tin, suy niệm Lời Chúa** và các
 sinh hoạt của giáo xứ.
+
+> **Bài đặc biệt?** Một bài viết có thể đặt **Loại** riêng (Lời Chúa câu ghi nhớ,
+> Video bài giảng) để hiển thị nổi bật ở đầu bài — xem mục
+> **Phân loại bài viết: Lời Chúa & Video**.
 
 ### Viết một bài mới
 

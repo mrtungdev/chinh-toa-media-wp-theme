@@ -1,0 +1,34 @@
+/**
+ * Màu tuỳ chỉnh cho khối nội dung trang chủ (temp1–6).
+ * Chỉ áp khi wrapper khối có class .has-ct-sec-colors + biến --ct-sec-* (đặt nội tuyến
+ * từ ct_home_sec_color_attrs(), inc/options/flatteners/helper-homepage.php). Khi có màu
+ * nền tuỳ chỉnh, template đã bỏ class bg-white nên không cần !important.
+ */
+
+.ct__post.has-ct-sec-colors {
+  background: var(--ct-sec-bg, #fff);
+  color: var(--ct-sec-text, inherit);
+}
+
+/* Chữ thân: tiêu đề bài, mô tả, ngày */
+.ct__post.has-ct-sec-colors .post-title a,
+.ct__post.has-ct-sec-colors .post-excerpt,
+.ct__post.has-ct-sec-colors .post-date,
+.ct__post.has-ct-sec-colors .empty-post {
+  color: var(--ct-sec-text, inherit);
+}
+
+/* Nhấn: tiêu đề khối, tab, link "Xem thêm", lượt xem, tác giả */
+.ct__post.has-ct-sec-colors .ct__post-title,
+.ct__post.has-ct-sec-colors .ct__post-title a,
+.ct__post.has-ct-sec-colors .ct__post-header-tabs a,
+.ct__post.has-ct-sec-colors .ct__post-readmore a,
+.ct__post.has-ct-sec-colors .post-views,
+.ct__post.has-ct-sec-colors .post-author a {
+  color: var(--ct-sec-accent, inherit);
+}
+
+/* Đường kẻ dưới tiêu đề khối */
+.ct__post.has-ct-sec-colors .bottom-line {
+  border-color: var(--ct-sec-accent, currentColor);
+}

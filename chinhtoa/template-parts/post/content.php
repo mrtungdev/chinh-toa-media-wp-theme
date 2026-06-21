@@ -14,7 +14,17 @@ $isShowPostTitle = isset($postSettings['post_title']) ? $postSettings['post_titl
 $isShowPostAuthor = isset($postSettings['post_author']) ? $postSettings['post_author'] : 'y';
 ?>
 <div class="post-header">
-  <?php if ($isShowPostThumb == 'y'){ 
+  <?php
+	$ctKind = function_exists('ct_post_kind') ? ct_post_kind($post->ID) : 'default';
+	// Thẻ câu ghi nhớ (loại "Lời Chúa") — đặt trên cùng bài.
+	if ($ctKind === 'loichua' && function_exists('ct_post_kind_loichua_html')) {
+		echo ct_post_kind_loichua_html($post->ID); // đã escape trong hàm render.
+	}
+	// Trình phát video (loại "Video (audio) Lời Chúa") — thay ảnh đại diện tĩnh.
+	$ctVideo = ($ctKind === 'media' && function_exists('ct_post_kind_video_html')) ? ct_post_kind_video_html($post->ID) : '';
+	if ($ctVideo !== '') {
+		echo $ctVideo; // wp_oembed_get trả HTML từ provider đã biết.
+	} elseif ($isShowPostThumb == 'y') {
 		$image = getPostImage($post->ID);
 	?>
   <div class="ct-single-thumb">

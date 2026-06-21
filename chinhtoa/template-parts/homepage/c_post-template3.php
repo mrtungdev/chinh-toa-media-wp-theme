@@ -7,8 +7,11 @@ if (!empty($section['cats'])) {
   $contentArgs['category'] = $cats;
 }
 $trans = "trans_" . vn_to_str($section['title']);
+$cc = ct_home_sec_color_attrs($section);
+$archiveSettings = isset($section['card']) ? $section['card'] : array();
+$wrapClass = trim('ct__post ct__post-t3 ct-shadow ct-bounding ' . ($cc['drop_bg'] ? '' : 'bg-white') . ' ' . $cc['class']);
 ?>
-<div class="ct__post ct__post-t3 bg-white ct-shadow ct-bounding">
+<div class="<?php echo esc_attr($wrapClass); ?>" style="<?php echo esc_attr($cc['style']); ?>">
   <?php include locate_template('template-parts/homepage/_section-header.php', false, false); ?>
   <div class="ct__post-content">
     <?php $queryPosts = ct_get_posts($contentArgs, $trans);

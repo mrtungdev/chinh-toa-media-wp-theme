@@ -16,8 +16,8 @@ define('CT_THEME_IMGS_URI', get_template_directory_uri() . '/assets/imgs');
 define('CT_THEME_CSS_URI', get_template_directory_uri() . '/assets/css');
 define('CT_THEME_JS_URI', get_template_directory_uri() . '/assets/js');
 define('CT_NAME', get_bloginfo('name'));
-define('CT_NO_IMAGE', get_template_directory_uri() . '/assets/imgs/icons/no-image.jpg');
-define('CT_PLACEHOLDER', get_template_directory_uri() . '/assets/imgs/ct-image-skeleton.jpg');
+define('CT_NO_IMAGE', get_template_directory_uri() . '/assets/imgs/ct-no-image.svg');
+define('CT_PLACEHOLDER', get_template_directory_uri() . '/assets/imgs/ct-skeleton.svg');
 
 final class CT_SETUP_THEME
 {
@@ -46,11 +46,18 @@ final class CT_SETUP_THEME
         require_once CT_THEME_DIR . '/inc/utilities/sidebar.php';
         require_once CT_THEME_DIR . '/inc/widget/ct_postlist_widget.php';
 
+        // Widget + Block "Lời Chúa: Câu ghi nhớ" — thẻ câu Kinh Thánh static/dynamic, màu
+        // tuỳ chỉnh (khác hệ "Lời Chúa hôm nay" ở trên: cái đó là CPT bài đọc theo ngày).
+        require_once CT_THEME_DIR . '/inc/blocks/loader.php';
+        require_once CT_THEME_DIR . '/inc/widget/ct_loichua_card_widget.php';
+
         require_once CT_THEME_DIR . '/inc/post/ajax.php';
         require_once CT_THEME_DIR . '/inc/post/posttype.php';
         require_once CT_THEME_DIR . '/inc/post/posttags.php';
         require_once CT_THEME_DIR . '/inc/post/taxonomy.php';
         require_once CT_THEME_DIR . '/inc/post/postsloop.php';
+        // Metabox "Phân loại bài viết" (dropdown loại) + render khối theo-loại ở đầu bài.
+        require_once CT_THEME_DIR . '/inc/post/post-kind.php';
 
         require_once CT_THEME_DIR . '/inc/options/loader.php';
 

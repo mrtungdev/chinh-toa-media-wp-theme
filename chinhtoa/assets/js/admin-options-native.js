@@ -185,6 +185,15 @@
     });
   }
 
+  // Show the 3 colour pickers only when "Dùng màu mặc định" = Không (is_default_style = n).
+  function applyColorToggle($scope) {
+    $scope.find('.ct-sec-colorset').each(function () {
+      var $set = $(this);
+      var custom = $set.find('select[name$="[default_style][is_default_style]"]').first().val() === 'n';
+      $set.find('.ct-sec-colorbody').toggleClass('is-hidden', !custom);
+    });
+  }
+
   // Header summary = the active template's block title (or a placeholder).
   function updateSecSummary($row) {
     var $t = $row.find('.ct-tpl-group:not(.is-hidden) input[name$="[title]"]').first();
@@ -212,6 +221,13 @@
 
     // init existing rows
     $list.find('.ct-sec-row').each(function () { applyTemplateGroup($(this)); updateSecSummary($(this)); });
+    applyColorToggle($list);
+
+    // toggle the colour pickers when "Dùng màu mặc định" changes
+    $rep.on('change', '.ct-sec-colorset select[name$="[default_style][is_default_style]"]', function () {
+      var $set = $(this).closest('.ct-sec-colorset');
+      $set.find('.ct-sec-colorbody').toggleClass('is-hidden', $(this).val() !== 'n');
+    });
 
     // collapse / expand a block
     $rep.on('click', '.ct-sec-toggle', function (e) {
@@ -242,6 +258,7 @@
       var $row = $(html);
       $list.append($row);
       applyTemplateGroup($row);
+      applyColorToggle($row);
       initColor($row);
       initTaxonomy($row);
       initSlider($row);

@@ -1,0 +1,86 @@
+/**
+ * Thẻ "Lời Chúa: Câu ghi nhớ" — dùng chung cho widget CT_LoiChua_Card_Widget và
+ * block chinhtoa/loichua-card. Màu nhận qua biến --ct-lc-* (đặt nội tuyến từ PHP);
+ * fallback khớp ảnh mẫu: nền nâu ấm, chữ kem, nhấn vàng. Câu dùng Lora (serif nghiêng).
+ */
+
+.ct-loichua-card {
+  background: var(--ct-lc-bg, #3a2c1d);
+  color: var(--ct-lc-text, #f4efe3);
+  border-radius: 16px;
+  padding: 2.4rem 2.6rem;
+  text-align: left;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.ct-loichua-card__label {
+  display: block;
+  margin: 0 0 1.15rem;
+  color: var(--ct-lc-accent, #c4a05f);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.ct-loichua-card__quote {
+  /* !important để thắng style blockquote của theme khi block nằm trong bài viết:
+     "#ct-content.ct-single .post-content blockquote" có #id nên specificity (1,2,1)
+     cao hơn class đơn — nếu không sẽ dính nền xám/padding/bo góc + dấu nháy. */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  line-height: 1.45 !important;
+  color: inherit;
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+/* Vô hiệu dấu nháy trang trí (::before) của blockquote theme trong thẻ này. */
+.ct-loichua-card__quote::before,
+.ct-loichua-card__quote::after {
+  content: none !important;
+  display: none !important;
+}
+
+.ct-loichua-card__cite {
+  display: block;
+  margin: 1.35rem 0 0;
+  color: var(--ct-lc-accent, #c4a05f);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/**
+ * Khi đặt làm widget trong sidebar, theme bọc widget trong khung trắng
+ * (.widget-item padding + .bg-white + .ct-shadow + .ct-bounding). Thẻ Lời Chúa đã
+ * tự có nền/bo góc/đổ bóng riêng → khử khung trắng đó CHỈ cho widget này để thẻ nâu
+ * hiển thị sát viền. Selector ghép (.classname.bg-white / .classname.ct-shadow) để
+ * thắng !important của Bootstrap/theme bất kể thứ tự nạp CSS.
+ */
+.ct_loichua_card_widget {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+.ct_loichua_card_widget.bg-white {
+  background: transparent !important;
+}
+.ct_loichua_card_widget.ct-shadow {
+  box-shadow: none !important;
+}
+
+@media (max-width: 575.98px) {
+  .ct-loichua-card {
+    padding: 1.8rem 1.6rem;
+  }
+  .ct-loichua-card__quote {
+    font-size: 1.4rem;
+  }
+}

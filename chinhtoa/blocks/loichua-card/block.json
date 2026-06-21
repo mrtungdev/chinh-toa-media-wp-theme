@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "chinhtoa/loichua-card",
+  "title": "Lời Chúa: Câu ghi nhớ",
+  "category": "widgets",
+  "icon": "book-alt",
+  "description": "Thẻ Lời Chúa (câu ghi nhớ): nhãn, câu Kinh Thánh và trích dẫn — nhập tay hoặc tự động lấy từ tiêu đề/mô tả bài viết. Màu nền/chữ/nhấn tuỳ chỉnh.",
+  "textdomain": "chinhtoa",
+  "keywords": ["loi chua", "cau ghi nho", "scripture", "verse", "kinh thanh"],
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "anchor": true
+  },
+  "usesContext": ["postId", "postType"],
+  "attributes": {
+    "mode":           { "type": "string", "default": "static" },
+    "label":          { "type": "string", "default": "CÂU GHI NHỚ" },
+    "quote":          { "type": "string", "default": "" },
+    "citation":       { "type": "string", "default": "" },
+    "source":         { "type": "string", "default": "category" },
+    "sourceCategory": { "type": "number", "default": 0 },
+    "sourcePostId":   { "type": "number", "default": 0 },
+    "bgColor":        { "type": "string", "default": "" },
+    "textColor":      { "type": "string", "default": "" },
+    "accentColor":    { "type": "string", "default": "" }
+  },
+  "editorScript": "ct-loichua-card-editor",
+  "editorStyle": "ct-loichua-card",
+  "style": "ct-loichua-card"
+}

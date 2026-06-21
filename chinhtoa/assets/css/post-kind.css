@@ -1,0 +1,62 @@
+/**
+ * Khối theo-loại ở ĐẦU trang chi tiết bài (single.php → template-parts/post/content.php).
+ *
+ * Lưu ý layout: ".ct-single" có padding 2rem; ảnh đại diện ".ct-single-thumb" tràn sát mép
+ * bằng margin âm (-2rem). Các khối top của post-kind phải tự xử lý padding này:
+ *  - Video: tràn mép giống ảnh đại diện (vì nó THAY ảnh).
+ *  - Thẻ câu ghi nhớ: nằm gọn trong padding, ép border-box để không tràn.
+ */
+
+/* ============ Video (audio) Lời Chúa: trình phát nhúng ============ */
+.ct-single-video {
+  position: relative;
+  width: 100%;
+  margin: 0 0 1rem;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+/* Fallback cho trình duyệt cũ không hỗ trợ aspect-ratio. */
+@supports not (aspect-ratio: 1 / 1) {
+  .ct-single-video {
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+}
+
+.ct-single-video > iframe,
+.ct-single-video > video,
+.ct-single-video > object,
+.ct-single-video > embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Tràn mép như .ct-single-thumb: flush mép trên + 2 bên, bỏ bo góc.
+   width:auto để margin âm "nong" khối ra full chiều ngang container. */
+.ct-single .post-header > .ct-single-video {
+  width: auto;
+  margin: -2rem -2rem 1rem -2rem;
+  border-radius: 0;
+}
+
+/* ============ Lời Chúa: thẻ câu ghi nhớ ở đầu bài ============ */
+/* Tràn sát mép như ảnh đại diện (.ct-single-thumb dùng margin -2rem) thay vì thụt vào
+   trong padding 2rem của #ct-content. width:auto để margin âm "nong" thẻ ra full ngang;
+   bỏ bo góc + đổ bóng để thành banner sát mép (container chỉ bo 3px, không đáng kể). */
+.ct-single .post-header > .ct-loichua-card {
+  width: auto;
+  margin: -2rem -2rem 1.5rem -2rem;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Nếu có thẻ ở trên thì ảnh đại diện kế sau không kéo lên đè thẻ. */
+.ct-single .post-header > .ct-loichua-card + .ct-single-thumb {
+  margin-top: 0;
+}

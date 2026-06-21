@@ -127,26 +127,31 @@ function ct_render_settings_page()
     }
     $s = ct_get_settings();
 
-    // Two-level IA mirroring the old Unyson panel: top-level groups, each with
-    // ordered sub-tabs. "Thiết lập chung" gathers general/header/footer/tech as
-    // sub-tabs; the rest are single-panel. Sub-panels reuse the existing
-    // ct_section_* renderers unchanged.
+    // Two-level IA: top-level groups, each with ordered sub-tabs. "Giao diện"
+    // gathers general/header/footer; "Trang chủ & Bài viết" gathers the homepage
+    // builder + category/post defaults; "Tiện ích" (hot) and "Nâng cao" (tech)
+    // are single-panel. The group/sub keys are presentational only — storage is
+    // by field-name path into ct_settings — so regrouping/renaming tabs needs no
+    // data migration. Sub-panels reuse the existing ct_section_* renderers
+    // unchanged (the $renderers map below is keyed by sub-key, not by group).
     $groups = array(
-        'setup'    => __('Thiết lập chung', 'chinhtoa'),
-        'homepage' => __('Trang chủ', 'chinhtoa'),
-        'hot'      => __('Thông báo', 'chinhtoa'),
-        'default'  => __('Mặc định', 'chinhtoa'),
+        'giaodien' => __('Giao diện', 'chinhtoa'),
+        'noidung'  => __('Trang chủ & Bài viết', 'chinhtoa'),
+        'tienich'  => __('Tiện ích', 'chinhtoa'),
+        'nangcao'  => __('Nâng cao', 'chinhtoa'),
     );
     $subs = array(
-        'setup'    => array(
-            'general' => __('Màu & Hiển thị', 'chinhtoa'),
+        'giaodien' => array(
+            'general' => __('Màu sắc & hiển thị', 'chinhtoa'),
             'header'  => __('Header', 'chinhtoa'),
-            'footer'  => __('Cuối trang', 'chinhtoa'),
-            'tech'    => __('Kỹ thuật', 'chinhtoa'),
+            'footer'  => __('Footer', 'chinhtoa'),
         ),
-        'homepage' => array('homepage' => __('Trang chủ', 'chinhtoa')),
-        'hot'      => array('hot' => __('Thanh thông báo', 'chinhtoa')),
-        'default'  => array('default' => __('Mặc định', 'chinhtoa')),
+        'noidung'  => array(
+            'homepage' => __('Trang chủ', 'chinhtoa'),
+            'default'  => __('Trang Chuyên mục & Bài viết', 'chinhtoa'),
+        ),
+        'tienich'  => array('hot'  => __('Thanh thông báo', 'chinhtoa')),
+        'nangcao'  => array('tech' => __('Kỹ thuật', 'chinhtoa')),
     );
     $renderers = array(
         'general'  => 'ct_section_general',

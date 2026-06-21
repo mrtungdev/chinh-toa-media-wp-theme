@@ -92,6 +92,7 @@ function home_GetSections()
           $resPost['is_admin_only'] = $isPostAdmin;
           $resPost['cats'] = isset($postData['cats']) ? $postData['cats'] : '';
           $resPost['tab_list'] = (isset($postData['tab_list']) && is_array($postData['tab_list'])) ? $postData['tab_list'] : array();
+          $resPost = array_merge($resPost, ct_home_sec_read_extras($postData));
           array_push($res, $resPost);
         }
         break;
@@ -153,6 +154,7 @@ function home_GetSections()
           }
           $resPost['cats'] = isset($postData['cats']) ? $postData['cats'] : '';
           $resPost['num_post'] = isset($postData['num_post']) ? $postData['num_post'] : '';
+          $resPost = array_merge($resPost, ct_home_sec_read_extras($postData));
           array_push($res, $resPost);
         }
         break;
@@ -163,3 +165,60 @@ function home_GetSections()
   // return $opt;
   return $res;
 }
+
+/**
+ * Đọc thêm cho khối bài/tabs (temp1–6): default_style (màu nền/chữ/nhấn) + card (toggle
+ * hiển thị). Dùng isset() ternary cho an toàn ở ngữ cảnh front-end (không phụ thuộc
+ * ct_opt_val của admin). Trả về mảng để array_merge vào $resPost.
+ */
+function ct_home_sec_read_extras($postData)
+{
+  $ds  = isset($postData['default_style']['is_default_style']) ? $postData['default_style']['is_default_style'] : 'y';
+  $res = array('default_style' => $ds);
+  if ($ds === 'n') {
+    $res['bgcolor']     = isset($postData['default_style']['n']['bgcolor'])     ? $postData['default_style']['n']['bgcolor']     : '';
+    $res['textcolor']   = isset($postData['default_style']['n']['textcolor'])   ? $postData['default_style']['n']['textcolor']   : '';
+    $res['accentcolor'] = isset($postData['default_style']['n']['accentcolor']) ? $postData['default_style']['n']['accentcolor'] : '';
+  }
+  $res['card'] = array(
+    'post_thumb'  => isset($postData['card']['post_thumb'])  ? $postData['card']['post_thumb']  : 'y',
+    'post_exper'  => isset($postData['card']['post_exper'])  ? $postData['card']['post_exper']  : 'y',
+    'post_date'   => isset($postData['card']['post_date'])   ? $postData['card']['post_date']   : 'y',
+    'post_views'  => isset($postData['card']['post_views'])  ? $postData['card']['post_views']  : 'y',
+    'post_author' => isset($postData['card']['post_author']) ? $postData['card']['post_author'] : 'n',
+  );
+  return $res;
+}
+
+/**
+ * Dựng class + chuỗi biến CSS (--ct-sec-*) cho wrapper khối từ màu đã chọn.
+ * drop_bg = true khi có màu nền tuỳ chỉnh → template bỏ class bg-white để tránh
+ * !important của Bootstrap. Tái dùng ct_normalize_hex() (inc/utilities/enqueue.php).
+ *
+ * @return array{class:string,style:string,drop_bg:bool}
+ */
+function ct_home_sec_color_attrs($section)
+{
+  if (!isset($section['default_style']) || $section['default_style'] !== 'n') {
+    return array('class' => '', 'style' => '', 'drop_bg' => false);
+  }
+  $vars = array();
+  $bg = ct_normalize_hex(isset($section['bgcolor'])     ? $section['bgcolor']     : '');
+  $tx = ct_normalize_hex(isset($section['textcolor'])   ? $section['textcolor']   : '');
+  $ac = ct_normalize_hex(isset($section['accentcolor']) ? $section['accentcolor'] : '');
+  if ($bg !== '') $vars[] = '--ct-sec-bg: ' . $bg;
+  if ($tx !== '') $vars[] = '--ct-sec-text: ' . $tx;
+  if ($ac !== '') $vars[] = '--ct-sec-accent: ' . $ac;
+  return array(
+    'class'   => $vars ? 'has-ct-sec-colors' : '',
+    'style'   => $vars ? implode('; ', $vars) . ';' : '',
+    'drop_bg' => ($bg !== ''),
+  );
+}
+
+/** CSS biến màu cho khối trang chủ (chỉ nạp ở trang chủ). */
+add_action('wp_enqueue_scripts', function () {
+  if (is_front_page() || is_page_template('page-homepage.php')) {
+    wp_enqueue_style('ct-home-sections', CT_THEME_CSS_URI . '/home-sections.css', array(), THEME_VERSION);
+  }
+});
