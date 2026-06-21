@@ -30,7 +30,10 @@ function ct_settings_defaults()
             'custom_color' => '#1565c0',
         ),
         'gen_data'    => array(
-            'nav_style' => 'c1',
+            'nav_style'        => 'c1',
+            'nav_bg_color'     => '',
+            'nav_text_color'   => '',
+            'nav_accent_color' => '',
             'gen_bg'    => array(
                 'action_show' => 'c_color',
                 'c_color'     => array('color' => '#ffffff'),

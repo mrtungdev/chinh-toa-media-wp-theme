@@ -76,7 +76,18 @@ if ($generalSite['gen_bg_type'] == 'c_color') {
 <body <?php body_class(); ?> style="<?php echo esc_attr($ctAppStyle); ?>">
   <?php wp_body_open(); ?>
   <div id="ct-app" class="site">
-    <nav id="site-nav" class="navbar bg-dark <?php echo esc_attr('nav-style-' . $generalSite['nav_style']); ?>">
+    <?php
+    $navStyle = isset($generalSite['nav_style']) ? $generalSite['nav_style'] : 'c1';
+    $navVars  = array();
+    $nb = ct_normalize_hex(isset($generalSite['nav_bg_color'])     ? $generalSite['nav_bg_color']     : '');
+    $nt = ct_normalize_hex(isset($generalSite['nav_text_color'])   ? $generalSite['nav_text_color']   : '');
+    $na = ct_normalize_hex(isset($generalSite['nav_accent_color']) ? $generalSite['nav_accent_color'] : '');
+    if ($nb !== '') $navVars[] = '--ct-nav-bg: '     . $nb;
+    if ($nt !== '') $navVars[] = '--ct-nav-text: '   . $nt;
+    if ($na !== '') $navVars[] = '--ct-nav-accent: ' . $na;
+    $navStyleAttr = $navVars ? implode('; ', $navVars) . ';' : '';
+    ?>
+    <nav id="site-nav" class="navbar <?php echo esc_attr('nav-style-' . $navStyle); ?>"<?php if ($navStyleAttr) : ?> style="<?php echo esc_attr($navStyleAttr); ?>"<?php endif; ?>>
       <div class="container">
         <a class="navbar-brand" href="<?php echo esc_url(CT_HOME_URL); ?>">
           <?php echo esc_html(CT_NAME); ?>

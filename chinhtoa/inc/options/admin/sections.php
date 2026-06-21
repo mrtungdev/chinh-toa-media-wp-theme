@@ -55,7 +55,12 @@ function ct_section_general($s)
     ct_field_image_radio($s, array('gen_data', 'nav_style'), __('Kiểu thanh menu', 'chinhtoa'), array(
         'c1' => ct_opt_img('/layouts/nav-style-2.png'),
         'c2' => ct_opt_img('/layouts/nav-style-3.png'),
+        'c3' => ct_opt_img('/layouts/nav-style-4.png'),
     ), __('Chọn bố cục thanh menu chính ở đầu trang.', 'chinhtoa'), null, 'wide');
+
+    ct_field_color($s, array('gen_data', 'nav_bg_color'), __('Màu nền thanh menu', 'chinhtoa'), __('Màu nền của thanh menu chính. Để trống để dùng màu mặc định của kiểu menu.', 'chinhtoa'));
+    ct_field_color($s, array('gen_data', 'nav_text_color'), __('Màu chữ thanh menu', 'chinhtoa'), __('Màu chữ các mục trên thanh menu. Để trống để dùng mặc định.', 'chinhtoa'));
+    ct_field_color($s, array('gen_data', 'nav_accent_color'), __('Màu nhấn thanh menu', 'chinhtoa'), __('Gạch chân mục đang chọn (kiểu menu 3) và màu nền mục active (kiểu 1, 2). Để trống để dùng màu giao diện.', 'chinhtoa'));
 
     ct_field_radio($s, array('gen_data', 'gen_bg', 'action_show'), __('Nền trang', 'chinhtoa'), array(
         'c_color' => __('Dùng màu nền', 'chinhtoa'),

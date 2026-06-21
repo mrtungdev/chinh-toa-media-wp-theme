@@ -15,6 +15,9 @@ function gen_GetGeneral()
 	$res = array();
 	$opt = ct_get_option_setting('gen_data');
 	$res['nav_style'] = $opt['nav_style'];
+	$res['nav_bg_color']     = isset($opt['nav_bg_color'])     ? $opt['nav_bg_color']     : '';
+	$res['nav_text_color']   = isset($opt['nav_text_color'])   ? $opt['nav_text_color']   : '';
+	$res['nav_accent_color'] = isset($opt['nav_accent_color']) ? $opt['nav_accent_color'] : '';
 	// $res['main_color'] = $opt['main_color'];
 
 	$gen_bg = (isset($opt['gen_bg']) && is_array($opt['gen_bg'])) ? $opt['gen_bg'] : array();

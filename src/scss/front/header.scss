@@ -31,6 +31,7 @@ $hambergerLineSpace: 4;
     top: 0;
     padding: 0;
     z-index: 8888;
+    background-color: var(--ct-nav-bg, #000);
     a {
       text-decoration: none;
     }
@@ -39,7 +40,7 @@ $hambergerLineSpace: 4;
     display: block;
     // width: #{$hambergerLineWidth}px;
     // height: #{$hambergerLineHeight * 6 + $hambergerLineSpace * 2}px;
-    color: #fff;
+    color: var(--ct-nav-text, #fff);
     position: relative;
     margin: 0;
     transform: rotate(0deg);
@@ -80,7 +81,7 @@ $hambergerLineSpace: 4;
           @include scrollbars(6px, rgba($color: #000, $alpha: 0.6));
         }
         #ct-main-menu {
-          background-color: #000;
+          background-color: var(--ct-nav-bg, #000);
           // background-color: map-get($theme-colors, "dark");
         }
       }
@@ -95,7 +96,7 @@ $hambergerLineSpace: 4;
         padding: 1rem 0 1rem 1rem;
         font-size: 1rem;
         font-weight: 200;
-        color: #fff;
+        color: var(--ct-nav-text, #fff);
         flex: 1;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -110,7 +111,7 @@ $hambergerLineSpace: 4;
       }
       #ct-main-menu {
         border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
-        border-bottom: 3px solid map-get($theme-colors, "primary");
+        border-bottom: 3px solid var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
         ul {
           list-style: none;
           padding: 0;
@@ -123,10 +124,10 @@ $hambergerLineSpace: 4;
           flex-direction: column;
           a {
             padding: 0.5rem 1.5rem;
-            color: #fff;
+            color: var(--ct-nav-text, #fff);
           }
           ul {
-            background-color: #000;
+            background-color: var(--ct-nav-bg, #000);
             a {
               padding-left: 3rem;
             }
@@ -156,10 +157,10 @@ $hambergerLineSpace: 4;
             }
           }
           &.current-menu-item {
-            background-color: map-get($theme-colors, "primary");
+            background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
           }
           &.current-menu-parent {
-            background-color: map-get($theme-colors, "primary");
+            background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
 
             .current-menu-item {
               background-color: rgba($color: map-get($theme-colors, "primary"), $alpha: 0.5);
@@ -170,6 +171,37 @@ $hambergerLineSpace: 4;
             a {
               font-size: 0.9em;
             }
+          }
+        }
+      }
+    }
+  }
+  #site-nav.nav-style-c3.navbar {
+    background-color: var(--ct-nav-bg, #faf8f2);
+    &.is-active #ct-main-menu {
+      background-color: var(--ct-nav-bg, #faf8f2);
+    }
+    .navbar-brand,
+    #nav-mobile-toggler {
+      color: var(--ct-nav-text, #4a3f30);
+    }
+    #ct-main-menu {
+      border-bottom-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
+    }
+    .ct-main-menu {
+      li a {
+        color: var(--ct-nav-text, #4a3f30);
+      }
+      ul {
+        background-color: #fff;
+      }
+      & > li {
+        &.current-menu-item,
+        &.current-menu-parent {
+          background-color: transparent;
+          border-left: 3px solid var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
+          > a {
+            color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
           }
         }
       }
@@ -265,13 +297,13 @@ $hambergerLineSpace: 4;
         .ct-main-menu {
           li {
             &:hover {
-              background-color: map-get($theme-colors, "primary");
+              background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
             }
             a {
-              color: #fff;
+              color: var(--ct-nav-text, #fff);
             }
             ul {
-              background-color: #000;
+              background-color: var(--ct-nav-bg, #000);
               li {
                 border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
                 &:last-child {
@@ -293,10 +325,10 @@ $hambergerLineSpace: 4;
               border-right: 1px solid rgba($color: #000000, $alpha: 0.15);
             }
             &.current-menu-item {
-              background-color: map-get($theme-colors, "primary");
+              background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
             }
             &.current-menu-parent {
-              background-color: map-get($theme-colors, "primary");
+              background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
               .current-menu-item {
                 background-color: rgba($color: map-get($theme-colors, "primary"), $alpha: 0.5);
               }
@@ -305,18 +337,18 @@ $hambergerLineSpace: 4;
         }
       }
       &.nav-style-c2 {
-        border-bottom: 3px solid map-get($theme-colors, "primary");
+        border-bottom: 3px solid var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
         .ct-main-menu {
           li {
             &:hover {
-              background-color: map-get($theme-colors, "primary");
+              background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
             }
             a {
-              color: #fff;
+              color: var(--ct-nav-text, #fff);
             }
 
             ul {
-              background-color: #000;
+              background-color: var(--ct-nav-bg, #000);
               li {
                 border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
                 &:last-child {
@@ -338,16 +370,66 @@ $hambergerLineSpace: 4;
               border-right: 1px solid rgba($color: #000000, $alpha: 0.15);
             }
             &.current-menu-item {
-              background-color: map-get($theme-colors, "primary");
+              background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
             }
             &.current-menu-parent {
-              background-color: map-get($theme-colors, "primary");
+              background-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
               .current-menu-item {
                 background-color: rgba($color: map-get($theme-colors, "primary"), $alpha: 0.5);
               }
             }
             & > ul {
-              border-top: 3px solid map-get($theme-colors, "primary");
+              border-top: 3px solid var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
+            }
+          }
+        }
+      }
+      &.nav-style-c3 {
+        background-color: var(--ct-nav-bg, #faf8f2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        .ct-main-menu {
+          & > li {
+            border-left: 0;
+            &:last-child {
+              border-right: 0;
+            }
+            a {
+              color: var(--ct-nav-text, #4a3f30);
+              padding: 1.25rem;
+              border-bottom: 3px solid transparent;
+              transition: color 0.15s ease, border-color 0.15s ease;
+            }
+            &:hover {
+              background-color: transparent;
+              > a {
+                color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
+              }
+            }
+            &.current-menu-item,
+            &.current-menu-parent {
+              background-color: transparent;
+              > a {
+                color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
+                border-bottom-color: var(--ct-nav-accent, #{map-get($theme-colors, "primary")});
+              }
+            }
+            ul {
+              background-color: #fff;
+              border: 1px solid rgba(0, 0, 0, 0.06);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+              li {
+                border-top: 0;
+                &:last-child {
+                  border-bottom: 0;
+                }
+                a {
+                  color: #4a3f30;
+                  padding: 0.6rem 1rem !important;
+                }
+                &:hover {
+                  background-color: rgba(0, 0, 0, 0.04);
+                }
+              }
             }
           }
         }
