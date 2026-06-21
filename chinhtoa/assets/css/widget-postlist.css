@@ -1,0 +1,114 @@
+/**
+ * Widget "Danh Sách Bài Viết" (CT_PostList_Widget)
+ * Hai kiểu: --numbered (số thứ tự) và --audio (icon play).
+ * Màu nhấn dùng biến Bootstrap --bs-primary nên tự đồng bộ theo màu giao diện;
+ * có giá trị fallback (#b08d57) cho an toàn.
+ */
+
+.ct-postlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ct-postlist__item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.95rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ct-postlist__item:first-child {
+  border-top: 0;
+  padding-top: 0.35rem;
+}
+
+.ct-postlist__body {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.ct-postlist__thumb {
+  flex: 0 0 auto;
+  display: block;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin-right: 0.85rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ct-postlist__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ct-postlist__title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: #1c1c1c;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.ct-postlist__title:hover,
+.ct-postlist__title:focus {
+  color: var(--bs-primary, #b08d57);
+}
+
+.ct-postlist__sub,
+.ct-postlist__meta {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #8a8a8a;
+}
+
+/* ---- Kiểu số thứ tự ---- */
+.ct-postlist--numbered .ct-postlist__rank {
+  flex: 0 0 auto;
+  min-width: 1.7em;
+  margin-right: 0.85rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--bs-primary, #b08d57);
+  text-align: left;
+}
+
+/* ---- Kiểu audio ---- */
+.ct-postlist--audio .ct-postlist__item {
+  align-items: center;
+}
+
+.ct-postlist--audio .ct-postlist__play {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: 0.9rem;
+  border-radius: 50%;
+  color: var(--bs-primary, #b08d57);
+  background: rgba(var(--bs-primary-rgb, 176, 141, 87), 0.12);
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ct-postlist--audio .ct-postlist__play:hover,
+.ct-postlist--audio .ct-postlist__play:focus {
+  background: rgba(var(--bs-primary-rgb, 176, 141, 87), 0.22);
+  transform: scale(1.05);
+}
+
+.ct-postlist--audio .ct-postlist__play .ct-icon {
+  font-size: 1.3rem;
+  margin-left: 0.12em; /* căn quang học cho tam giác play */
+}

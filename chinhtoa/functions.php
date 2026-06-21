@@ -44,6 +44,7 @@ final class CT_SETUP_THEME
         require_once CT_THEME_DIR . '/inc/utilities/action.php';
         require_once CT_THEME_DIR . '/inc/utilities/filter.php';
         require_once CT_THEME_DIR . '/inc/utilities/sidebar.php';
+        require_once CT_THEME_DIR . '/inc/widget/ct_postlist_widget.php';
 
         require_once CT_THEME_DIR . '/inc/post/ajax.php';
         require_once CT_THEME_DIR . '/inc/post/posttype.php';
@@ -95,6 +96,11 @@ final class CT_SETUP_THEME
         remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10); // Don't filter oEmbed results.
         add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
         add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
+        // Theme dùng widget cổ điển (sidebar + form WP_Widget có control riêng như
+        // color picker). Tắt trình soạn widget dạng block để dùng màn hình cổ điển:
+        // tránh xung đột "wp-editor" với wp-edit-widgets/wp-customize-widgets và để
+        // các form widget hoạt động đúng.
+        add_filter('use_widgets_block_editor', '__return_false');
         add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
         add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
         add_filter('embed_oembed_discover', '__return_false'); // Turn off oEmbed auto discovery.
