@@ -1,6 +1,6 @@
 {
   "name": "chinh-toa-media-wp-theme",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Build tooling for the Chính Tòa Media WordPress theme (open-source, MIT).",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {

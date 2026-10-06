@@ -35,6 +35,7 @@ function add_filter() {}
 function apply_filters($tag, $value = null) { return $value; }
 function register_sidebar() {}
 function __($t, $d = 'default') { return $t; }
+function absint($n) { return abs((int) $n); }
 function esc_html($t) { return $t; }
 function esc_attr($t) { return $t; }
 function esc_url($t) { return $t; }
@@ -42,6 +43,8 @@ function current_user_can($cap) { return $GLOBALS['__can']; }
 function current_time($fmt) { return date($fmt); }
 function sanitize_key($k) { return strtolower(preg_replace('/[^a-z0-9_\-]/i', '', (string) $k)); }
 function wp_kses_post($s) { return $s; }
+function wp_kses($s, $a = array()) { return $s; }
+function wp_kses_allowed_html($c = '') { return array(); }
 
 // --- Load subsystem under test ---------------------------------------------
 $THEME = dirname(__DIR__) . '/chinhtoa';
@@ -246,6 +249,51 @@ check('hot off', hot_GetData()['is_show'], 'n');
 check('featured off', home_GetFeatured()['is_show'], 'n');
 check('home sections empty', home_GetSections(), array());
 check('cat default columns', default_GetDefaultCategory()['columns'], 'c2');
+check('header default type', gen_GetHeader()['type'], 'c_content');
+
+// --- Header "Logo + khẩu hiệu" (c_brand) ------------------------------------
+echo "gen_GetHeader (c_brand):\n";
+$GLOBALS['__opts']['ct_settings'] = array(
+    'header_data' => array(
+        'action_show' => 'c_brand',
+        'c_brand'     => array(
+            'logo'         => array('url' => 'http://x/logo.png'),
+            'slogan'       => 'Lời Chúa là ngọn đèn soi cho con bước',
+            'slogan_ref'   => 'Tv 119,105',
+            'bg_from'      => '#3b3f9f',
+            'bg_to'        => '#ffffff',
+            'slogan_color' => '#d0101b',
+        ),
+    ),
+);
+$hb = gen_GetHeader();
+check('type', $hb['type'], 'c_brand');
+check('logo', $hb['logo'], 'http://x/logo.png');
+check('slogan', $hb['slogan'], 'Lời Chúa là ngọn đèn soi cho con bước');
+check('slogan_ref', $hb['slogan_ref'], 'Tv 119,105');
+check('bg_from', $hb['bg_from'], '#3b3f9f');
+check('bg_to', $hb['bg_to'], '#ffffff');
+check('slogan_color', $hb['slogan_color'], '#d0101b');
+
+echo "gen_GetHeader (c_brand, partial store → defaults):\n";
+$GLOBALS['__opts']['ct_settings'] = array('header_data' => array('action_show' => 'c_brand'));
+$hb = gen_GetHeader();
+check('logo empty', $hb['logo'], '');
+check('slogan empty', $hb['slogan'], '');
+
+// --- Homepage sections temp7 (Lời Chúa hôm nay) + temp8 (mosaic) ------------
+echo "home_GetSections (temp7, temp8):\n";
+$GLOBALS['__opts']['ct_settings'] = array('home_sec' => array(
+    array('content_type' => array('picker' => 'temp7', 'temp7' => array('title' => 'Lời Chúa hôm nay', 'is_display' => 'y', 'cats' => '4'))),
+    array('content_type' => array('picker' => 'temp8', 'temp8' => array('title' => 'Bài viết mới', 'is_display' => 'y', 'cats' => '', 'num_post' => '5'))),
+));
+$hs = home_GetSections();
+check('count', count($hs), 2);
+check('temp7 type', $hs[0]['type'], 'temp7');
+check('temp7 cats', $hs[0]['cats'], '4');
+check('temp8 type', $hs[1]['type'], 'temp8');
+check('temp8 num_post', $hs[1]['num_post'], 5); // số bài được ép về số nguyên (0/trống → 6)
+check('temp8 card default', $hs[1]['card']['post_thumb'], 'y');
 
 // --- Summary ----------------------------------------------------------------
 echo "\n==== $PASS passed, $FAIL failed ====\n";

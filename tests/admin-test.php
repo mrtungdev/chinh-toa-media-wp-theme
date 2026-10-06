@@ -49,6 +49,7 @@ function __($t, $d = 'default') { return $t; }
 function _e($t, $d = 'default') { echo $t; }
 function esc_html__($t, $d = 'default') { return $t; }
 function esc_attr__($t, $d = 'default') { return $t; }
+function absint($n) { return abs((int) $n); }
 function esc_html($t) { return htmlspecialchars((string) $t, ENT_QUOTES); }
 function esc_attr($t) { return htmlspecialchars((string) $t, ENT_QUOTES); }
 function esc_url($t) { return $t; }
@@ -57,6 +58,8 @@ function esc_textarea($t) { return htmlspecialchars((string) $t, ENT_QUOTES); }
 function sanitize_key($k) { return strtolower(preg_replace('/[^a-z0-9_\-]/i', '', (string) $k)); }
 function sanitize_text_field($t) { return trim((string) $t); }
 function wp_kses_post($t) { return $t; }
+function wp_kses($s, $a = array()) { return $s; }
+function wp_kses_allowed_html($c = '') { return array(); }
 function wp_unslash($v) { return $v; }
 function selected($a, $b, $e = true) { $r = ((string) $a === (string) $b) ? ' selected="selected"' : ''; if ($e) echo $r; return $r; }
 function checked($a, $b, $e = true) { $r = ((string) $a === (string) $b) ? ' checked="checked"' : ''; if ($e) echo $r; return $r; }
@@ -100,6 +103,7 @@ $s['home_sec'] = array(
 $g = render('ct_section_general', $s);
 ok('general theme', has($g, 'name="ct_settings[theme_data][theme]"'));
 ok('general nav_style', has($g, 'name="ct_settings[gen_data][nav_style]"'));
+ok('general nav_style c4 (tab)', has($g, 'value="c4"'));
 ok('general gen_bg discriminator', has($g, 'name="ct_settings[gen_data][gen_bg][action_show]"'));
 ok('general bg color (conditional)', has($g, 'name="ct_settings[gen_data][gen_bg][c_color][color]"'));
 ok('general conditional attr', has($g, 'data-ct-show="ct_settings[gen_data][gen_bg][action_show]"'));
@@ -108,6 +112,10 @@ $h = render('ct_section_header', $s);
 ok('header discriminator', has($h, 'name="ct_settings[header_data][action_show]"'));
 ok('header editor (c_content)', has($h, 'name="ct_settings[header_data][c_content][header_text]"'));
 ok('header media url (c_images)', has($h, 'name="ct_settings[header_data][c_images][gen_img_desktop][url]"'));
+ok('header brand logo url (c_brand)', has($h, 'name="ct_settings[header_data][c_brand][logo][url]"'));
+ok('header brand slogan (c_brand)', has($h, 'name="ct_settings[header_data][c_brand][slogan]"'));
+ok('header brand gradient (c_brand)', has($h, 'name="ct_settings[header_data][c_brand][bg_from]"') && has($h, 'name="ct_settings[header_data][c_brand][bg_to]"'));
+ok('header c_brand choice', has($h, 'value="c_brand"'));
 
 $f = render('ct_section_footer', $s);
 ok('footer widget switch', has($f, 'name="ct_settings[footer_data][gen_widget][action_show]"'));
@@ -124,6 +132,10 @@ ok('home_sec row0 temp1 cats', has($hp, 'name="ct_settings[home_sec][0][content_
 ok('home_sec row1 temp6 tab_title', has($hp, 'name="ct_settings[home_sec][1][content_type][temp6][tab_list][0][tab_title]"'));
 ok('home_sec JS template placeholder', has($hp, 'name="ct_settings[home_sec][__I__][content_type][picker]"'));
 ok('tab item JS template placeholder', has($hp, '__J__'));
+ok('home_sec template temp7 offered', has($hp, '<option value="temp7"'));
+ok('home_sec template temp8 offered', has($hp, '<option value="temp8"'));
+ok('home_sec temp7 cats field', has($hp, 'name="ct_settings[home_sec][0][content_type][temp7][cats]"'));
+ok('home_sec temp7 has no num_post', !has($hp, 'name="ct_settings[home_sec][0][content_type][temp7][num_post]"'));
 
 $d = render('ct_section_default', $s);
 ok('default cat columns', has($d, 'name="ct_settings[cat_data][columns]"'));
@@ -135,8 +147,9 @@ ok('tech headscripts', has($t, 'name="ct_settings[tech_data][headscripts]"'));
 // Term meta render
 ob_start(); ct_category_fields(null); $tm = ob_get_clean();
 ok('term cat_custom', has($tm, 'name="ct_term[cat_custom][action_show]"'));
-ok('term icon type', has($tm, 'name="ct_term[icon][type]"'));
-ok('term iconcolor', has($tm, 'name="ct_term[iconcolor]"'));
+// Nhóm "Biểu tượng & màu sắc" ẩn mặc định (giao diện chưa dùng tới các giá trị này).
+ok('term icon type hidden by default', !has($tm, 'name="ct_term[icon][type]"'));
+ok('term iconcolor hidden by default', !has($tm, 'name="ct_term[iconcolor]"'));
 
 // ===================================================== (2) ROUND-TRIP =======
 echo "\nROUND-TRIP: posted payload -> sanitize -> flatteners\n";

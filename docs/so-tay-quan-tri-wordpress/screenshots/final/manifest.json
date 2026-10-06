@@ -1,0 +1,700 @@
+{
+  "P01-C01-B01-01-website-cong-khai": {
+    "w": 1280,
+    "h": 960,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P01-C01-B02-01-man-hinh-dang-nhap": {
+    "w": 504,
+    "h": 436,
+    "scale": 2,
+    "role": "guest",
+    "url": "/wp-login.php"
+  },
+  "P01-C01-B04-01-bang-dieu-khien": {
+    "w": 1280,
+    "h": 800,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/admin.php?page=chinhtoa-intro"
+  },
+  "P01-C01-B05-01-menu-trai-thanh-cong-cu": {
+    "w": 1280,
+    "h": 560,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/admin.php?page=chinhtoa-intro"
+  },
+  "P01-C01-B06-01-xem-website": {
+    "w": 584,
+    "h": 174,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/admin.php?page=chinhtoa-intro"
+  },
+  "P01-C01-B07-01-dang-xuat": {
+    "w": 432,
+    "h": 264,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/admin.php?page=chinhtoa-intro"
+  },
+  "P01-C02-B03-01-khu-vuc-quan-ly": {
+    "w": 254,
+    "h": 720,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C03-B01-01-danh-sach-bai-viet": {
+    "w": 1280,
+    "h": 640,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C03-B02-01-cot-va-trang-thai": {
+    "w": 1145,
+    "h": 451,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C03-B03-01-tim-kiem": {
+    "w": 1123,
+    "h": 142,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C03-B04-01-loc-thang-danh-muc": {
+    "w": 1122,
+    "h": 126,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C03-B05-01-thao-tac-tren-hang": {
+    "w": 1154,
+    "h": 222,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C04-B01-01-viet-bai-moi": {
+    "w": 664,
+    "h": 354,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P02-C04-B02-01-tieu-de-noi-dung": {
+    "w": 1280,
+    "h": 720,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C04-B03-01-thanh-cong-cu": {
+    "w": 960,
+    "h": 124,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C04-B03-02-thu-vien-khoi": {
+    "w": 784,
+    "h": 820,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C04-B04-01-thanh-cong-cu-khoi": {
+    "w": 900,
+    "h": 146,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C04-B09-01-bang-cai-dat": {
+    "w": 343,
+    "h": 792,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "P02-C05-B01-01-chen-anh": {
+    "w": 888,
+    "h": 309,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C05-B02-01-nut-anh-dai-dien": {
+    "w": 292,
+    "h": 460,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C05-B02-02-chon-anh-dai-dien": {
+    "w": 1244,
+    "h": 824,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C05-B03-01-chon-danh-muc": {
+    "w": 327,
+    "h": 250,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C05-B04-01-the": {
+    "w": 320,
+    "h": 183,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C05-B05-01-mo-ta-ngan": {
+    "w": 645,
+    "h": 524,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "P02-C05-B06-01-xem-truoc": {
+    "w": 309,
+    "h": 355,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "P02-C05-B09-01-luu-thay-doi": {
+    "w": 330,
+    "h": 99,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "P02-C05-B10-01-hen-gio": {
+    "w": 618,
+    "h": 506,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P02-C06-B01-01-sua-nhanh": {
+    "w": 1138,
+    "h": 329,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php"
+  },
+  "P03-C07-B02-01-danh-sach-danh-muc": {
+    "w": 1280,
+    "h": 760,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit-tags.php?taxonomy=category"
+  },
+  "P03-C07-B03-01-them-danh-muc": {
+    "w": 452,
+    "h": 856,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit-tags.php?taxonomy=category"
+  },
+  "P03-C07-B05-01-sua-danh-muc": {
+    "w": 1160,
+    "h": 1000,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/term.php?taxonomy=category&tag_ID=86"
+  },
+  "P03-C07-B07-01-xoa-danh-muc": {
+    "w": 769,
+    "h": 494,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit-tags.php?taxonomy=category"
+  },
+  "P03-C08-B01-01-tuy-chinh-chuyen-muc": {
+    "w": 640,
+    "h": 544,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/term.php?taxonomy=category&tag_ID=86"
+  },
+  "P04-C10-B01-01-thu-vien": {
+    "w": 1280,
+    "h": 760,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/upload.php?mode=grid"
+  },
+  "P04-C10-B02-01-tai-anh-moi": {
+    "w": 1157,
+    "h": 363,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/media-new.php"
+  },
+  "P04-C10-B04-01-chi-tiet-anh": {
+    "w": 1244,
+    "h": 864,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/upload.php?item=1500"
+  },
+  "P05-C11-B02-01-danh-sach-trang": {
+    "w": 1280,
+    "h": 520,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/edit.php?post_type=page"
+  },
+  "P05-C11-B04-01-sua-trang": {
+    "w": 1280,
+    "h": 720,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1398&action=edit"
+  },
+  "P05-C12-B01-01-mau-trang-chu": {
+    "w": 311,
+    "h": 720,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/post.php?post=1397&action=edit"
+  },
+  "P05-C12-B04-01-cai-dat-doc": {
+    "w": 1127,
+    "h": 306,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/options-reading.php"
+  },
+  "P06-C13-B01-01-mo-thiet-lap": {
+    "w": 784,
+    "h": 224,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C13-B02-01-bon-nhom": {
+    "w": 1017,
+    "h": 182,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C13-B04-01-da-luu": {
+    "w": 1047,
+    "h": 173,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings&settings-updated=true"
+  },
+  "P06-C14-B01-01-mau-giao-dien": {
+    "w": 1000,
+    "h": 369,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B01-02-nen-trang": {
+    "w": 1000,
+    "h": 176,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B02-01-kieu-thanh-menu": {
+    "w": 1000,
+    "h": 684,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B02-02-bon-kieu-menu": {
+    "w": 900,
+    "h": 358,
+    "scale": 2,
+    "role": "guest"
+  },
+  "P06-C14-B03-01-chon-kieu-header": {
+    "w": 1000,
+    "h": 237,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B04-01-header-logo-khau-hieu": {
+    "w": 1018,
+    "h": 1092,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B04-02-header-ngoai-website": {
+    "w": 1280,
+    "h": 236,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P06-C14-B05-01-header-tu-nhap": {
+    "w": 1025,
+    "h": 572,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B06-01-header-banner": {
+    "w": 1025,
+    "h": 745,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B07-01-footer": {
+    "w": 1022,
+    "h": 767,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C14-B08-01-cot-widget-footer": {
+    "w": 1000,
+    "h": 242,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B01-01-thanh-ben-trang-chu": {
+    "w": 1050,
+    "h": 422,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B02-01-khoi-noi-bat": {
+    "w": 1000,
+    "h": 871,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B03-01-box-5-phut": {
+    "w": 1000,
+    "h": 519,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B04-01-danh-sach-khoi": {
+    "w": 970,
+    "h": 553,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B05-01-chin-mau-khoi": {
+    "w": 960,
+    "h": 828,
+    "scale": 2,
+    "role": "guest"
+  },
+  "P06-C15-B06-01-chi-tiet-khoi": {
+    "w": 968,
+    "h": 1244,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B07-01-khoi-loi-chua-hom-nay": {
+    "w": 968,
+    "h": 879,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B07-02-loi-chua-hom-nay-ngoai-website": {
+    "w": 1150,
+    "h": 468,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P06-C15-B08-01-mosaic-ngoai-website": {
+    "w": 764,
+    "h": 315,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P06-C15-B10-01-mau-va-xem-them": {
+    "w": 932,
+    "h": 480,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B12-01-bo-cuc-chuyen-muc": {
+    "w": 1000,
+    "h": 599,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C15-B13-01-bo-cuc-bai-viet": {
+    "w": 1000,
+    "h": 213,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C16-B01-01-thanh-thong-bao": {
+    "w": 1050,
+    "h": 981,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P06-C16-B04-01-nang-cao": {
+    "w": 1050,
+    "h": 1018,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/admin.php?page=ct-theme-settings"
+  },
+  "P07-C17-B01-01-vi-tri-menu": {
+    "w": 438,
+    "h": 302,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?action=locations"
+  },
+  "P07-C17-B02-01-cau-truc-menu": {
+    "w": 1127,
+    "h": 610,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?menu=89"
+  },
+  "P07-C17-B03-01-them-muc-menu": {
+    "w": 347,
+    "h": 624,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?menu=89"
+  },
+  "P07-C17-B04-01-sua-muc-menu": {
+    "w": 815,
+    "h": 373,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?menu=89"
+  },
+  "P07-C17-B06-01-menu-con": {
+    "w": 816,
+    "h": 249,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?menu=89"
+  },
+  "P07-C17-B07-01-lien-ket-tu-tao": {
+    "w": 347,
+    "h": 545,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?menu=89"
+  },
+  "P07-C17-B09-01-thiet-lap-menu": {
+    "w": 816,
+    "h": 190,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/nav-menus.php?menu=89"
+  },
+  "P07-C17-B10-01-menu-dien-thoai": {
+    "w": 390,
+    "h": 844,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P07-C17-B10-02-menu-may-tinh": {
+    "w": 1280,
+    "h": 326,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P07-C18-B01-01-khu-vuc-widget": {
+    "w": 1280,
+    "h": 1000,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/widgets.php"
+  },
+  "P07-C18-B04-01-widget-danh-sach-bai-viet": {
+    "w": 392,
+    "h": 697,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/widgets.php"
+  },
+  "P07-C18-B06-01-widget-cau-ghi-nho": {
+    "w": 371,
+    "h": 1081,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/widgets.php"
+  },
+  "P07-C18-B07-01-widget-lich": {
+    "w": 392,
+    "h": 345,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/widgets.php"
+  },
+  "P07-C18-B08-01-thanh-ben-ngoai-website": {
+    "w": 382,
+    "h": 1251,
+    "scale": 2,
+    "role": "guest",
+    "url": "/"
+  },
+  "P08-C19-B03-01-bai-loi-chua": {
+    "w": 320,
+    "h": 782,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1433&action=edit"
+  },
+  "P08-C19-B03-02-loi-chua-ngoai-website": {
+    "w": 804,
+    "h": 159,
+    "scale": 2,
+    "role": "guest",
+    "url": "/?p=1433"
+  },
+  "P08-C19-B05-01-ngay-phung-vu": {
+    "w": 320,
+    "h": 782,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1433&action=edit"
+  },
+  "P08-C19-B06-01-hen-gio-loi-chua": {
+    "w": 313,
+    "h": 520,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1458&action=edit"
+  },
+  "P08-C19-B07-01-bai-video": {
+    "w": 320,
+    "h": 304,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "P08-C20-B01-01-tim-khoi-loi-chua": {
+    "w": 784,
+    "h": 544,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P08-C20-B02-01-cai-dat-khoi-loi-chua": {
+    "w": 1024,
+    "h": 860,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post-new.php"
+  },
+  "P08-C20-B03-01-tuy-chinh-bai-viet": {
+    "w": 320,
+    "h": 445,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "P08-C20-B06-01-luot-xem": {
+    "w": 1121,
+    "h": 219,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/edit.php?post_type=page"
+  },
+  "P09-C21-B01-01-ho-so": {
+    "w": 1127,
+    "h": 424,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/profile.php"
+  },
+  "P09-C21-B03-01-doi-mat-khau": {
+    "w": 1126,
+    "h": 223,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/profile.php"
+  },
+  "P09-C21-B04-01-quen-mat-khau": {
+    "w": 504,
+    "h": 410,
+    "scale": 2,
+    "role": "guest",
+    "url": "/wp-login.php?action=lostpassword"
+  },
+  "P09-C22-B01-01-danh-sach-nguoi-dung": {
+    "w": 1280,
+    "h": 560,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/users.php"
+  },
+  "P09-C22-B02-01-them-nguoi-dung": {
+    "w": 1160,
+    "h": 878,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/user-new.php"
+  },
+  "PHU-LUC-B-01-yoast": {
+    "w": 327,
+    "h": 199,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/post.php?post=1469&action=edit"
+  },
+  "PHU-LUC-C-01-nut-elementor": {
+    "w": 392,
+    "h": 104,
+    "scale": 2,
+    "role": "editor",
+    "url": "/wp-admin/post.php?post=1398&action=edit"
+  },
+  "PHU-LUC-E-01-plugin": {
+    "w": 1280,
+    "h": 760,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/plugins.php"
+  },
+  "PHU-LUC-E-02-cau-truc-duong-dan": {
+    "w": 1127,
+    "h": 837,
+    "scale": 2,
+    "role": "admin",
+    "url": "/wp-admin/options-permalink.php"
+  }
+}
