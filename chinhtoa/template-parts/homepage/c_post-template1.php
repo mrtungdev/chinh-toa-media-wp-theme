@@ -6,7 +6,8 @@ if (!empty($section['cats'])) {
   $cats = ct_cats_str($section['cats']);
   $contentArgs['category'] = $cats;
 }
-$trans = "trans_" . vn_to_str($section['title']);
+// Khoá cache theo đúng tham số truy vấn: hai khối trùng tiêu đề không còn dùng chung bài.
+$trans = 'trans_t1_' . md5(wp_json_encode($contentArgs));
 
 $cc = ct_home_sec_color_attrs($section);
 $archiveSettings = isset($section['card']) ? $section['card'] : array();

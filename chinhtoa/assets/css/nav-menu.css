@@ -1,0 +1,328 @@
+/**
+ * Menu chính — phần dùng cho MỌI kiểu menu (c1–c4):
+ *  - Desktop: mũi tên cho mục có menu con; mở menu con bằng bàn phím (focus-within).
+ *  - Mobile (< 992px): thanh trên + lớp phủ + thẻ menu + menu con thu/mở.
+ *
+ * CSS viết tay (không qua webpack), nạp sau theme-{color}.css (inc/utilities/enqueue.php).
+ * Đè các luật mobile cũ trong src/scss/front/header.scss; tiền tố "#site-nav#site-nav"
+ * (lặp id) để thắng mọi selector cũ của từng kiểu menu mà không cần !important.
+ *
+ *  - Thanh trên: tên site + nút ☰ vẽ bằng CSS (chuyển thành ✕ khi mở), cao 56px.
+ *  - Menu mở: LỚP PHỦ cố định dưới thanh trên (nền mờ) + thẻ trắng bo góc chứa các mục;
+ *    dựa vào class .show/.collapsing của Bootstrap (không phụ thuộc .is-active).
+ *  - Mục đang chọn: chữ đậm + nền xám nhạt + gạch "—" màu nhấn.
+ *  - Menu con: thu gọn; nút mũi tên (.ct-submenu-toggle, JS chèn) bên phải mục cha để
+ *    mở/thu — bấm chữ vẫn mở trang. Nhánh chứa trang đang xem tự mở sẵn.
+ *  - Đóng khi chạm nền mờ / Esc, khoá cuộn trang khi mở, chèn nút menu con: ct-media.js.
+ */
+
+@keyframes ct-mnav-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ct-mnav-in {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 991.98px) {
+  /* Theme ẩn admin bar trên mobile nhưng vẫn kéo body lên (-46px) → thanh menu che phần
+     đầu trang khi đang đăng nhập. Admin bar đã ẩn nên trả lề về 0. */
+  html {
+    margin-top: 0 !important;
+  }
+  body.admin-bar {
+    margin-top: 0 !important;
+    padding-bottom: 0;
+  }
+
+  #site-nav#site-nav.navbar {
+    --ct-mnav-text: #1f2a44;
+    --ct-mnav-muted: #5a6075;
+    --ct-mnav-line: #eef0f5;
+    --ct-mnav-active-bg: #f2f4f9;
+    --ct-mnav-mark: var(--ct-nav-accent, var(--ct-nav-bg, #1f2a44));
+    box-shadow: 0 2px 12px rgba(15, 23, 60, 0.16);
+  }
+
+  /* ----------------------------------------------------------- Thanh trên */
+  #site-nav#site-nav.navbar .navbar-brand {
+    padding: 0 0.5rem 0 1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 56px;
+    white-space: nowrap;
+  }
+
+  #site-nav#site-nav.navbar #nav-mobile-toggler {
+    position: relative;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    margin: 7px 0.75rem 7px auto;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: rgba(127, 127, 127, 0.14);
+    transform: none;
+    transition: background-color 0.2s ease;
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler:focus {
+    box-shadow: none;
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler:focus-visible {
+    box-shadow: 0 0 0 3px rgba(127, 127, 127, 0.45);
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler svg {
+    display: none;
+  }
+  /* 3 vạch (::before = vạch trên + vạch giữa bằng box-shadow, ::after = vạch dưới);
+     màu theo currentColor = màu chữ thanh menu của từng kiểu. */
+  #site-nav#site-nav.navbar #nav-mobile-toggler::before,
+  #site-nav#site-nav.navbar #nav-mobile-toggler::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease, top 0.2s ease, box-shadow 0.2s ease;
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler::before {
+    top: 14px;
+    box-shadow: 0 6px 0 currentColor;
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler::after {
+    top: 26px;
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler:not(.collapsed) {
+    background: rgba(127, 127, 127, 0.24);
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler:not(.collapsed)::before {
+    top: 20px;
+    box-shadow: none;
+    transform: rotate(45deg);
+  }
+  #site-nav#site-nav.navbar #nav-mobile-toggler:not(.collapsed)::after {
+    top: 20px;
+    transform: rotate(-45deg);
+  }
+
+  /* --------------------------------------------- Lớp phủ + thẻ menu */
+  /* Khi mở: nâng thanh menu (chứa lớp phủ) lên trên thanh chia sẻ nổi (z-index 9999). */
+  #site-nav#site-nav.navbar.is-active {
+    z-index: 10000;
+  }
+
+  /* Bỏ hiệu ứng "kéo dài chiều cao" (accordion) của Bootstrap; dùng hiệu ứng mờ dần riêng. */
+  #site-nav#site-nav.navbar #siteNavbar.show,
+  #site-nav#site-nav.navbar #siteNavbar.collapsing {
+    position: fixed;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 8888;
+    height: auto !important;
+    padding: 0.75rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: rgba(12, 15, 40, 0.45);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    transition: none !important;
+    animation: ct-mnav-fade 0.18s ease;
+  }
+
+  #site-nav#site-nav.navbar #ct-main-menu {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem 0.6rem;
+    border: 0;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(10, 14, 40, 0.28);
+    animation: ct-mnav-in 0.2s ease;
+  }
+
+  /* ----------------------------------------------------------- Mục menu */
+  #site-nav#site-nav.navbar .ct-main-menu li,
+  #site-nav#site-nav.navbar .ct-main-menu ul,
+  #site-nav#site-nav.navbar .ct-main-menu > li.current-menu-item,
+  #site-nav#site-nav.navbar .ct-main-menu > li.current-menu-parent {
+    border: 0;
+    background: transparent;
+  }
+
+  #site-nav#site-nav.navbar .ct-main-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1px 0;
+    padding: 0.7rem 0.75rem;
+    border: 0;
+    border-radius: 10px;
+    color: var(--ct-mnav-text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    transition: background-color 0.15s ease;
+  }
+
+  #site-nav#site-nav.navbar .ct-main-menu > li + li {
+    border-top: 1px solid var(--ct-mnav-line);
+  }
+
+  #site-nav#site-nav.navbar .ct-main-menu li a:hover,
+  #site-nav#site-nav.navbar .ct-main-menu li a:focus-visible {
+    background: var(--ct-mnav-active-bg);
+    color: var(--ct-mnav-text);
+  }
+
+  /* Mục đang chọn: nền xám nhạt + gạch "—" màu nhấn phía trước */
+  #site-nav#site-nav.navbar .ct-main-menu li.current-menu-item > a,
+  #site-nav#site-nav.navbar .ct-main-menu li.current-menu-parent > a,
+  #site-nav#site-nav.navbar .ct-main-menu li.current-menu-ancestor > a {
+    background: var(--ct-mnav-active-bg);
+    color: var(--ct-mnav-text);
+    font-weight: 700;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li.current-menu-item > a::before,
+  #site-nav#site-nav.navbar .ct-main-menu li.current-menu-parent > a::before,
+  #site-nav#site-nav.navbar .ct-main-menu li.current-menu-ancestor > a::before {
+    content: "";
+    flex: 0 0 18px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--ct-mnav-mark);
+  }
+
+  /* Mục cha có chứa trang đang xem: chỉ in đậm — gạch "—" + nền chỉ ở đúng mục đang xem. */
+  #site-nav#site-nav.navbar .ct-main-menu li:has(li.current-menu-item) > a {
+    background: transparent;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li:has(li.current-menu-item) > a::before {
+    content: none;
+  }
+
+  /* Menu con: thụt vào, chữ nhỏ hơn, vạch dọc mảnh; ẩn đến khi mở bằng nút mũi tên */
+  #site-nav#site-nav.navbar .ct-main-menu ul {
+    margin: 0 0 0.4rem 1rem;
+    padding-left: 0.6rem;
+    border-left: 2px solid var(--ct-mnav-line);
+  }
+  #site-nav#site-nav.navbar .ct-main-menu ul li + li {
+    border-top: 0;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu ul li a {
+    padding: 0.5rem 0.75rem;
+    color: var(--ct-mnav-muted);
+    font-size: 0.98rem;
+    font-weight: 500;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li.menu-item-has-children > ul {
+    display: none;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li.menu-item-has-children.is-open > ul {
+    display: block;
+    animation: ct-mnav-fade 0.15s ease;
+  }
+
+  /* Nút mũi tên mở/thu menu con (bấm chữ vẫn mở trang của mục cha) */
+  #site-nav#site-nav.navbar .ct-main-menu li.menu-item-has-children {
+    position: relative;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li.menu-item-has-children > a {
+    padding-right: 3.25rem;
+  }
+  #site-nav#site-nav.navbar .ct-submenu-toggle {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ct-mnav-muted);
+    cursor: pointer;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu ul .ct-submenu-toggle {
+    top: 0;
+    width: 36px;
+    height: 36px;
+  }
+  #site-nav#site-nav.navbar .ct-submenu-toggle:hover,
+  #site-nav#site-nav.navbar .ct-submenu-toggle:focus-visible {
+    background: var(--ct-mnav-active-bg);
+    outline: none;
+  }
+  #site-nav#site-nav.navbar .ct-submenu-toggle::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li.is-open > .ct-submenu-toggle {
+    color: var(--ct-mnav-text);
+  }
+  #site-nav#site-nav.navbar .ct-main-menu li.is-open > .ct-submenu-toggle::before {
+    transform: translateY(2px) rotate(-135deg);
+  }
+}
+
+/* ------------------------------------------------------------- Desktop */
+@media (min-width: 992px) {
+  .ct-submenu-toggle {
+    display: none;
+  }
+  /* Mũi tên nhỏ cho mục có menu con: cấp 1 chỉ xuống, cấp 2+ chỉ sang phải. */
+  #site-nav.navbar .ct-main-menu li.menu-item-has-children > a::after {
+    content: "";
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 0.38em;
+    height: 0.38em;
+    margin-left: 0.45em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    opacity: 0.75;
+    transform: translateY(-0.18em) rotate(45deg);
+  }
+  #site-nav.navbar .ct-main-menu ul li.menu-item-has-children > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #site-nav.navbar .ct-main-menu ul li.menu-item-has-children > a::after {
+    transform: rotate(-45deg);
+  }
+  /* Mục sát mép phải (JS thêm .opens-left): menu con cấp 3+ mở sang trái. */
+  #site-nav.navbar #siteNavbar .ct-main-menu ul li.opens-left > ul {
+    right: 100%;
+    left: auto;
+  }
+  #site-nav.navbar .ct-main-menu ul li.opens-left.menu-item-has-children > a::after {
+    transform: rotate(135deg);
+  }
+  /* Bàn phím: Tab tới mục cha cũng mở menu con (trước đây chỉ mở khi rê chuột). */
+  #site-nav.navbar .ct-main-menu li:focus-within > ul {
+    display: block;
+  }
+}
+
+/* Khi menu mobile mở: khoá cuộn trang phía sau. */
+html.ct-nav-open,
+html.ct-nav-open body {
+  overflow: hidden;
+}

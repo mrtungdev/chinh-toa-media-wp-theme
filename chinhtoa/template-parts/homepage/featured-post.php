@@ -13,13 +13,18 @@ if($homepageFeatured['show_tinhot']=='y'){
     $tinhotCats = ct_cats_str($homepageFeatured['c1_tinhot_cats']);
     $trendingArgs['category'] = $tinhotCats;
   }
-  if($homepageFeatured['c1_tinhot_num_date']=='day'){
+  // "Tin Hot — Trong vòng (ngày)": số ngày gần đây; để trống = các bài trong tuần này.
+  $tinhotDays = isset($homepageFeatured['c1_tinhot_num_date']) ? $homepageFeatured['c1_tinhot_num_date'] : '';
+  if ($tinhotDays === 'day') {
     $today = getdate();
     $trendingArgs['date_query'] = array(array('year'  => $today['year'],'month' => $today['mon'],'day'   => $today['mday']));
+  } else if (absint($tinhotDays) > 0) {
+    $trendingArgs['date_query'] = array(array('after' => absint($tinhotDays) . ' days ago', 'inclusive' => true));
   } else {
     $trendingArgs['date_query'] = array(array('year'  => date( 'Y' ), 'week' => date( 'W' )));
   }
 }
+$trendingTrans = 'trans_homepage_featured_trending_' . md5(wp_json_encode($trendingArgs));
 
 $tieudiemArgs = array(
   'posts_per_page' => $homepageFeatured['c1_tieudem_num_post'],
@@ -29,7 +34,7 @@ if (!empty($homepageFeatured['c1_tieudem_cats'])) {
   $tieudiemArgs['category'] = $tieudiemCats;
 }
 
-$tieudiemTrans = "trans_homepage_featured_tieudiem";
+$tieudiemTrans = 'trans_homepage_featured_tieudiem_' . md5(wp_json_encode($tieudiemArgs));
 
 ?>
 

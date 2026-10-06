@@ -9,7 +9,7 @@
  * header.php; tái dùng ct_normalize_hex() (inc/utilities/enqueue.php).
  *
  * Đặt tên với hậu tố *_card / "loichua-card" để KHÔNG đụng hệ "Lời Chúa hôm nay"
- * (CPT ct_loichua, lớp CT_LoiChua_Widget, ct_render_loichua(), ct_get_loichua_for_date()).
+ * (inc/loichua/: ct_get_loichua_for_date(), CT_LoiChua_Calendar_Widget, khối trang chủ temp7).
  *
  * @package chinhtoa
  */
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 
 /**
  * Khoá meta của thẻ (đặt riêng cho bài viết qua metabox inc/blocks/loichua-card/metabox.php).
- * Hậu tố _card để KHÔNG đụng meta của CPT "Lời Chúa hôm nay" (_ct_lc_gospel_ref, ...).
+ * Hậu tố _card để KHÔNG đụng meta thông tin ngày (_ct_lc_day_title, _ct_lc_saint, _ct_lc_gospel_ref).
  */
 if (!defined('CT_LC_CARD_META_QUOTE')) {
     define('CT_LC_CARD_META_QUOTE', '_ct_lc_card_quote');

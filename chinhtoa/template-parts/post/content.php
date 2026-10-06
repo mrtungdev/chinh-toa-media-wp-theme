@@ -24,7 +24,8 @@ $isShowPostAuthor = isset($postSettings['post_author']) ? $postSettings['post_au
 	$ctVideo = ($ctKind === 'media' && function_exists('ct_post_kind_video_html')) ? ct_post_kind_video_html($post->ID) : '';
 	if ($ctVideo !== '') {
 		echo $ctVideo; // wp_oembed_get trả HTML từ provider đã biết.
-	} elseif ($isShowPostThumb == 'y') {
+	} elseif ($isShowPostThumb == 'y' && !($ctKind === 'loichua' && !has_post_thumbnail($post->ID))) {
+		// Bài "Lời Chúa" không có ảnh: thẻ câu ghi nhớ ở trên đã thay ảnh → bỏ ảnh giữ chỗ.
 		$image = getPostImage($post->ID);
 	?>
   <div class="ct-single-thumb">

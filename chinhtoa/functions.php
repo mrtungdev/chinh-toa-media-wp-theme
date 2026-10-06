@@ -47,9 +47,12 @@ final class CT_SETUP_THEME
         require_once CT_THEME_DIR . '/inc/widget/ct_postlist_widget.php';
 
         // Widget + Block "Lời Chúa: Câu ghi nhớ" — thẻ câu Kinh Thánh static/dynamic, màu
-        // tuỳ chỉnh (khác hệ "Lời Chúa hôm nay" ở trên: cái đó là CPT bài đọc theo ngày).
+        // tuỳ chỉnh (khác hệ "Lời Chúa hôm nay" bên dưới: cái đó lấy bài theo ngày đăng).
         require_once CT_THEME_DIR . '/inc/blocks/loader.php';
         require_once CT_THEME_DIR . '/inc/widget/ct_loichua_card_widget.php';
+        // "Lời Chúa hôm nay": bài theo ngày (khối trang chủ temp7) + widget lịch tháng.
+        require_once CT_THEME_DIR . '/inc/loichua/daily.php';
+        require_once CT_THEME_DIR . '/inc/loichua/calendar-widget.php';
 
         require_once CT_THEME_DIR . '/inc/post/ajax.php';
         require_once CT_THEME_DIR . '/inc/post/posttype.php';

@@ -20,31 +20,43 @@ msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 
-#: inc/options/admin/sections.php:319
+#: inc/widget/ct_postlist_widget.php:151
+msgid "%s lượt xem"
+msgstr ""
+
+#: inc/options/admin/sections.php:424
 msgid "+ Thêm Tab"
 msgstr ""
 
-#: inc/options/admin/sections.php:346
+#: inc/options/admin/sections.php:451
 msgid "+ Thêm khối"
 msgstr ""
 
-#: inc/options/admin/sections.php:93
+#: inc/widget/ct_postlist_widget.php:239
+msgid "Audio (icon play)"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:31
+msgid "Ba"
+msgstr ""
+
+#: inc/options/admin/sections.php:100
 msgid "Banner cho màn hình nhỏ. Để trống sẽ dùng ảnh máy tính."
 msgstr ""
 
-#: inc/options/admin/sections.php:92
+#: inc/options/admin/sections.php:99
 msgid "Banner cho màn hình tầm trung. Để trống sẽ dùng ảnh máy tính."
 msgstr ""
 
-#: inc/options/admin/sections.php:91
+#: inc/options/admin/sections.php:98
 msgid "Banner hiển thị trên màn hình máy tính (khổ rộng)."
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:259
+#: inc/options/admin/term-post-meta.php:263
 msgid "Biểu tượng & màu sắc"
 msgstr ""
 
-#: inc/options/admin/sections.php:185
+#: inc/options/admin/sections.php:200
 msgid "Box \"5 phút Lời Chúa\" — chọn nơi hiển thị bên dưới."
 msgstr ""
 
@@ -52,16 +64,36 @@ msgstr ""
 msgid "Bài Viết Chi Tiết"
 msgstr ""
 
-#: inc/options/admin/sections.php:164 inc/options/admin/sections.php:375 inc/options/admin/sections.php:384
+#: inc/admin/theme/guide-helpers.php:34
+msgid "Bài viết & Nội dung"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:149
+msgid "Bài viết cụ thể"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:148
+msgid "Bài đang xem"
+msgstr ""
+
+#: inc/options/admin/sections.php:179 inc/options/admin/sections.php:480 inc/options/admin/sections.php:489
 msgid "Bên phải"
 msgstr ""
 
-#: inc/options/admin/sections.php:164 inc/options/admin/sections.php:375 inc/options/admin/sections.php:384
+#: inc/options/admin/sections.php:179 inc/options/admin/sections.php:480 inc/options/admin/sections.php:489
 msgid "Bên trái"
 msgstr ""
 
 #: inc/utilities/admin_menu.php:72
 msgid "Bạn không có quyền truy cập trang này."
+msgstr ""
+
+#: template-parts/loichua/calendar.php:35
+msgid "Bảy"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:112
+msgid "Bấm vào ngày được tô màu để xem bài của ngày đó."
 msgstr ""
 
 #: inc/options/admin/sections.php:53
@@ -72,107 +104,171 @@ msgstr ""
 msgid "Bật"
 msgstr ""
 
-#: inc/options/admin/sections.php:149
+#: inc/options/admin/sections.php:164
 msgid "Bật khi đang có livestream để hiển thị nhãn \"Trực tiếp\"."
 msgstr ""
 
-#: inc/options/admin/sections.php:175
+#: inc/options/admin/sections.php:190
 msgid "Bật khối \"Tin Hot\""
 msgstr ""
 
-#: inc/options/admin/sections.php:143
+#: inc/options/admin/sections.php:158
 msgid "Bật thanh thông báo"
 msgstr ""
 
-#: inc/options/admin/sections.php:108
+#: inc/options/admin/sections.php:123
 msgid "Bật để hiện các cột widget (liên hệ, liên kết, fanpage…) ở cuối trang."
 msgstr ""
 
-#: inc/options/admin/sections.php:162
+#: inc/options/admin/sections.php:177
 msgid "Bật để hiện cột thanh bên (sidebar) ở trang chủ."
 msgstr ""
 
-#: inc/options/admin/sections.php:143
+#: inc/options/admin/sections.php:337
+msgid "Bật/tắt các thành phần hiện trên mỗi thẻ bài viết."
+msgstr ""
+
+#: inc/options/admin/sections.php:158
 msgid "Bật/tắt dải thông báo trên website."
 msgstr ""
 
-#: inc/options/admin/sections.php:145
+#: inc/admin/theme/guide-helpers.php:33
+msgid "Bắt đầu"
+msgstr ""
+
+#: inc/options/admin/sections.php:160
 msgid "Bắt đầu hiển thị"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:52
+msgid "Bắt đầu nhanh"
 msgstr ""
 
 #: inc/admin/theme/dashboard.php:32
 msgid "Bắt đầu nhanh và tìm hiểu cách quản trị website."
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:36
+#: inc/admin/theme/guide-helpers.php:62
 msgid "Bố cục Trang chủ"
 msgstr ""
 
-#: inc/options/admin/sections.php:241
+#: inc/options/admin/sections.php:286
 msgid "Bố cục mẫu khối:"
 msgstr ""
 
-#: inc/options/admin/sections.php:361
+#: inc/options/admin/sections.php:466
 msgid "Bố cục mặc định cho trang danh sách bài theo chuyên mục (áp dụng khi chuyên mục không có thiết lập riêng)."
 msgstr ""
 
-#: inc/options/admin/sections.php:380
+#: inc/options/admin/sections.php:485
 msgid "Bố cục mặc định cho trang đọc chi tiết một bài viết."
+msgstr ""
+
+#: template-parts/loichua/calendar.php:29
+msgid "CN"
 msgstr ""
 
 #: inc/utilities/sidebar.php:26
 msgid "Chuyên Mục"
 msgstr ""
 
-#: inc/options/admin/sections.php:267 inc/admin/theme/dashboard.php:53 inc/admin/theme/guide-helpers.php:32
+#: inc/options/admin/sections.php:323 inc/options/admin/sections.php:329 inc/admin/theme/dashboard.php:56 inc/admin/theme/guide-helpers.php:57
 msgid "Chuyên mục"
 msgstr ""
 
-#: inc/options/admin/sections.php:188
+#: inc/options/admin/sections.php:316
+msgid "Chuyên mục (Tab đầu)"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:153
+msgid "Chuyên mục (cho \"Mới nhất trong chuyên mục\"):"
+msgstr ""
+
+#: inc/options/admin/sections.php:203
 msgid "Chuyên mục chứa bài \"5 phút\"."
 msgstr ""
 
-#: inc/options/admin/sections.php:264
-msgid "Chuyên mục mặc định"
+#: inc/options/admin/sections.php:321
+msgid "Chuyên mục chứa bài mỗi ngày (VD \"Suy niệm\"). Khối tự hiện bài có NGÀY ĐĂNG là hôm nay; thêm widget \"Lịch Lời Chúa\" cùng chuyên mục vào thanh bên để bấm xem bài các ngày khác."
 msgstr ""
 
-#: inc/options/admin/sections.php:188
+#: inc/options/admin/sections.php:203
 msgid "Chuyên mục nguồn"
+msgstr ""
+
+#: inc/loichua/calendar-widget.php:78
+msgid "Chuyên mục nguồn:"
+msgstr ""
+
+#: inc/widget/ct_postlist_widget.php:243
+msgid "Chuyên mục:"
+msgstr ""
+
+#: template-parts/loichua/daily-card.php:22
+msgid "Chưa có bài cho ngày %s."
+msgstr ""
+
+#: template-parts/loichua/daily-card.php:24
+msgid "Chưa có bài."
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:135
+msgid "Chế độ Dynamic: để trống = lấy từ metabox bài viết (hoặc mô tả)."
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:141
+msgid "Chế độ Dynamic: để trống = lấy từ metabox bài viết (hoặc tiêu đề)."
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:119
+msgid "Chế độ:"
+msgstr ""
+
+#: inc/options/admin/sections.php:302
+msgid "Chỉ Admin thấy"
 msgstr ""
 
 #: inc/widget/ct_giothanhle_widget.php:123
 msgid "Chỉ cần kéo widget này vào đây là xong. Nội dung Giờ Thánh Lễ được thiết lập tại phần Thiết lập giao diện."
 msgstr ""
 
-#: inc/options/admin/sections.php:255
-msgid "Chỉ hiện cho Admin"
-msgstr ""
-
-#: inc/options/admin/sections.php:179
+#: inc/options/admin/sections.php:194
 msgid "Chỉ lấy bài đăng trong số ngày gần đây."
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:63
+#: inc/admin/theme/dashboard.php:67
 msgid "Chỉnh menu"
 msgstr ""
 
-#: inc/options/admin/sections.php:58
-msgid "Chọn bố cục thanh menu chính ở đầu trang."
+#: inc/options/admin/sections.php:60
+msgid "Chọn bố cục thanh menu chính ở đầu trang. Kiểu cuối: thanh màu đặc, các mục chia đều; mục đang chọn có gạch nhấn theo \"Màu nhấn thanh menu\"."
 msgstr ""
 
-#: inc/options/admin/sections.php:173
+#: inc/options/admin/sections.php:327
+msgid "Chọn chuyên mục và số bài hiển thị trong khối."
+msgstr ""
+
+#: inc/options/admin/sections.php:188
 msgid "Chọn cách dựng khối nổi bật."
 msgstr ""
 
-#: inc/options/admin/sections.php:86
+#: inc/options/admin/sections.php:93
 msgid "Chọn cách hiển thị phần đầu trang."
+msgstr ""
+
+#: inc/loichua/calendar-widget.php:90
+msgid "Chọn cùng chuyên mục với khối \"Lời Chúa hôm nay\" ở trang chủ để bấm ngày là đổi bài ngay trong khối."
 msgstr ""
 
 #: inc/options/admin/sections.php:34
 msgid "Chọn màu chủ đạo, kiểu thanh menu và nền cho toàn bộ website."
 msgstr ""
 
-#: inc/options/admin/sections.php:63
+#: inc/admin/theme/theme-guide.php:90
+msgid "Chọn một mục ở menu bên trái. Mỗi mục hướng dẫn theo từng bước; số tròn màu xanh trong bài trùng với số trên ảnh minh hoạ."
+msgstr ""
+
+#: inc/options/admin/sections.php:69
 msgid "Chọn nền cho website là một màu đơn sắc hoặc một hình ảnh."
 msgstr ""
 
@@ -180,11 +276,15 @@ msgstr ""
 msgid "Chọn ảnh"
 msgstr ""
 
-#: inc/options/admin/sections.php:274
+#: template-parts/loichua/calendar.php:29
+msgid "Chủ nhật"
+msgstr ""
+
+#: inc/options/admin/sections.php:367
 msgid "Chữ trên nút"
 msgstr ""
 
-#: inc/options/admin/sections.php:150
+#: inc/options/admin/sections.php:165
 msgid "Class CSS (nâng cao)"
 msgstr ""
 
@@ -192,83 +292,115 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/options/admin/admin-page.php:144
-msgid "Cuối trang"
-msgstr ""
-
-#: inc/options/admin/sections.php:104
-msgid "Cuối trang (Footer)"
+#: inc/widget/ct_loichua_card_widget.php:39
+msgid "CÂU GHI NHỚ"
 msgstr ""
 
 #: inc/utilities/sidebar.php:11
 msgid "Các widget hiển thị cho trang chủ"
 msgstr ""
 
-#: inc/options/admin/sections.php:66
+#: inc/options/admin/sections.php:72
 msgid "Cách lặp hình nền"
 msgstr ""
 
-#: inc/options/admin/sections.php:372
+#: inc/options/admin/sections.php:477
 msgid "Cách trình bày mỗi bài trong danh sách."
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:37
+#: inc/post/post-kind.php:180
+msgid "Câu Lời Chúa"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:132
+msgid "Câu Lời Chúa:"
+msgstr ""
+
+#: inc/options/admin/sections.php:107
+msgid "Câu hiển thị bên phải logo, VD: Lời Chúa là ngọn đèn soi cho con bước."
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:66
 msgid "Câu hỏi thường gặp"
 msgstr ""
 
-#: inc/options/admin/sections.php:105
+#: inc/options/admin/sections.php:107
+msgid "Câu khẩu hiệu"
+msgstr ""
+
+#: inc/options/admin/sections.php:120
 msgid "Cấu hình khu vực cuối website: các cột widget, dòng bản quyền và màu sắc."
 msgstr ""
 
-#: inc/options/admin/sections.php:158
+#: inc/options/admin/sections.php:173
 msgid "Cấu hình thanh bên, khối tin nổi bật và box \"5 phút\" ở đầu trang chủ. Các khối nội dung bên dưới được quản lý ở phần \"Khối nội dung trang chủ\"."
 msgstr ""
 
-#: inc/options/admin/sections.php:311
+#: inc/widget/ct_postlist_widget.php:25
+msgid "Danh Sách Bài Viết"
+msgstr ""
+
+#: inc/options/admin/sections.php:416
 msgid "Danh sách Tabs"
 msgstr ""
 
-#: inc/options/admin/sections.php:204
+#: inc/options/admin/sections.php:219
 msgid "Danh sách bài 1"
 msgstr ""
 
-#: inc/options/admin/sections.php:205
+#: inc/options/admin/sections.php:220
 msgid "Danh sách bài 2"
 msgstr ""
 
-#: inc/options/admin/sections.php:206
+#: inc/options/admin/sections.php:221
 msgid "Danh sách bài 3"
 msgstr ""
 
-#: inc/options/admin/sections.php:207
+#: inc/options/admin/sections.php:222
 msgid "Danh sách bài 4"
 msgstr ""
 
-#: inc/options/admin/sections.php:208
+#: inc/options/admin/sections.php:223
 msgid "Danh sách bài 5"
 msgstr ""
 
-#: inc/options/admin/sections.php:115
+#: inc/widget/ct_postlist_widget.php:23
+msgid "Danh sách bài viết kiểu số thứ tự hoặc audio, có chọn màu nền."
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:144
+msgid "Dynamic — lấy từ:"
+msgstr ""
+
+#: inc/post/post-kind.php:214
+msgid "Dán link YouTube/Vimeo… — trình phát sẽ hiện ở đầu bài (thay ảnh đại diện)."
+msgstr ""
+
+#: inc/options/admin/sections.php:130
 msgid "Dòng bản quyền / thông tin hiển thị ở đáy trang."
 msgstr ""
 
-#: inc/options/admin/sections.php:147
+#: inc/options/admin/sections.php:162
 msgid "Dòng chữ chính của thông báo."
 msgstr ""
 
-#: inc/options/admin/sections.php:62
+#: inc/options/admin/sections.php:108
+msgid "Dòng nhỏ dưới câu khẩu hiệu, VD: Tv 119,105."
+msgstr ""
+
+#: inc/options/admin/sections.php:68
 msgid "Dùng hình nền"
 msgstr ""
 
-#: inc/options/admin/sections.php:61
+#: inc/options/admin/sections.php:351
+msgid "Dùng màu mặc định"
+msgstr ""
+
+#: inc/options/admin/sections.php:67
 msgid "Dùng màu nền"
 msgstr ""
 
-#: inc/options/admin/sections.php:260
-msgid "Dùng style mặc định"
-msgstr ""
-
-#: inc/options/admin/sections.php:141
+#: inc/options/admin/sections.php:156
 msgid "Dải thông báo hiển thị nổi bật trên đầu website, chỉ xuất hiện trong khoảng thời gian bạn đặt. Phù hợp để báo sự kiện, thánh lễ, tin khẩn."
 msgstr ""
 
@@ -276,7 +408,23 @@ msgstr ""
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
-#: inc/widget/ct_giothanhle_widget.php:15 template-parts/part/float-social-sharing.php:22
+#: inc/options/admin/admin-page.php:147
+msgid "Footer"
+msgstr ""
+
+#: inc/options/admin/sections.php:119 inc/admin/theme/guide-helpers.php:61
+msgid "Footer (cuối trang)"
+msgstr ""
+
+#: inc/options/admin/admin-page.php:138
+msgid "Giao diện"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:35
+msgid "Giao diện & Trang chủ"
+msgstr ""
+
+#: inc/widget/ct_giothanhle_widget.php:15 template-parts/part/float-social-sharing.php:26
 msgid "Giờ Thánh Lễ"
 msgstr ""
 
@@ -284,11 +432,19 @@ msgstr ""
 msgid "Giữ Ctrl/Cmd để chọn nhiều chuyên mục."
 msgstr ""
 
-#: inc/options/admin/admin-page.php:143
+#: inc/options/admin/sections.php:64
+msgid "Gạch chân mục đang chọn (kiểu menu 3 và 4) và màu nền mục đang chọn (kiểu 1, 2). Để trống để dùng màu giao diện."
+msgstr ""
+
+#: template-parts/loichua/calendar.php:30
+msgid "Hai"
+msgstr ""
+
+#: inc/options/admin/admin-page.php:146
 msgid "Header"
 msgstr ""
 
-#: inc/options/admin/sections.php:79
+#: inc/options/admin/sections.php:85 inc/admin/theme/guide-helpers.php:60
 msgid "Header (đầu trang)"
 msgstr ""
 
@@ -296,23 +452,23 @@ msgstr ""
 msgid "Hiển thị Giờ Thánh Lễ của giáo xứ."
 msgstr ""
 
-#: inc/options/admin/sections.php:185
+#: inc/options/admin/sections.php:200
 msgid "Hiển thị box \"5 phút\""
 msgstr ""
 
-#: inc/options/admin/sections.php:108
+#: inc/options/admin/sections.php:123
 msgid "Hiển thị cột Widget"
 msgstr ""
 
-#: inc/options/admin/sections.php:254
+#: inc/options/admin/sections.php:301
 msgid "Hiển thị khối"
 msgstr ""
 
-#: inc/options/admin/sections.php:168
+#: inc/options/admin/sections.php:183
 msgid "Hiển thị khối Nổi bật"
 msgstr ""
 
-#: inc/options/admin/sections.php:162 inc/options/admin/sections.php:373 inc/options/admin/sections.php:382
+#: inc/options/admin/sections.php:177 inc/options/admin/sections.php:478 inc/options/admin/sections.php:487
 msgid "Hiển thị thanh bên"
 msgstr ""
 
@@ -320,35 +476,55 @@ msgstr ""
 msgid "Hiển thị thanh bên (sidebar)"
 msgstr ""
 
-#: inc/shortcodes/ct_shortcode_post.php:22 template-parts/homepage/c_post-template4.php:17 template-parts/homepage/c_post-template5.php:17 template-parts/homepage/c_post-template6.php:43 template-parts/homepage/c_post-template6.php:85 template-parts/homepage/c_post-template2.php:17 template-parts/homepage/c_post-template3.php:16 template-parts/homepage/c_post-template1.php:17
+#: inc/options/admin/sections.php:337
+msgid "Hiển thị trên thẻ bài"
+msgstr ""
+
+#: inc/shortcodes/ct_shortcode_post.php:22 template-parts/homepage/c_post-mosaic.php:33 template-parts/homepage/c_post-template4.php:21 template-parts/homepage/c_post-template5.php:21 template-parts/homepage/c_post-template6.php:53 template-parts/homepage/c_post-template6.php:94 template-parts/homepage/c_post-template2.php:21 template-parts/homepage/c_post-template3.php:20 template-parts/homepage/c_post-template1.php:21
 msgid "Hiện chưa có bài viết nào ở danh mục này."
 msgstr ""
 
-#: inc/options/admin/sections.php:273
-msgid "Hiện nút \"Xem thêm\""
+#: inc/widget/ct_postlist_widget.php:290
+msgid "Hiện lượt xem / ngày đăng (kiểu số thứ tự)"
 msgstr ""
 
-#: inc/options/admin/sections.php:189
+#: inc/widget/ct_postlist_widget.php:285
+msgid "Hiện mô tả (tóm tắt)"
+msgstr ""
+
+#: inc/options/admin/sections.php:366
+msgid "Hiện nút"
+msgstr ""
+
+#: inc/post/post-kind.php:191
+msgid "Hiện thẻ câu ghi nhớ ở đầu bài; cũng làm nguồn cho thẻ/block \"Lời Chúa: Câu ghi nhớ\" (Dynamic). Để trống = lấy mô tả + tiêu đề."
+msgstr ""
+
+#: inc/widget/ct_postlist_widget.php:280
+msgid "Hiện ảnh thu nhỏ"
+msgstr ""
+
+#: inc/options/admin/sections.php:204
 msgid "Hiện ở Trang chủ"
 msgstr ""
 
-#: inc/options/admin/sections.php:190
+#: inc/options/admin/sections.php:205
 msgid "Hiện ở trang Bài viết"
 msgstr ""
 
-#: inc/options/admin/sections.php:191
+#: inc/options/admin/sections.php:206
 msgid "Hiện ở trang Chuyên mục"
 msgstr ""
 
-#: inc/options/admin/sections.php:65
+#: inc/options/admin/sections.php:71
 msgid "Hình nền"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:254 inc/options/admin/term-post-meta.php:347
+#: inc/options/admin/term-post-meta.php:254 inc/options/admin/term-post-meta.php:361
 msgid "Hình đại diện"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:31 inc/admin/theme/theme-guide.php:53
+#: inc/admin/theme/dashboard.php:31 inc/admin/theme/theme-guide.php:89
 msgid "Hướng dẫn sử dụng"
 msgstr ""
 
@@ -356,35 +532,43 @@ msgstr ""
 msgid "Hồng"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:70 inc/admin/theme/guide-helpers.php:38
+#: inc/admin/theme/dashboard.php:75 inc/admin/theme/guide-helpers.php:67
 msgid "Hỗ trợ kỹ thuật"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:167
+msgid "ID bài viết (cho \"Bài viết cụ thể\"):"
 msgstr ""
 
 #: template-parts/post/content-none.php:44
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:261
+#: inc/options/admin/term-post-meta.php:265
 msgid "Không"
 msgstr ""
 
-#: inc/options/admin/sections.php:67
+#: inc/options/admin/sections.php:73
 msgid "Không lặp"
 msgstr ""
 
-#: inc/options/admin/sections.php:337
+#: inc/options/admin/sections.php:442
 msgid "Khối nội dung trang chủ"
 msgstr ""
 
-#: inc/options/admin/sections.php:168
+#: inc/options/admin/sections.php:183
 msgid "Khối tin nổi bật nằm ngay đầu trang chủ."
 msgstr ""
 
-#: inc/options/admin/sections.php:83
+#: inc/options/admin/sections.php:89
 msgid "Kiểu Header"
 msgstr ""
 
-#: inc/options/admin/sections.php:170
+#: inc/widget/ct_postlist_widget.php:235
+msgid "Kiểu hiển thị:"
+msgstr ""
+
+#: inc/options/admin/sections.php:185
 msgid "Kiểu khối Nổi bật"
 msgstr ""
 
@@ -392,199 +576,379 @@ msgstr ""
 msgid "Kiểu thanh menu"
 msgstr ""
 
-#: inc/options/admin/sections.php:369 inc/options/admin/term-post-meta.php:243
+#: inc/options/admin/sections.php:474 inc/options/admin/term-post-meta.php:243
 msgid "Kiểu trình bày"
 msgstr ""
 
-#: inc/options/admin/sections.php:225
+#: inc/options/admin/sections.php:270
 msgid "Kéo để sắp xếp"
 msgstr ""
 
-#: inc/options/admin/sections.php:146
+#: inc/options/admin/sections.php:161
 msgid "Kết thúc hiển thị"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:145 inc/options/admin/sections.php:125
+#: inc/options/admin/admin-page.php:154 inc/options/admin/sections.php:140
 msgid "Kỹ thuật"
 msgstr ""
 
-#: inc/options/admin/sections.php:275
-msgid "Link của nút"
+#: inc/post/post-kind.php:208
+msgid "Link video/audio"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:73
+#: inc/admin/theme/dashboard.php:78
 msgid "Liên hệ"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:71
+#: inc/admin/theme/dashboard.php:76
 msgid "Liên hệ đội ngũ kỹ thuật khi cần trợ giúp."
 msgstr ""
 
-#: inc/options/admin/sections.php:95
+#: inc/options/admin/sections.php:368
+msgid "Liên kết"
+msgstr ""
+
+#: inc/options/admin/sections.php:102
 msgid "Liên kết khi bấm"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:260
+#: inc/options/admin/sections.php:106
+msgid "Logo"
+msgstr ""
+
+#: inc/options/admin/sections.php:92
+msgid "Logo + khẩu hiệu"
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:264
 msgid "Loại biểu tượng"
 msgstr ""
 
-#: inc/options/admin/sections.php:180
+#: inc/post/post-kind.php:168
+msgid "Loại bài viết"
+msgstr ""
+
+#: inc/options/admin/sections.php:226
+msgid "Lưới ảnh mosaic"
+msgstr ""
+
+#: inc/options/admin/sections.php:342
+msgid "Lượt xem"
+msgstr ""
+
+#: inc/options/admin/sections.php:195
 msgid "Lấy bài cho khối tiêu điểm."
 msgstr ""
 
-#: inc/options/admin/sections.php:177
+#: inc/options/admin/sections.php:192
 msgid "Lấy bài từ (các) chuyên mục này."
 msgstr ""
 
-#: inc/options/admin/sections.php:68
+#: inc/options/admin/sections.php:74
 msgid "Lặp cả hai chiều"
 msgstr ""
 
-#: inc/options/admin/sections.php:70
+#: inc/options/admin/sections.php:76
 msgid "Lặp theo chiều dọc"
 msgstr ""
 
-#: inc/options/admin/sections.php:69
+#: inc/options/admin/sections.php:75
 msgid "Lặp theo chiều ngang"
 msgstr ""
 
-#: functions.php:76
+#: inc/post/post-kind.php:56
+msgid "Lễ / kính thánh"
+msgstr ""
+
+#: inc/loichua/calendar-widget.php:31
+msgid "Lịch"
+msgstr ""
+
+#: inc/loichua/calendar-widget.php:24
+msgid "Lịch Lời Chúa"
+msgstr ""
+
+#: inc/loichua/calendar-widget.php:22
+msgid "Lịch tháng: bấm vào ngày để xem bài Lời Chúa của ngày đó."
+msgstr ""
+
+#: inc/post/post-kind.php:71
+msgid "Lời Chúa (câu ghi nhớ)"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:56
+msgid "Lời Chúa hôm nay & Lịch"
+msgstr ""
+
+#: inc/options/admin/sections.php:225
+msgid "Lời Chúa hôm nay (bài theo ngày)"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:30
+msgid "Lời Chúa: Câu ghi nhớ"
+msgstr ""
+
+#: functions.php:84
 msgid "Menu Chính"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:348 inc/admin/theme/dashboard.php:60 inc/admin/theme/guide-helpers.php:33
+#: inc/options/admin/term-post-meta.php:362 inc/admin/theme/dashboard.php:64 inc/admin/theme/guide-helpers.php:63
 msgid "Menu điều hướng"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:142
-msgid "Màu & Hiển thị"
-msgstr ""
-
-#: inc/options/admin/term-post-meta.php:267
+#: inc/options/admin/term-post-meta.php:271
 msgid "Màu biểu tượng"
 msgstr ""
 
-#: inc/options/admin/sections.php:262 inc/options/admin/term-post-meta.php:269
+#: inc/options/admin/sections.php:109
+msgid "Màu bắt đầu của dải gradient (mép trên header)."
+msgstr ""
+
+#: inc/options/admin/sections.php:355 inc/options/admin/term-post-meta.php:273
 msgid "Màu chữ"
 msgstr ""
 
-#: inc/options/admin/sections.php:117
+#: inc/widget/ct_loichua_card_widget.php:177
+msgid "Màu chữ (câu):"
+msgstr ""
+
+#: inc/options/admin/sections.php:132
 msgid "Màu chữ cuối trang"
+msgstr ""
+
+#: inc/options/admin/sections.php:63
+msgid "Màu chữ các mục trên thanh menu. Để trống để dùng mặc định."
+msgstr ""
+
+#: inc/options/admin/sections.php:111
+msgid "Màu chữ khẩu hiệu"
+msgstr ""
+
+#: inc/options/admin/sections.php:63
+msgid "Màu chữ thanh menu"
 msgstr ""
 
 #: inc/options/admin/sections.php:38
 msgid "Màu giao diện"
 msgstr ""
 
+#: inc/options/admin/sections.php:110
+msgid "Màu kết thúc của dải gradient (mép dưới header). Để trống cả hai màu để dùng nền trong suốt."
+msgstr ""
+
+#: inc/options/admin/sections.php:357
+msgid "Màu nhấn"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:182
+msgid "Màu nhấn (nhãn + trích dẫn):"
+msgstr ""
+
 #: inc/options/admin/sections.php:50
 msgid "Màu nhấn dùng cho liên kết, nút bấm và các điểm nổi bật trên website. Chọn \"Tự chọn\" để dùng màu riêng."
 msgstr ""
 
-#: inc/options/admin/sections.php:64 inc/options/admin/sections.php:261 inc/options/admin/term-post-meta.php:268
+#: inc/options/admin/sections.php:64
+msgid "Màu nhấn thanh menu"
+msgstr ""
+
+#: inc/options/admin/sections.php:70 inc/options/admin/sections.php:354 inc/options/admin/term-post-meta.php:272
 msgid "Màu nền"
 msgstr ""
 
-#: inc/options/admin/sections.php:88
+#: inc/options/admin/sections.php:95
 msgid "Màu nền Header"
 msgstr ""
 
-#: inc/options/admin/sections.php:116
+#: inc/options/admin/sections.php:131
 msgid "Màu nền cuối trang"
+msgstr ""
+
+#: inc/options/admin/sections.php:62
+msgid "Màu nền của thanh menu chính. Để trống để dùng màu mặc định của kiểu menu."
+msgstr ""
+
+#: inc/options/admin/sections.php:110
+msgid "Màu nền phía dưới"
+msgstr ""
+
+#: inc/options/admin/sections.php:109
+msgid "Màu nền phía trên"
+msgstr ""
+
+#: inc/options/admin/sections.php:62
+msgid "Màu nền thanh menu"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:172 inc/widget/ct_postlist_widget.php:271
+msgid "Màu nền:"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:59
+msgid "Màu sắc & bố cục chung"
+msgstr ""
+
+#: inc/options/admin/admin-page.php:145 inc/options/admin/sections.php:33
+msgid "Màu sắc & hiển thị"
+msgstr ""
+
+#: inc/options/admin/sections.php:349
+msgid "Màu sắc khối"
 msgstr ""
 
 #: inc/options/admin/sections.php:53
 msgid "Màu tự chọn"
 msgstr ""
 
-#: inc/options/admin/sections.php:128
+#: inc/options/admin/sections.php:143
 msgid "Mã Google Analytics"
 msgstr ""
 
-#: inc/options/admin/sections.php:130
+#: inc/options/admin/sections.php:145
 msgid "Mã chèn cuối trang"
 msgstr ""
 
-#: inc/options/admin/sections.php:129
+#: inc/options/admin/sections.php:144
 msgid "Mã chèn vào <head>"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:265
+#: inc/options/admin/term-post-meta.php:269
 msgid "Mã icon (Font Awesome)"
 msgstr ""
 
-#: inc/options/admin/sections.php:126
+#: inc/options/admin/sections.php:141
 msgid "Mã theo dõi, đoạn script chèn thêm và shortcode cho Bảng Điều Khiển. <strong>Dành cho người rành kỹ thuật</strong> — nhập sai có thể ảnh hưởng website."
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:255
+#: inc/options/admin/sections.php:340 inc/options/admin/term-post-meta.php:255
 msgid "Mô tả ngắn"
 msgstr ""
 
-#: inc/options/admin/sections.php:94
+#: inc/options/admin/sections.php:101
 msgid "Mô tả ảnh"
 msgstr ""
 
-#: inc/options/admin/sections.php:33
-msgid "Mẫu & Hiển thị chung"
+#: inc/post/post-kind.php:70
+msgid "Mặc định (bài viết thường)"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:138 inc/options/admin/admin-page.php:149
-msgid "Mặc định"
+#: inc/options/admin/sections.php:349
+msgid "Mặc định khối theo màu giao diện. Chọn \"Không\" ở \"Dùng màu mặc định\" để tự đặt màu bên dưới."
 msgstr ""
 
-#: inc/options/admin/sections.php:96
+#: inc/widget/ct_postlist_widget.php:267 template-parts/homepage/c_post-template6.php:20
+msgid "Mới nhất"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:147
+msgid "Mới nhất trong chuyên mục"
+msgstr ""
+
+#: inc/options/admin/sections.php:103
 msgid "Mở liên kết ở tab mới"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:42
+#: inc/options/admin/sections.php:369
+msgid "Mở tab mới"
+msgstr ""
+
+#: inc/admin/theme/dashboard.php:43
 msgid "Mở thiết lập"
 msgstr ""
 
-#: inc/options/admin/sections.php:276
-msgid "Mở ở tab mới"
+#: inc/options/admin/admin-page.php:169
+msgid "Mở website (hoặc tải lại trang) để xem kết quả."
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:256 inc/options/admin/term-post-meta.php:351
+#: inc/admin/theme/theme-guide.php:94
+msgid "Mục lục hướng dẫn"
+msgstr ""
+
+#: inc/options/admin/sections.php:314 inc/options/admin/sections.php:321 inc/options/admin/sections.php:327
+msgid "Nguồn bài viết"
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:256 inc/options/admin/term-post-meta.php:365
 msgid "Ngày & lượt xem"
+msgstr ""
+
+#: inc/post/post-kind.php:52
+msgid "Ngày phụng vụ"
+msgstr ""
+
+#: inc/post/post-kind.php:202
+msgid "Ngày phụng vụ, lễ thánh và đoạn Tin Mừng hiện trong box \"Lời Chúa hôm nay\" ở trang chủ. Box lấy bài theo NGÀY ĐĂNG — hẹn giờ đăng đúng ngày để bài tự lên."
+msgstr ""
+
+#: inc/options/admin/sections.php:341
+msgid "Ngày đăng"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:127
+msgid "Nhãn (vd CÂU GHI NHỚ):"
 msgstr ""
 
 #: searchform.php:4
 msgid "Nhập nội dung tìm kiếm"
 msgstr ""
 
-#: inc/options/admin/sections.php:182
+#: inc/options/admin/sections.php:197
 msgid "Nhập shortcode để tự dựng khối nổi bật."
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:122
+msgid "Nhập tay (Static)"
 msgstr ""
 
 #: template-parts/post/content-none.php:14
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/options/admin/sections.php:60
+#: inc/options/admin/admin-page.php:141
+msgid "Nâng cao"
+msgstr ""
+
+#: inc/options/admin/sections.php:364
+msgid "Nút \"Xem thêm\""
+msgstr ""
+
+#: inc/options/admin/sections.php:364
+msgid "Nút đặt cuối khối, dẫn tới trang chuyên mục hoặc liên kết bất kỳ."
+msgstr ""
+
+#: template-parts/loichua/calendar.php:33
+msgid "Năm"
+msgstr ""
+
+#: inc/options/admin/sections.php:66
 msgid "Nền trang"
 msgstr ""
 
-#: inc/options/admin/sections.php:148
+#: inc/options/admin/sections.php:163 inc/options/admin/sections.php:308
 msgid "Nội dung"
 msgstr ""
 
-#: inc/options/admin/sections.php:258
+#: inc/options/admin/sections.php:310
 msgid "Nội dung (HTML)"
 msgstr ""
 
-#: inc/options/admin/sections.php:131
+#: inc/options/admin/sections.php:146
 msgid "Nội dung (dạng shortcode) hiển thị trên Bảng Điều Khiển cho Quản trị viên."
 msgstr ""
 
-#: inc/options/admin/sections.php:87
+#: inc/options/admin/sections.php:308
+msgid "Nội dung HTML tự do hiển thị trong khối (hỗ trợ shortcode)."
+msgstr ""
+
+#: inc/options/admin/sections.php:94
 msgid "Nội dung Header"
 msgstr ""
 
-#: inc/options/admin/sections.php:148
+#: inc/options/admin/sections.php:163
 msgid "Nội dung chi tiết (không bắt buộc)."
 msgstr ""
 
-#: inc/options/admin/sections.php:115
+#: inc/options/admin/sections.php:130
 msgid "Nội dung cuối trang"
 msgstr ""
 
@@ -596,15 +960,19 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:56
+#: inc/post/post-kind.php:148
+msgid "Phân loại bài viết"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:54
+msgid "Phân loại bài viết: Lời Chúa & Video"
+msgstr ""
+
+#: inc/admin/theme/dashboard.php:59
 msgid "Quản lý"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:31
-msgid "Quản lý bài viết"
-msgstr ""
-
-#: inc/admin/theme/dashboard.php:54
+#: inc/admin/theme/dashboard.php:57
 msgid "Quản lý các chuyên mục phân loại bài viết."
 msgstr ""
 
@@ -612,19 +980,19 @@ msgstr ""
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: inc/options/admin/sections.php:182
+#: inc/options/admin/sections.php:197
 msgid "Shortcode"
 msgstr ""
 
-#: inc/options/admin/sections.php:132
+#: inc/options/admin/sections.php:147
 msgid "Shortcode cho Biên tập viên"
 msgstr ""
 
-#: inc/options/admin/sections.php:131
+#: inc/options/admin/sections.php:146
 msgid "Shortcode cho Quản trị viên"
 msgstr ""
 
-#: inc/options/admin/sections.php:133
+#: inc/options/admin/sections.php:148
 msgid "Shortcode cho vai trò khác"
 msgstr ""
 
@@ -632,159 +1000,267 @@ msgstr ""
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
-#: inc/options/admin/sections.php:87
+#: inc/options/admin/sections.php:94
 msgid "Soạn nội dung hiển thị ở đầu trang (chữ, hình, mã HTML)."
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:47
+#: inc/admin/theme/dashboard.php:49
 msgid "Soạn và đăng một bài viết mới lên website."
 msgstr ""
 
-#: template-parts/boxes/loichua.php:59
+#: template-parts/boxes/loichua.php:58
 msgid "Suy niệm »"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:61
+#: template-parts/loichua/calendar.php:34
+msgid "Sáu"
+msgstr ""
+
+#: inc/admin/theme/dashboard.php:65
 msgid "Sắp xếp menu hiển thị trên website."
 msgstr ""
 
-#: inc/options/admin/sections.php:268
+#: inc/widget/ct_postlist_widget.php:262
+msgid "Sắp xếp:"
+msgstr ""
+
+#: inc/options/admin/sections.php:330
 msgid "Số bài hiển thị"
 msgstr ""
 
-#: inc/options/admin/sections.php:178
+#: inc/widget/ct_postlist_widget.php:257
+msgid "Số bài hiển thị (X):"
+msgstr ""
+
+#: inc/options/admin/sections.php:193
 msgid "Số bài hiển thị trong khối."
 msgstr ""
 
-#: inc/options/admin/sections.php:109
+#: inc/options/admin/sections.php:124
 msgid "Số cột Widget"
 msgstr ""
 
-#: inc/options/admin/sections.php:114
+#: inc/options/admin/sections.php:129
 msgid "Số cột chia khu vực widget ở cuối trang."
 msgstr ""
 
-#: inc/options/admin/sections.php:363 inc/options/admin/term-post-meta.php:236
+#: inc/options/admin/sections.php:468 inc/options/admin/term-post-meta.php:236
 msgid "Số cột danh sách"
 msgstr ""
 
-#: inc/options/admin/sections.php:368
+#: inc/options/admin/sections.php:473
 msgid "Số cột xếp các bài viết trong danh sách."
 msgstr ""
 
-#: inc/options/admin/sections.php:209
+#: inc/widget/ct_postlist_widget.php:238
+msgid "Số thứ tự (1–X)"
+msgstr ""
+
+#: inc/options/flatteners/helper-homepage.php:220
+msgid "Tab"
+msgstr ""
+
+#: inc/options/admin/sections.php:314
+msgid "Tab đầu lấy bài từ chuyên mục dưới đây; thêm Tab cho các chuyên mục khác."
+msgstr ""
+
+#: inc/options/admin/sections.php:224
 msgid "Tabs chuyên mục"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:341
+#: inc/admin/theme/guide-helpers.php:64
+msgid "Thanh bên & Widget"
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:355
 msgid "Thanh bên (sidebar)"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:148 inc/admin/theme/guide-helpers.php:34
+#: inc/options/admin/admin-page.php:153 inc/admin/theme/guide-helpers.php:65
 msgid "Thanh thông báo"
 msgstr ""
 
-#: inc/options/admin/sections.php:140
+#: inc/options/admin/sections.php:155
 msgid "Thanh thông báo nổi bật"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:135
-msgid "Thiết lập chung"
-msgstr ""
-
-#: inc/options/admin/admin-page.php:84 inc/options/admin/admin-page.php:85 inc/options/admin/admin-page.php:162 inc/admin/theme/dashboard.php:39 inc/admin/theme/guide-helpers.php:30
+#: inc/options/admin/admin-page.php:84 inc/options/admin/admin-page.php:85 inc/options/admin/admin-page.php:167 inc/admin/theme/dashboard.php:40
 msgid "Thiết lập giao diện"
 msgstr ""
 
-#: inc/options/admin/sections.php:226
+#: inc/options/admin/sections.php:271
 msgid "Thu gọn / Mở rộng"
 msgstr ""
 
-#: inc/options/admin/sections.php:338
+#: template-parts/loichua/calendar.php:49
+msgid "Tháng %1$d Năm %2$d"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:53
+msgid "Tháng sau"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:45
+msgid "Tháng trước"
+msgstr ""
+
+#: inc/options/admin/sections.php:443
 msgid "Thêm và sắp xếp các khối nội dung hiển thị lần lượt trên trang chủ. Kéo biểu tượng ✥ để đổi thứ tự; chọn mẫu khối ở ô bên trái mỗi khối."
 msgstr ""
 
-#: inc/options/admin/admin-page.php:137
-msgid "Thông báo"
+#: inc/options/admin/sections.php:298
+msgid "Thông tin khối"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:35
+#: inc/admin/theme/guide-helpers.php:58
 msgid "Thư viện hình ảnh"
 msgstr ""
 
-#: inc/options/admin/sections.php:145
+#: inc/admin/theme/guide-helpers.php:55
+msgid "Thẻ Lời Chúa & Box “5 phút”"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:28
+msgid "Thẻ Lời Chúa (câu ghi nhớ): nhãn, câu Kinh Thánh, trích dẫn — nhập tay hoặc tự động từ bài viết. Màu tuỳ chỉnh."
+msgstr ""
+
+#: inc/options/admin/sections.php:160
 msgid "Thời điểm thanh thông báo bắt đầu xuất hiện."
 msgstr ""
 
-#: inc/options/admin/sections.php:146
+#: inc/options/admin/sections.php:161
 msgid "Thời điểm tự động ẩn thanh thông báo."
 msgstr ""
 
-#: inc/options/admin/sections.php:177
+#: template-parts/loichua/calendar.php:31
+msgid "Thứ Ba"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:35
+msgid "Thứ Bảy"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:30
+msgid "Thứ Hai"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:33
+msgid "Thứ Năm"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:34
+msgid "Thứ Sáu"
+msgstr ""
+
+#: template-parts/loichua/calendar.php:32
+msgid "Thứ Tư"
+msgstr ""
+
+#: inc/options/admin/sections.php:192
 msgid "Tin Hot — Chuyên mục"
 msgstr ""
 
-#: inc/options/admin/sections.php:178
+#: inc/options/admin/sections.php:193
 msgid "Tin Hot — Số bài"
 msgstr ""
 
-#: inc/options/admin/sections.php:179
+#: inc/options/admin/sections.php:194
 msgid "Tin Hot — Trong vòng (ngày)"
 msgstr ""
 
-#: inc/options/admin/sections.php:171
+#: template-parts/loichua/daily-card.php:66
+msgid "Tin Mừng:"
+msgstr ""
+
+#: inc/options/admin/sections.php:186
 msgid "Tin nổi bật + tiêu điểm"
 msgstr ""
 
-#: inc/options/admin/sections.php:180
+#: inc/options/admin/sections.php:195
 msgid "Tiêu điểm — Chuyên mục"
 msgstr ""
 
-#: inc/options/admin/sections.php:181
+#: inc/options/admin/sections.php:196
 msgid "Tiêu điểm — Số bài"
 msgstr ""
 
-#: inc/options/admin/sections.php:147
+#: inc/options/admin/sections.php:162
 msgid "Tiêu đề"
 msgstr ""
 
-#: inc/options/admin/sections.php:187
+#: inc/widget/ct_loichua_card_widget.php:114
+msgid "Tiêu đề (tuỳ chọn, hiện phía trên thẻ):"
+msgstr ""
+
+#: inc/options/admin/sections.php:202
 msgid "Tiêu đề box"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:349
+#: inc/options/admin/term-post-meta.php:363
 msgid "Tiêu đề bài viết"
 msgstr ""
 
-#: inc/options/admin/sections.php:253
+#: inc/options/admin/sections.php:300
 msgid "Tiêu đề khối"
 msgstr ""
 
-#: inc/options/admin/sections.php:379
+#: inc/widget/ct_postlist_widget.php:230 inc/loichua/calendar-widget.php:73
+msgid "Tiêu đề:"
+msgstr ""
+
+#: inc/options/admin/admin-page.php:140
+msgid "Tiện ích"
+msgstr ""
+
+#: inc/options/admin/sections.php:484
 msgid "Trang Bài viết"
 msgstr ""
 
-#: inc/options/admin/sections.php:360
+#: inc/options/admin/sections.php:465
 msgid "Trang Chuyên mục"
+msgstr ""
+
+#: inc/options/admin/admin-page.php:151
+msgid "Trang Chuyên mục & Bài viết"
 msgstr ""
 
 #: inc/utilities/sidebar.php:10
 msgid "Trang Chủ"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:136 inc/options/admin/admin-page.php:147 inc/options/admin/sections.php:157
+#: inc/options/admin/admin-page.php:150 inc/options/admin/sections.php:172
 msgid "Trang chủ"
 msgstr ""
 
-#: template-parts/post/content.php:70
+#: inc/options/admin/admin-page.php:139
+msgid "Trang chủ & Bài viết"
+msgstr ""
+
+#: template-parts/post/content.php:81
 msgid "Trang:"
+msgstr ""
+
+#: inc/options/admin/sections.php:108 inc/post/post-kind.php:185
+msgid "Trích dẫn"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:138
+msgid "Trích dẫn (vd Mt 6, 33):"
 msgstr ""
 
 #: inc/options/admin/sections.php:39
 msgid "Trắng"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:310
+#: inc/admin/theme/guide-helpers.php:36
+msgid "Trợ giúp"
+msgstr ""
+
+#: template-parts/boxes/featured-widget.php:10
+msgid "Trực tiếp"
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:324
 msgid "Tuỳ chỉnh giao diện bài viết"
 msgstr ""
 
@@ -792,7 +1268,7 @@ msgstr ""
 msgid "Tuỳ chỉnh giao diện chuyên mục"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:337
+#: inc/options/admin/term-post-meta.php:351
 msgid "Tuỳ chỉnh riêng bài này"
 msgstr ""
 
@@ -800,43 +1276,55 @@ msgstr ""
 msgid "Tuỳ chỉnh riêng chuyên mục này"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:350
+#: inc/options/admin/sections.php:343 inc/options/admin/term-post-meta.php:364
 msgid "Tác giả"
 msgstr ""
 
-#: inc/options/admin/sections.php:326
+#: inc/options/admin/sections.php:431
 msgid "Tên Tab"
+msgstr ""
+
+#: inc/options/admin/sections.php:298
+msgid "Tên hiển thị ở đầu khối và quyền xem khối này."
 msgstr ""
 
 #: inc/options/admin/sections.php:44
 msgid "Tím"
 msgstr ""
 
-#: inc/options/admin/sections.php:80
+#: inc/options/admin/sections.php:86
 msgid "Tùy chỉnh phần đầu website: tự soạn nội dung, hoặc dùng ảnh banner rộng riêng cho từng kích thước màn hình."
 msgstr ""
 
-#: inc/options/admin/sections.php:150
+#: inc/options/admin/sections.php:165
 msgid "Tùy chọn — thêm class để tự tùy biến giao diện thanh thông báo."
 msgstr ""
 
-#: inc/options/admin/sections.php:203
+#: inc/options/admin/sections.php:218
 msgid "Tĩnh / HTML"
 msgstr ""
 
-#: inc/options/admin/sections.php:132
+#: template-parts/loichua/calendar.php:32
+msgid "Tư"
+msgstr ""
+
+#: inc/options/admin/sections.php:147
 msgid "Tương tự, áp dụng cho vai trò Biên tập viên (Editor)."
 msgstr ""
 
-#: inc/options/admin/sections.php:65
+#: inc/options/admin/sections.php:71
 msgid "Tải lên ảnh dùng làm nền cho trang."
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:233
-msgid "Tắt: dùng bố cục chung trong Tuỳ Chọn Giao Diện. Bật để đặt riêng cho chuyên mục này."
+#: inc/widget/ct_loichua_card_widget.php:156 inc/widget/ct_postlist_widget.php:246 inc/loichua/calendar-widget.php:81
+msgid "Tất cả chuyên mục"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:338
+#: inc/options/admin/term-post-meta.php:233
+msgid "Tắt: dùng bố cục chung trong Thiết lập giao diện. Bật để đặt riêng cho chuyên mục này."
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:352
 msgid "Tắt: dùng thiết lập chung. Bật để đặt riêng cho bài này."
 msgstr ""
 
@@ -844,19 +1332,55 @@ msgstr ""
 msgid "Tự chọn"
 msgstr ""
 
-#: inc/options/admin/sections.php:172
+#: inc/options/admin/sections.php:187
 msgid "Tự dựng bằng Shortcode"
 msgstr ""
 
-#: inc/options/admin/sections.php:84
+#: inc/options/admin/sections.php:90
 msgid "Tự nhập nội dung"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:49
+#: inc/widget/ct_postlist_widget.php:265
+msgid "Tự động theo kiểu"
+msgstr ""
+
+#: inc/widget/ct_loichua_card_widget.php:123
+msgid "Tự động từ bài viết (Dynamic)"
+msgstr ""
+
+#: inc/post/post-kind.php:182
+msgid "VD: Anh em đừng lo lắng về ngày mai…"
+msgstr ""
+
+#: inc/post/post-kind.php:61
+msgid "VD: Lc 10,25-37"
+msgstr ""
+
+#: inc/post/post-kind.php:188
+msgid "VD: Mt 6, 34"
+msgstr ""
+
+#: inc/post/post-kind.php:57
+msgid "VD: Th. Faustina, trinh nữ"
+msgstr ""
+
+#: inc/post/post-kind.php:53
+msgid "VD: Thứ Hai Tuần 27 TN"
+msgstr ""
+
+#: inc/post/post-kind.php:72
+msgid "Video (audio) Lời Chúa"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:53
+msgid "Viết & quản lý bài viết"
+msgstr ""
+
+#: inc/admin/theme/dashboard.php:51
 msgid "Viết bài"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:46
+#: inc/admin/theme/dashboard.php:48
 msgid "Viết bài mới"
 msgstr ""
 
@@ -864,19 +1388,19 @@ msgstr ""
 msgid "Vàng"
 msgstr ""
 
-#: inc/options/admin/sections.php:128
+#: inc/options/admin/sections.php:143
 msgid "Ví dụ: G-XXXXXXXXXX hoặc UA-XXXXXX-X. Để trống nếu không dùng."
 msgstr ""
 
-#: inc/options/admin/sections.php:94
+#: inc/options/admin/sections.php:101
 msgid "Văn bản thay thế (alt) cho banner — tốt cho SEO."
 msgstr ""
 
-#: inc/options/admin/sections.php:163 inc/options/admin/sections.php:374 inc/options/admin/sections.php:383 inc/options/admin/term-post-meta.php:249 inc/options/admin/term-post-meta.php:342
+#: inc/options/admin/sections.php:178 inc/options/admin/sections.php:479 inc/options/admin/sections.php:488 inc/options/admin/term-post-meta.php:249 inc/options/admin/term-post-meta.php:356
 msgid "Vị trí thanh bên"
 msgstr ""
 
-#: inc/options/flatteners/helper-general.php:156
+#: inc/options/flatteners/helper-general.php:168
 msgid "Widget Cuối Trang (Footer)"
 msgstr ""
 
@@ -900,27 +1424,27 @@ msgstr ""
 msgid "Xem hướng dẫn"
 msgstr ""
 
-#: inc/admin/theme/theme-guide.php:54
-msgid "Xin chào các Admin, Cộng tác viên! Nhấp vào từng mục bên dưới để xem hướng dẫn chi tiết."
+#: inc/widget/ct_postlist_widget.php:266
+msgid "Xem nhiều nhất"
 msgstr ""
 
 #: inc/options/admin/fields.php:230 inc/options/admin/term-post-meta.php:186
 msgid "Xoá"
 msgstr ""
 
-#: inc/options/admin/sections.php:234
+#: inc/options/admin/sections.php:279
 msgid "Xoá khối"
 msgstr ""
 
-#: inc/shortcodes/ct_shortcode_post.php:46 template-parts/post/content.php:52 template-parts/homepage/c_post-item-image.php:28 template-parts/homepage/c_post-item.php:29
+#: inc/shortcodes/ct_shortcode_post.php:46 template-parts/post/content.php:63 template-parts/homepage/c_post-item-image.php:47 template-parts/homepage/c_post-item.php:48
 msgid "lượt xem"
 msgstr ""
 
-#: inc/options/admin/sections.php:133
+#: inc/options/admin/sections.php:148
 msgid "Áp dụng cho các vai trò còn lại (cộng tác viên, tác giả…)."
 msgstr ""
 
-#: inc/options/admin/sections.php:149
+#: inc/options/admin/sections.php:164
 msgid "Đang phát trực tiếp"
 msgstr ""
 
@@ -928,15 +1452,23 @@ msgstr ""
 msgid "Đen"
 msgstr ""
 
-#: inc/options/admin/sections.php:129
+#: inc/post/post-kind.php:60
+msgid "Đoạn Tin Mừng"
+msgstr ""
+
+#: inc/options/admin/sections.php:144
 msgid "Đoạn mã đặt trong thẻ &lt;head&gt; (mã xác minh, pixel quảng cáo…)."
 msgstr ""
 
-#: inc/options/admin/sections.php:130
+#: inc/options/admin/sections.php:145
 msgid "Đoạn mã đặt trước thẻ đóng &lt;/body&gt; (chat, thống kê…)."
 msgstr ""
 
-#: inc/options/admin/sections.php:95
+#: inc/options/admin/admin-page.php:169
+msgid "Đã lưu thay đổi."
+msgstr ""
+
+#: inc/options/admin/sections.php:102
 msgid "Đường dẫn mở ra khi người dùng bấm vào banner."
 msgstr ""
 
@@ -944,19 +1476,31 @@ msgstr ""
 msgid "ĐẦU TRANG"
 msgstr ""
 
-#: template-parts/post/content.php:58
+#: inc/widget/ct_loichua_card_widget.php:185
+msgid "Để trống = dùng màu mặc định của thẻ."
+msgstr ""
+
+#: inc/widget/ct_postlist_widget.php:275
+msgid "Để trống = dùng nền mặc định của giao diện."
+msgstr ""
+
+#: template-parts/loichua/daily-card.php:72
+msgid "Đọc tiếp"
+msgstr ""
+
+#: template-parts/post/content.php:69
 msgid "Đọc với cỡ chữ KHÁ LỚN"
 msgstr ""
 
-#: template-parts/post/content.php:59
+#: template-parts/post/content.php:70
 msgid "Đọc với cỡ chữ LỚN"
 msgstr ""
 
-#: template-parts/post/content.php:56
+#: template-parts/post/content.php:67
 msgid "Đọc với cỡ chữ NHỎ"
 msgstr ""
 
-#: template-parts/post/content.php:57
+#: template-parts/post/content.php:68
 msgid "Đọc với cỡ chữ VỪA"
 msgstr ""
 
@@ -964,31 +1508,39 @@ msgstr ""
 msgid "Đỏ"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:40
+#: inc/admin/theme/dashboard.php:41
 msgid "Đổi màu, header, footer, trang chủ và các tuỳ chọn khác."
 msgstr ""
 
-#: inc/options/admin/sections.php:85
+#: inc/options/admin/sections.php:91
 msgid "Ảnh banner rộng"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:266
+#: inc/options/admin/term-post-meta.php:270
 msgid "Ảnh biểu tượng"
 msgstr ""
 
-#: inc/options/admin/sections.php:91
+#: inc/options/admin/sections.php:98
 msgid "Ảnh cho Máy tính"
 msgstr ""
 
-#: inc/options/admin/sections.php:92
+#: inc/options/admin/sections.php:99
 msgid "Ảnh cho Máy tính bảng"
 msgstr ""
 
-#: inc/options/admin/sections.php:93
+#: inc/options/admin/sections.php:100
 msgid "Ảnh cho Điện thoại"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:263
+#: inc/options/admin/sections.php:106
+msgid "Ảnh logo đặt bên trái header (nên dùng PNG nền trong suốt). Để trống sẽ hiện tên website."
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:267
 msgid "Ảnh tải lên"
+msgstr ""
+
+#: inc/options/admin/sections.php:339
+msgid "Ảnh đại diện"
 msgstr ""
 

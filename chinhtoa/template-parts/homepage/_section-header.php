@@ -21,7 +21,7 @@ if (empty($section['title'])) {
   <?php if (!empty($section['readmore']) && $section['readmore'] === 'y') : ?>
   <div class="ct__post-readmore">
     <a href="<?php echo esc_url($section['readmore_link']); ?>"
-      target="<?php echo (isset($section['readmore_blank']) && $section['readmore_blank'] == 1) ? '_blank' : '_self'; ?>">
+      target="<?php echo (isset($section['readmore_blank']) && ($section['readmore_blank'] === 'y' || $section['readmore_blank'] == 1)) ? '_blank' : '_self'; ?>">
       <?php echo esc_html($section['readmore_text']); ?>
     </a>
   </div>

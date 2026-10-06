@@ -51,6 +51,8 @@ $ct_guide_visible = ct_guide_visible_sections();
   .ct-guide-body h3 { font-size: 15px; margin: 18px 0 6px; }
   .ct-guide-body p { margin: 8px 0; }
   .ct-guide-body ul, .ct-guide-body ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+  .ct-guide-body ul { list-style: disc; }
+  .ct-guide-body ul ul { list-style: circle; }
   .ct-guide-body li { margin: 4px 0; }
   .ct-guide-body a { color: #2271b1; text-decoration: none; }
   .ct-guide-body a:hover { text-decoration: underline; }
@@ -61,6 +63,21 @@ $ct_guide_visible = ct_guide_visible_sections();
   .ct-guide-body th, .ct-guide-body td { border: 1px solid #dcdcde; padding: 7px 11px; text-align: left; vertical-align: top; }
   .ct-guide-body th { background: #f6f7f7; }
   .ct-guide-body hr { border: 0; border-top: 1px solid #f0f0f1; margin: 16px 0; }
+  .ct-guide-body strong { color: #1d2327; }
+
+  /* Bước làm: số tròn xanh — cùng màu với số trên ảnh minh hoạ để dễ đối chiếu. */
+  .ct-guide-body ol { list-style: none; counter-reset: ct-step; padding-left: 0; margin-left: 0; }
+  .ct-guide-body ol > li { counter-increment: ct-step; position: relative; padding-left: 38px; margin: 8px 0; min-height: 26px; }
+  .ct-guide-body ol > li::before { content: counter(ct-step); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #1d4ed8; color: #fff; font-weight: 700; font-size: 13px; line-height: 26px; text-align: center; }
+  .ct-guide-body ol ol, .ct-guide-body ol ul { margin-top: 4px; }
+
+  /* Ảnh minh hoạ + chú thích (dòng chữ nghiêng ngay dưới ảnh). */
+  .ct-guide-body img { display: block; max-width: 100%; height: auto; margin: 14px auto 6px; border: 1px solid #dcdcde; border-radius: 6px; box-shadow: 0 1px 6px rgba(0, 0, 0, .06); background: #fff; }
+  .ct-guide-body p > img + em { display: block; text-align: center; color: #646970; font-size: 13px; margin-bottom: 14px; }
+
+  /* Hộp ghi chú / lưu ý. */
+  .ct-guide-body blockquote strong:first-child { color: #1d4ed8; }
+  .ct-guide-body code { white-space: nowrap; }
 
   @media (max-width: 782px) {
     .ct-guide-layout { flex-direction: column; }
@@ -70,7 +87,7 @@ $ct_guide_visible = ct_guide_visible_sections();
 
 <div class="ct-guide">
   <h1 class="ct-guide-heading"><?php echo esc_html__('Hướng dẫn sử dụng', 'chinhtoa'); ?></h1>
-  <p class="ct-guide-intro"><?php echo esc_html__('Xin chào các Admin, Cộng tác viên! Chọn một mục ở menu bên trái để xem hướng dẫn chi tiết.', 'chinhtoa'); ?></p>
+  <p class="ct-guide-intro"><?php echo esc_html__('Chọn một mục ở menu bên trái. Mỗi mục hướng dẫn theo từng bước; số tròn màu xanh trong bài trùng với số trên ảnh minh hoạ.', 'chinhtoa'); ?></p>
 
   <?php if (!empty($ct_guide_visible)) : ?>
     <div class="ct-guide-layout">

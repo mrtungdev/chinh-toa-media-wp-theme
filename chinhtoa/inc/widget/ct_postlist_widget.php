@@ -37,6 +37,7 @@ class CT_PostList_Widget extends WP_Widget
       'bg_color'   => '',
       'show_image' => 0,
       'show_desc'  => 1,
+      'show_meta'  => 0, // dòng phụ: lượt xem (khi xếp theo lượt xem) + ngày đăng
     );
   }
 
@@ -99,11 +100,12 @@ class CT_PostList_Widget extends WP_Widget
 
     $show_image = !empty($instance['show_image']);
     $show_desc  = !empty($instance['show_desc']);
+    $show_meta  = !empty($instance['show_meta']);
 
     if ($style === 'audio') {
       $this->render_audio($posts, $show_image, $show_desc);
     } else {
-      $this->render_numbered($posts, $show_image, $show_desc);
+      $this->render_numbered($posts, $show_image, $show_desc, $show_meta, $orderby);
     }
 
     echo isset($args['after_widget']) ? $args['after_widget'] : '';
@@ -121,10 +123,10 @@ class CT_PostList_Widget extends WP_Widget
     <?php
   }
 
-  /** Kiểu số thứ tự: số 1..X + (ảnh) + tiêu đề + (mô tả). */
-  protected function render_numbered($posts, $show_image, $show_desc)
+  /** Kiểu số thứ tự: số 1..X + (ảnh) + tiêu đề + (mô tả) + (lượt xem · ngày). */
+  protected function render_numbered($posts, $show_image, $show_desc, $show_meta = false, $orderby = 'date')
   {
-    echo '<ol class="ct-postlist ct-postlist--numbered">';
+    echo '<ol class="ct-postlist ct-postlist--numbered' . ($show_image ? ' ct-postlist--with-thumb' : '') . '">';
     $i = 0;
     foreach ($posts as $post) {
       $i++;
@@ -141,6 +143,16 @@ class CT_PostList_Widget extends WP_Widget
           <a class="ct-postlist__title" href="<?php echo esc_url($link); ?>"><?php echo esc_html(get_the_title($id)); ?></a>
           <?php if ($sub !== '') : ?>
           <span class="ct-postlist__sub"><?php echo esc_html($sub); ?></span>
+          <?php endif; ?>
+          <?php if ($show_meta) :
+            $meta = array();
+            if ($orderby === 'views') {
+              /* translators: %s: số lượt xem */
+              $meta[] = sprintf(__('%s lượt xem', 'chinhtoa'), number_format_i18n((int) get_post_meta($id, 'views', true)));
+            }
+            $meta[] = get_the_date('', $id);
+            ?>
+          <span class="ct-postlist__meta"><?php echo esc_html(implode(' · ', $meta)); ?></span>
           <?php endif; ?>
         </div>
       </li>
@@ -200,6 +212,7 @@ class CT_PostList_Widget extends WP_Widget
 
     $instance['show_image'] = empty($new_instance['show_image']) ? 0 : 1;
     $instance['show_desc']  = empty($new_instance['show_desc']) ? 0 : 1;
+    $instance['show_meta']  = empty($new_instance['show_meta']) ? 0 : 1;
 
     return $instance;
   }
@@ -270,6 +283,11 @@ class CT_PostList_Widget extends WP_Widget
       <input class="checkbox" type="checkbox" id="<?php echo esc_attr($this->get_field_id('show_desc')); ?>"
         name="<?php echo esc_attr($this->get_field_name('show_desc')); ?>" value="1" <?php checked($instance['show_desc'], 1); ?>>
       <label for="<?php echo esc_attr($this->get_field_id('show_desc')); ?>"><?php esc_html_e('Hiện mô tả (tóm tắt)', 'chinhtoa'); ?></label>
+    </p>
+    <p>
+      <input class="checkbox" type="checkbox" id="<?php echo esc_attr($this->get_field_id('show_meta')); ?>"
+        name="<?php echo esc_attr($this->get_field_name('show_meta')); ?>" value="1" <?php checked($instance['show_meta'], 1); ?>>
+      <label for="<?php echo esc_attr($this->get_field_id('show_meta')); ?>"><?php esc_html_e('Hiện lượt xem / ngày đăng (kiểu số thứ tự)', 'chinhtoa'); ?></label>
     </p>
     <?php
   }

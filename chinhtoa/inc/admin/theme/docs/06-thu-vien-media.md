@@ -1,36 +1,56 @@
-## Thư viện hình ảnh (Media)
+## Thư viện hình ảnh
 
-Tất cả ảnh, tập tin tải lên website được lưu ở [Thư viện](upload.php)
-(menu **Thư viện**).
+**Thư viện** là nơi chứa mọi ảnh, video, tệp PDF đã tải lên website. Ảnh tải lên một lần
+có thể dùng lại cho nhiều bài.
 
-### Tải ảnh lên
+### Mở Thư viện
 
-1. Mở [Thư viện](upload.php) → bấm **Thêm tập tin mới** → chọn ảnh từ máy.
-2. Hoặc tải trực tiếp khi đang viết bài, bằng nút **Thêm Media / Thêm ảnh**.
+1. Ở menu bên trái, bấm **Thư viện** ([mở](upload.php)).
+2. Muốn tải ảnh mới, bấm nút **Tải tệp lên** ở đầu trang.
+3. Dùng các ô lọc (loại tệp, tháng) và ô **Tìm tệp** để tìm ảnh cũ.
 
-### Đặt tên và mô tả ảnh (quan trọng)
+![Màn hình Thư viện]({{img}}/thu-vien.webp)
+*Số trên ảnh trùng với số bước.*
 
-Khi chọn một ảnh, hãy điền ở khung bên phải:
+### Tải ảnh mới lên
 
-- **Văn bản thay thế (Alt):** mô tả ngắn nội dung ảnh, ví dụ
-  *“Thánh lễ Bổn Mạng Giáo Xứ Chính Tòa 2025”*. Giúp tốt cho SEO và cho người
-  khiếm thị dùng trình đọc màn hình.
-- **Tiêu đề / Chú thích:** đặt tên dễ nhớ để sau này tìm lại nhanh.
+1. Bấm **Tải tệp lên** (hoặc vào **Thư viện → Tải tệp lên**).
+2. Kéo ảnh từ máy thả vào khung **Thả các tệp tin để tải lên**, hoặc bấm **Chọn tệp tin**
+   rồi chọn ảnh.
+3. Chờ thanh tải chạy xong. Ảnh mới hiện ở đầu Thư viện.
 
-### Kích thước ảnh khuyến nghị
+> Dòng **Kích thước tệp tin tải lên tối đa** cho biết ảnh nặng nhất được phép tải lên.
 
-- **Ảnh đại diện bài viết:** bề ngang khoảng **960px** trở lên.
-- **Ảnh banner đầu trang:** ảnh ngang, rộng **1600–1920px**.
-- Nén ảnh trước khi tải (giữ dưới ~300KB mỗi ảnh) để website tải nhanh, nhất là
-  trên điện thoại.
+### Điền thông tin cho ảnh
 
-### Tạo album ảnh cho một sự kiện
+Bấm vào một ảnh trong Thư viện, khung **Chi tiết tệp đính kèm** mở ra:
 
-Khi viết bài, dùng nút **Thêm Media → Tạo bộ sưu tập (Gallery)**, chọn nhiều ảnh
-rồi chèn vào bài. Đây là cách hay để đăng ảnh các sự kiện như rước kiệu, chầu
-Thánh Thể, hành hương, Thêm Sức, Rước Lễ lần đầu…
+1. **Mô tả SEO** (còn gọi là *văn bản thay thế*): một câu tả ảnh, ví dụ “Ca đoàn hát
+   trong Thánh lễ Phục Sinh”. Nên điền: giúp người khiếm thị và giúp Google tìm thấy ảnh.
+2. **Tiêu đề**: tên để bạn dễ tìm lại ảnh.
+3. **Image Caption** (chú thích): dòng chữ nhỏ hiện dưới ảnh khi chèn vào bài.
+4. **Miêu tả**: không bắt buộc.
+5. **Sửa ảnh**: cắt, xoay hoặc thu nhỏ ảnh.
+6. **Xóa vĩnh viễn**: xoá hẳn ảnh khỏi website, **không lấy lại được**.
 
-### Dùng lại ảnh đã có
+Các ô tự lưu ngay khi bạn gõ xong và bấm ra ngoài.
 
-Không cần tải lại ảnh cũ — mở **Thêm Media → Thư viện**, tìm và chọn ảnh đã có
-sẵn để dùng lại, tránh trùng lặp làm nặng website.
+![Chi tiết tệp đính kèm]({{img}}/chi-tiet-anh.webp)
+*Số trên ảnh trùng với số trong danh sách trên.*
+
+### Ảnh thế nào là vừa?
+
+| Dùng cho | Kích thước nên dùng | Ghi chú |
+|---|---|---|
+| Ảnh đại diện bài viết | Ngang khoảng 1200 × 675 px (tỉ lệ 16:9) | Không dùng ảnh dọc |
+| Ảnh trong nội dung | Ngang 1000–1600 px | |
+| Logo đầu trang | PNG nền trong suốt | |
+| Banner đầu trang | Máy tính khoảng 1920 px ngang | Có thể thêm ảnh riêng cho điện thoại |
+
+- Ảnh **nhỏ quá** bị kéo giãn nên mờ. Ảnh **nặng quá** (trên 1 MB) làm website tải chậm.
+  Nên nén ảnh trước khi tải lên.
+- Đặt tên tệp **không dấu, nối bằng gạch ngang**, ví dụ `le-phuc-sinh-2026.jpg`.
+- Chỉ dùng ảnh mình có quyền dùng. Hỏi ý người trong ảnh trước khi đăng ảnh rõ mặt.
+
+> **Không xoá ảnh đang được dùng** trong bài hoặc trên đầu trang. Xoá rồi thì chỗ đó sẽ
+> trống.

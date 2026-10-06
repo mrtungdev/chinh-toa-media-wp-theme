@@ -18,7 +18,12 @@ $email    = 'mailto:?subject=&body=' . $enc;
   <a class="social-item social-email" href="<?php echo esc_url($email); ?>" target="_blank" rel="noopener">
     <svg class="ct-icon ct-icon-envelope" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="vertical-align:-0.125em"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
   </a>
+  <?php
+  // Nút "Giờ Thánh Lễ" trỏ tới #mass-times-widget — widget này hiện không được nạp nên nút
+  // bị ẩn. Child theme/plugin có khối giờ lễ với id đó thì bật lại bằng filter này.
+  if (apply_filters('ct_show_mass_times_button', false)) : ?>
   <a id="mass-times-btn" class="social-item mass-times-btn" href="#mass-times-widget">
     <?php esc_html_e('Giờ Thánh Lễ', 'chinhtoa'); ?>
   </a>
+  <?php endif; ?>
 </div>

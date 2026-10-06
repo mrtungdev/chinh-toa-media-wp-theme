@@ -59,6 +59,15 @@ function ct_settings_defaults()
                 'gen_lien_ket'    => '',
                 'gen_is_blank'    => 0,
             ),
+            // Kiểu "Logo + khẩu hiệu": logo trái, câu khẩu hiệu/Lời Chúa phải, nền gradient.
+            'c_brand'     => array(
+                'logo'         => array('url' => ''),
+                'slogan'       => '',
+                'slogan_ref'   => '',
+                'bg_from'      => '',
+                'bg_to'        => '',
+                'slogan_color' => '',
+            ),
         ),
         'footer_data' => array(
             'gen_widget'          => array(

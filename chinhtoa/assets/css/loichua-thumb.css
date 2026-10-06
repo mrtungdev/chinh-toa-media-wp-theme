@@ -1,0 +1,100 @@
+/**
+ * Khối câu Lời Chúa thay ảnh cho bài loại "Lời Chúa" không có ảnh đại diện
+ * (ct_loichua_thumb_fallback_html(), inc/post/post-kind.php) — trong thẻ bài
+ * (c_post-item.php) và thẻ ảnh có tiêu đề đè (c_post-item-image.php, lưới mosaic).
+ *
+ * Nằm trong <figure class="image is-16by9"> nên giữ đúng tỉ lệ khung ảnh. Màu dùng chung
+ * biến --ct-lc-* với thẻ "Lời Chúa: Câu ghi nhớ" (loichua-card.css), fallback nâu ấm.
+ */
+
+.image .ct-lc-thumb {
+  position: absolute;
+  inset: 0;
+}
+
+.ct-lc-thumb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1rem 1.4rem;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--ct-lc-bg, #3a2c1d);
+  color: var(--ct-lc-text, #f4efe3);
+}
+
+.ct-lc-thumb__mark {
+  height: 1.1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--ct-lc-accent, #c4a05f);
+}
+
+.ct-lc-thumb__quote {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin: 0;
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.ct-lc-thumb__cite {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ct-lc-accent, #c4a05f);
+}
+
+.ct-lc-thumb__cite::before {
+  content: "— ";
+}
+
+/* Thẻ ảnh có tiêu đề đè ở đáy: đưa câu lên trên, bớt dòng để không chồng chữ. */
+.ct__post-item-image .ct-lc-thumb {
+  justify-content: flex-start;
+  padding-top: 0.9rem;
+}
+
+.ct__post-item-image .ct-lc-thumb__quote {
+  -webkit-line-clamp: 2;
+  font-size: 0.95rem;
+}
+
+.ct__post-item-image .ct-lc-thumb__cite {
+  display: none;
+}
+
+/* Lưới mosaic: tiêu đề đã đè lên ô → chỉ giữ dấu ngoặc trang trí ở giữa, không chồng chữ. */
+.ct__post-mosaic .ct-lc-thumb {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.ct__post-mosaic .ct-lc-thumb__mark {
+  height: auto;
+  margin-top: -1.5rem;
+  font-size: 4.5rem;
+  opacity: 0.55;
+}
+
+.ct__post-mosaic .ct-lc-thumb__quote {
+  display: none;
+}
+
+/* Ô nhỏ: dấu ngoặc nhỏ ở góc trên trái, chừa chỗ cho tiêu đề. */
+.ct__post-mosaic .ct__post-item-image:not(:first-child) .ct-lc-thumb {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.6rem 0.9rem;
+}
+
+.ct__post-mosaic .ct__post-item-image:not(:first-child) .ct-lc-thumb__mark {
+  margin-top: 0;
+  font-size: 2.4rem;
+}

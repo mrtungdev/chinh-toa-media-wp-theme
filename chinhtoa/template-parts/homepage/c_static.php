@@ -23,7 +23,7 @@ if ($section['default_style'] == 'y') {
     <?php if ($section['readmore'] == 'y') : ?>
     <div class="c__static-readmore">
       <a href="<?php echo esc_url($section['readmore_link']); ?>"
-        target="<?php echo $section['readmore_blank'] == 1 ? '_blank' : '_self'; ?>">
+        target="<?php echo ($section['readmore_blank'] === 'y' || $section['readmore_blank'] == 1) ? '_blank' : '_self'; ?>">
         <?php echo esc_html($section['readmore_text']); ?>
       </a>
     </div>

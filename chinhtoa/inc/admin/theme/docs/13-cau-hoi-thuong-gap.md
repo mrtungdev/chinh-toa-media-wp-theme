@@ -1,46 +1,64 @@
-## Câu hỏi thường gặp (FAQ)
+## Câu hỏi thường gặp
 
-### Vì sao bài viết không hiển thị trên website?
+### Đăng bài rồi mà không thấy trên website?
 
-Thường do một trong các lý do:
+Kiểm tra lần lượt:
 
-- Bài vẫn ở trạng thái **Bản nháp** — mở bài và bấm **Đăng**.
-- Bài đặt sai **chuyên mục**, nên không lọt vào khối đang hiển thị ở trang chủ.
-- Bài được **hẹn giờ** đăng trong tương lai — kiểm tra ngày giờ trong ô **Đăng**.
-- Bài để **Riêng tư** hoặc trong **Thùng rác** — kiểm tra
-  [danh sách bài viết](edit.php).
+1. Bài đã **Xuất bản** chưa? Trong [danh sách bài viết](edit.php), bài còn chữ *Bản nháp*
+   tức là chưa đăng.
+2. Bài có bị **hẹn giờ** không? Chữ *Đã lên lịch* nghĩa là bài sẽ tự lên vào giờ hẹn.
+3. Bài nằm đúng **danh mục** chưa? Mỗi khối trang chủ chỉ lấy bài của chuyên mục được chọn.
+4. Bấm **tải lại trang** (F5). Trên điện thoại, kéo trang xuống để tải lại.
 
-### Đổi giờ lễ ở đâu?
+### Lưu thiết lập rồi mà website chưa đổi?
 
-Giờ lễ thường được đăng dưới dạng **bài viết** trong chuyên mục **Giờ lễ**, hoặc
-đặt trong một **khối nội dung trang chủ**. Hãy sửa bài/khối tương ứng. Nếu cần
-báo gấp thay đổi giờ lễ, dùng thêm **Thanh thông báo** (xem mục *Thanh thông
-báo*).
+- Đã bấm đúng nút lưu chưa? (**Lưu thay đổi**, **Lưu menu**, **Cập nhật**…) Trang Thiết lập
+  giao diện lưu xong sẽ báo **“Đã lưu thay đổi.”**
+- Tải lại trang website (F5). Vẫn chưa đổi thì mở thử bằng **cửa sổ ẩn danh** của trình duyệt.
 
-### Ảnh bị mờ hoặc không hiển thị?
+### Hai khối trang chủ hiện giống hệt nhau?
 
-- Ảnh tải lên **quá nhỏ** sẽ bị kéo giãn thành mờ — dùng ảnh bề ngang ≥ 960px.
-- Ảnh **quá nặng** làm tải chậm — nén ảnh trước khi tải.
-- Nếu ảnh không hiện, thử **đặt lại Ảnh đại diện** cho bài.
+Kiểm tra **Chuyên mục** của hai khối. Hai khối chọn cùng chuyên mục thì sẽ hiện cùng bài.
 
-### Tôi lỡ xóa một bài, lấy lại được không?
+### Bài Lời Chúa hôm nay chưa đổi sang bài mới?
 
-Được, nếu chưa xóa vĩnh viễn. Mở **Bài viết → Thùng rác**, đưa chuột vào bài và
-bấm **Khôi phục**.
+Khối *Lời Chúa hôm nay* lấy bài theo **ngày đăng**. Mở bài của hôm nay, xem mục **Xuất
+bản** ở cột bên phải có đúng ngày hôm nay chưa. Xem thêm mục *Lời Chúa hôm nay & Lịch*.
 
-### Quên mật khẩu / không đăng nhập được?
+### Ảnh bị mờ, bị méo hoặc không hiện?
 
-Tại màn hình đăng nhập, bấm **Quên mật khẩu?** để nhận email đặt lại. Nếu vẫn
-không được, liên hệ **Ban Truyền Thông Giáo Xứ** (xem mục *Hỗ trợ kỹ thuật*).
+- Ảnh **nhỏ quá** sẽ bị phóng to nên mờ. Dùng ảnh ngang ít nhất 1000 px.
+- Ảnh đại diện nên là **ảnh ngang** (tỉ lệ 16:9). Ảnh dọc sẽ bị cắt.
+- Ảnh không hiện: mở bài, bấm vào ảnh đại diện ở cột bên phải để chọn lại, rồi **Lưu thay
+  đổi**.
 
-### Sau khi chỉnh thiết lập mà website chưa đổi?
+### Lỡ xoá một bài, lấy lại được không?
 
-- Kiểm tra đã bấm **Lưu thay đổi** chưa.
-- **Tải lại trang** (Ctrl/Cmd + Shift + R) để bỏ qua bộ nhớ đệm của trình duyệt.
-- Nếu website có bộ nhớ đệm (cache), xóa cache rồi xem lại.
+Được, nếu chưa **xoá vĩnh viễn**. Vào **Bài viết → Tất cả bài viết**, bấm **Thùng rác** ở
+đầu danh sách, đưa chuột vào bài rồi bấm **Khôi phục lại**. Bài lấy lại ở dạng **Bản nháp**,
+mở bài và bấm **Xuất bản** để đăng lại.
 
-### Ai được quyền đăng bài và chỉnh giao diện?
+### Quên mật khẩu?
 
-- **Quản trị viên (Administrator):** toàn quyền, gồm chỉnh giao diện.
-- **Biên tập viên (Editor):** quản lý mọi bài viết.
-- **Tác giả / Cộng tác viên:** chỉ viết và quản lý bài của mình.
+Ở màn hình đăng nhập, bấm **Bạn quên mật khẩu?**, gõ tên đăng nhập hoặc email, rồi bấm
+**Lấy mật khẩu mới**. Mở email và làm theo hướng dẫn. Không nhận được email thì báo người
+phụ trách kỹ thuật.
+
+### Đổi mật khẩu ở đâu?
+
+Vào **Hồ sơ** ([mở](profile.php)), kéo xuống **Quản lý tài khoản**, bấm **Đặt mật khẩu
+mới**, rồi bấm **Cập nhật hồ sơ** ở cuối trang.
+
+### Vì sao tôi không thấy “Thiết lập giao diện”, “Giao diện”, “Plugin”?
+
+Các mục đó chỉ dành cho tài khoản **Quản lý**. Biên tập viên chỉ thấy phần viết bài, thư
+viện, trang và chuyên mục. Đây là cài đặt cố ý, để tránh lỡ tay làm hỏng giao diện.
+
+### Ai được làm gì?
+
+| Vai trò | Được làm |
+|---|---|
+| **Quản lý** (Quản trị viên) | Mọi việc, kể cả giao diện, menu, widget, người dùng, plugin |
+| **Biên tập viên** | Viết, sửa, đăng **mọi** bài; tải ảnh; quản lý chuyên mục và trang |
+| **Tác giả** | Viết và đăng bài **của mình** |
+| **Cộng tác viên** | Viết bài của mình, nhưng phải chờ người khác duyệt mới đăng |

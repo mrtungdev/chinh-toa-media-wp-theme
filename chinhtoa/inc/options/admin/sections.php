@@ -56,11 +56,12 @@ function ct_section_general($s)
         'c1' => ct_opt_img('/layouts/nav-style-2.png'),
         'c2' => ct_opt_img('/layouts/nav-style-3.png'),
         'c3' => ct_opt_img('/layouts/nav-style-4.png'),
-    ), __('Chọn bố cục thanh menu chính ở đầu trang.', 'chinhtoa'), null, 'wide');
+        'c4' => ct_opt_img('/layouts/nav-style-5.png'),
+    ), __('Chọn bố cục thanh menu chính ở đầu trang. Kiểu cuối: thanh màu đặc, các mục chia đều; mục đang chọn có gạch nhấn theo "Màu nhấn thanh menu".', 'chinhtoa'), null, 'wide');
 
     ct_field_color($s, array('gen_data', 'nav_bg_color'), __('Màu nền thanh menu', 'chinhtoa'), __('Màu nền của thanh menu chính. Để trống để dùng màu mặc định của kiểu menu.', 'chinhtoa'));
     ct_field_color($s, array('gen_data', 'nav_text_color'), __('Màu chữ thanh menu', 'chinhtoa'), __('Màu chữ các mục trên thanh menu. Để trống để dùng mặc định.', 'chinhtoa'));
-    ct_field_color($s, array('gen_data', 'nav_accent_color'), __('Màu nhấn thanh menu', 'chinhtoa'), __('Gạch chân mục đang chọn (kiểu menu 3) và màu nền mục active (kiểu 1, 2). Để trống để dùng màu giao diện.', 'chinhtoa'));
+    ct_field_color($s, array('gen_data', 'nav_accent_color'), __('Màu nhấn thanh menu', 'chinhtoa'), __('Gạch chân mục đang chọn (kiểu menu 3 và 4) và màu nền mục đang chọn (kiểu 1, 2). Để trống để dùng màu giao diện.', 'chinhtoa'));
 
     ct_field_radio($s, array('gen_data', 'gen_bg', 'action_show'), __('Nền trang', 'chinhtoa'), array(
         'c_color' => __('Dùng màu nền', 'chinhtoa'),
@@ -88,6 +89,7 @@ function ct_section_header($s)
     ct_field_radio($s, array('header_data', 'action_show'), __('Kiểu Header', 'chinhtoa'), array(
         'c_content' => __('Tự nhập nội dung', 'chinhtoa'),
         'c_images'  => __('Ảnh banner rộng', 'chinhtoa'),
+        'c_brand'   => __('Logo + khẩu hiệu', 'chinhtoa'),
     ), __('Chọn cách hiển thị phần đầu trang.', 'chinhtoa'));
     ct_field_editor($s, array('header_data', 'c_content', 'header_text'), __('Nội dung Header', 'chinhtoa'), __('Soạn nội dung hiển thị ở đầu trang (chữ, hình, mã HTML).', 'chinhtoa'), array(array('header_data', 'action_show'), 'c_content'));
     ct_field_color($s, array('header_data', 'c_content', 'bgcolor'), __('Màu nền Header', 'chinhtoa'), '', array(array('header_data', 'action_show'), 'c_content'));
@@ -99,6 +101,14 @@ function ct_section_header($s)
     ct_field_text($s, array('header_data', 'c_images', 'gen_tieu_de'), __('Mô tả ảnh', 'chinhtoa'), __('Văn bản thay thế (alt) cho banner — tốt cho SEO.', 'chinhtoa'), $imgShow);
     ct_field_text($s, array('header_data', 'c_images', 'gen_lien_ket'), __('Liên kết khi bấm', 'chinhtoa'), __('Đường dẫn mở ra khi người dùng bấm vào banner.', 'chinhtoa'), $imgShow);
     ct_field_switch($s, array('header_data', 'c_images', 'gen_is_blank'), __('Mở liên kết ở tab mới', 'chinhtoa'), '', '1', '0', $imgShow);
+
+    $brandShow = array(array('header_data', 'action_show'), 'c_brand');
+    ct_field_media($s, array('header_data', 'c_brand', 'logo'), __('Logo', 'chinhtoa'), __('Ảnh logo đặt bên trái header (nên dùng PNG nền trong suốt). Để trống sẽ hiện tên website.', 'chinhtoa'), true, $brandShow);
+    ct_field_text($s, array('header_data', 'c_brand', 'slogan'), __('Câu khẩu hiệu', 'chinhtoa'), __('Câu hiển thị bên phải logo, VD: Lời Chúa là ngọn đèn soi cho con bước.', 'chinhtoa'), $brandShow);
+    ct_field_text($s, array('header_data', 'c_brand', 'slogan_ref'), __('Trích dẫn', 'chinhtoa'), __('Dòng nhỏ dưới câu khẩu hiệu, VD: Tv 119,105.', 'chinhtoa'), $brandShow);
+    ct_field_color($s, array('header_data', 'c_brand', 'bg_from'), __('Màu nền phía trên', 'chinhtoa'), __('Màu bắt đầu của dải gradient (mép trên header).', 'chinhtoa'), $brandShow);
+    ct_field_color($s, array('header_data', 'c_brand', 'bg_to'), __('Màu nền phía dưới', 'chinhtoa'), __('Màu kết thúc của dải gradient (mép dưới header). Để trống cả hai màu để dùng nền trong suốt.', 'chinhtoa'), $brandShow);
+    ct_field_color($s, array('header_data', 'c_brand', 'slogan_color'), __('Màu chữ khẩu hiệu', 'chinhtoa'), '', $brandShow);
 
     echo '</tbody></table>';
 }
@@ -212,6 +222,8 @@ function ct_home_sec_templates()
         'temp4' => __('Danh sách bài 4', 'chinhtoa'),
         'temp5' => __('Danh sách bài 5', 'chinhtoa'),
         'temp6' => __('Tabs chuyên mục', 'chinhtoa'),
+        'temp7' => __('Lời Chúa hôm nay (bài theo ngày)', 'chinhtoa'),
+        'temp8' => __('Lưới ảnh mosaic', 'chinhtoa'),
     );
 }
 
@@ -305,6 +317,12 @@ function ct_render_home_sec_row($i, $row = array())
             ct_sec_grid_close();
             ct_render_tab_list($p, isset($g['tab_list']) && is_array($g['tab_list']) ? $g['tab_list'] : array(), $disabled);
             ct_sec_group_close();
+        } elseif ('temp7' === $tpl) {
+            ct_sec_group_open(__('Nguồn bài viết', 'chinhtoa'), __('Chuyên mục chứa bài mỗi ngày (VD "Suy niệm"). Khối tự hiện bài có NGÀY ĐĂNG là hôm nay; thêm widget "Lịch Lời Chúa" cùng chuyên mục vào thanh bên để bấm xem bài các ngày khác.', 'chinhtoa'), 'dashicons-calendar-alt');
+            ct_sec_grid_open();
+            ct_sec_input($p, 'cats', __('Chuyên mục', 'chinhtoa'), isset($g['cats']) ? $g['cats'] : '', 'taxonomy', $disabled);
+            ct_sec_grid_close();
+            ct_sec_group_close();
         } else {
             ct_sec_group_open(__('Nguồn bài viết', 'chinhtoa'), __('Chọn chuyên mục và số bài hiển thị trong khối.', 'chinhtoa'), 'dashicons-category');
             ct_sec_grid_open();
@@ -315,7 +333,7 @@ function ct_render_home_sec_row($i, $row = array())
         }
 
         // ---- Nhóm 3: Hiển thị trên thẻ bài (chỉ khối danh sách bài & tabs) ----
-        if ('temp0' !== $tpl) {
+        if ('temp0' !== $tpl && 'temp7' !== $tpl) {
             ct_sec_group_open(__('Hiển thị trên thẻ bài', 'chinhtoa'), __('Bật/tắt các thành phần hiện trên mỗi thẻ bài viết.', 'chinhtoa'), 'dashicons-visibility');
             ct_sec_grid_open();
             ct_sec_input(array_merge($p, array('card')), 'post_thumb',  __('Ảnh đại diện', 'chinhtoa'), ct_opt_val($g, array('card', 'post_thumb'), 'y'),  'yn', $disabled);
@@ -341,8 +359,8 @@ function ct_render_home_sec_row($i, $row = array())
         ct_sec_grid_close();
         ct_sec_group_close();
 
-        // ---- Nhóm 5: Nút "Xem thêm" (mọi mẫu trừ Tabs) ----
-        if ('temp6' !== $tpl) {
+        // ---- Nhóm 5: Nút "Xem thêm" (mọi mẫu trừ Tabs và Lời Chúa hôm nay) ----
+        if ('temp6' !== $tpl && 'temp7' !== $tpl) {
             ct_sec_group_open(__('Nút "Xem thêm"', 'chinhtoa'), __('Nút đặt cuối khối, dẫn tới trang chuyên mục hoặc liên kết bất kỳ.', 'chinhtoa'), 'dashicons-admin-links');
             ct_sec_grid_open();
             ct_sec_input(array_merge($p, array('show_readmore')), 'action_show', __('Hiện nút', 'chinhtoa'), ct_opt_val($g, array('show_readmore', 'action_show'), 'n'), 'yn', $disabled);
@@ -364,20 +382,27 @@ function ct_sec_input($pathPrefix, $key, $label, $value, $type, $disabled = '')
 {
     $name = ct_opt_name(array_merge((array) $pathPrefix, array($key)));
     $wide = in_array($type, array('textarea', 'taxonomy'), true) ? ' ct-sec-field--wide' : '';
+    if ('color' === $type) {
+        // WP color-picker bọc input vào một khung bị ẩn (.wp-picker-input-wrap) — nếu nhãn nằm
+        // chung <label> với input thì nhãn cũng bị ẩn theo, còn lại ba nút "Chọn màu" không tên.
+        // Nên nhãn đứng riêng, input nằm ngoài <label>.
+        echo '<div class="ct-sec-field ct-sec-field--color"><span class="ct-sec-field-label">' . esc_html($label) . '</span>';
+        // .ct-color-field được admin-options-native.js gắn WP color-picker (cả khi thêm khối mới).
+        printf('<input type="text" class="ct-color-field" name="%s" value="%s" data-default-color="" aria-label="%s"%s>', esc_attr($name), esc_attr($value), esc_attr($label), $disabled);
+        echo '</div>';
+        return;
+    }
     echo '<p class="ct-sec-field' . $wide . '"><label>' . esc_html($label) . '<br>';
     if ('textarea' === $type) {
         printf('<textarea class="large-text" rows="4" name="%s"%s>%s</textarea>', esc_attr($name), $disabled, esc_textarea($value));
     } elseif ('number' === $type) {
         printf('<input type="number" class="small-text" name="%s" value="%s"%s>', esc_attr($name), esc_attr($value), $disabled);
     } elseif ('slider' === $type) {
-        ct_slider_control($name, $value, 0, 30, $disabled);
+        ct_slider_control($name, $value, 1, 30, $disabled);
     } elseif ('taxonomy' === $type) {
         ct_taxonomy_control($name, $value, $disabled);
     } elseif ('yn' === $type) {
         printf('<select name="%s"%s><option value="y"%s>Có</option><option value="n"%s>Không</option></select>', esc_attr($name), $disabled, selected($value, 'y', false), selected($value, 'n', false));
-    } elseif ('color' === $type) {
-        // .ct-color-field được admin-options-native.js gắn WP color-picker (cả khi thêm khối mới).
-        printf('<input type="text" class="ct-color-field" name="%s" value="%s" data-default-color=""%s>', esc_attr($name), esc_attr($value), $disabled);
     } else {
         printf('<input type="text" class="regular-text" name="%s" value="%s"%s>', esc_attr($name), esc_attr($value), $disabled);
     }

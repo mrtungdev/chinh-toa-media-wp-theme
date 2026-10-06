@@ -1,0 +1,189 @@
+/**
+ * Header kiểu "Logo + khẩu hiệu" (template-parts/header/header-brand.php)
+ * + kiểu menu c4 "Thanh chia đều" (#site-nav.nav-style-c4).
+ *
+ * CSS viết tay (không qua webpack). Chỉ nạp khi header = c_brand hoặc menu = c4
+ * (xem inc/utilities/enqueue.php). Màu đến từ biến nội tuyến --ct-hb-* / --ct-nav-*.
+ */
+
+/* ------------------------------------------------------------ Header brand */
+.header-brand {
+  background-color: var(--ct-hb-to, transparent);
+  background-image: linear-gradient(180deg, var(--ct-hb-from, transparent) 0%, var(--ct-hb-to, transparent) 100%);
+  padding: 1.25rem 0 1rem;
+}
+
+.header-brand__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.header-brand__logo {
+  display: block;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.header-brand__logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 128px;
+}
+
+.header-brand__name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ct-hb-text, inherit);
+}
+
+.header-brand__slogan {
+  margin-left: auto;
+  text-align: right;
+}
+
+.header-brand__slogan-text {
+  margin: 0;
+  font-family: "Charm", cursive;
+  font-size: clamp(1.6rem, 3.4vw, 2.75rem);
+  line-height: 1.15;
+  color: var(--ct-hb-text, #c4161c);
+  text-wrap: balance;
+}
+
+.header-brand__slogan-ref {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1f2a5a;
+}
+
+/* Máy tính bảng: logo + khẩu hiệu vẫn cùng hàng, thu nhỏ lại. */
+@media (max-width: 991.98px) {
+  .header-brand {
+    padding: 1rem 0 0.9rem;
+  }
+  .header-brand__logo img {
+    max-height: 96px;
+  }
+  .header-brand__slogan-text {
+    font-size: clamp(1.35rem, 3.6vw, 2rem);
+  }
+}
+
+/* Điện thoại: xếp chồng, gọn. */
+@media (max-width: 575.98px) {
+  .header-brand {
+    padding: 0.85rem 0 0.9rem;
+  }
+  .header-brand__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .header-brand__logo img {
+    max-height: 78px;
+  }
+  .header-brand__slogan {
+    margin-left: 0;
+    text-align: center;
+  }
+  .header-brand__slogan-text {
+    font-size: 1.4rem;
+  }
+  .header-brand__slogan-ref {
+    margin-top: 0.15rem;
+    font-size: 0.72rem;
+  }
+}
+
+/* --------------------------------------------- Nav style c4 (chia đều) */
+/*
+ * Thanh màu đặc, các mục giãn đều phủ kín bề ngang; mục đang chọn / hover có gạch nhấn
+ * (--ct-nav-accent) ở cạnh dưới. Menu con: thẻ trắng bo góc, đổ bóng nhẹ.
+ * Mặc định theo màu giao diện; style nội tuyến --ct-nav-bg (nếu có) sẽ đè.
+ */
+#site-nav.nav-style-c4 {
+  --ct-nav-bg: var(--bs-primary, #1565c0);
+}
+
+@media (min-width: 992px) {
+  #site-nav.navbar.nav-style-c4 {
+    background-color: var(--ct-nav-bg);
+    box-shadow: 0 2px 12px rgba(15, 23, 60, 0.18);
+  }
+  /* auto: mục dài (VD "Vui học Kinh Thánh") rộng hơn để không bị cắt chữ; phần dư chia đều. */
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: stretch;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li + li {
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li > a {
+    max-width: none;
+    padding: 1rem 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--ct-nav-text, #fff);
+    opacity: 0.9;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li::after {
+    content: "";
+    position: absolute;
+    left: 22%;
+    right: 22%;
+    bottom: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: var(--ct-nav-accent, rgba(255, 255, 255, 0.85));
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li:hover > a {
+    background-color: rgba(255, 255, 255, 0.07);
+    opacity: 1;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li.current-menu-item > a,
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li.current-menu-parent > a,
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li.current-menu-ancestor > a {
+    background-color: rgba(255, 255, 255, 0.12);
+    opacity: 1;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li:hover::after,
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li.current-menu-item::after,
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li.current-menu-parent::after,
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu > li.current-menu-ancestor::after {
+    transform: scaleX(1);
+  }
+  /* Menu con */
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu ul {
+    padding: 0.35rem 0;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 14px 30px rgba(15, 23, 60, 0.18);
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu ul ul {
+    border-radius: 8px;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu ul li {
+    align-items: stretch;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu ul li a {
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+    color: #1f2a44;
+    text-align: left;
+  }
+  #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu ul li:hover {
+    background-color: #f1f4fb;
+  }
+}
+
+/* Menu trên điện thoại/tablet (mọi kiểu menu, kể cả c4): assets/css/nav-menu.css. */

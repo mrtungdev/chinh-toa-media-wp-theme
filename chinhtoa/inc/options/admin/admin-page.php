@@ -31,7 +31,7 @@ add_action('admin_init', 'ct_register_settings');
 
 /**
  * Recursive sanitizer. Receives the unslashed $_POST['ct_settings'] tree.
- * Plain strings are trimmed; explicit rich-HTML fields go through wp_kses_post;
+ * Plain strings are trimmed; explicit rich-HTML fields go through ct_kses_rich_text;
  * raw script fields are kept verbatim (page is manage_options-only, matching the
  * previous behavior where admins could inject head/footer scripts).
  *
@@ -69,7 +69,7 @@ function ct_settings_sanitize_walk($value, $key = '')
             return trim($value);
         }
         if (in_array($key, $rich_keys, true)) {
-            return wp_kses_post($value);
+            return ct_kses_rich_text($value);
         }
         return trim($value);
     }
@@ -165,6 +165,9 @@ function ct_render_settings_page()
     ?>
     <div class="wrap ct-options-wrap">
         <h1><?php echo esc_html__('Thiết lập giao diện', 'chinhtoa'); ?></h1>
+        <?php if (isset($_GET['settings-updated']) && 'true' === $_GET['settings-updated']) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+            <div class="notice notice-success is-dismissible"><p><strong><?php echo esc_html__('Đã lưu thay đổi.', 'chinhtoa'); ?></strong> <?php echo esc_html__('Mở website (hoặc tải lại trang) để xem kết quả.', 'chinhtoa'); ?></p></div>
+        <?php endif; ?>
         <nav class="ct-tabs">
             <?php $first = true; foreach ($groups as $key => $label) : ?>
                 <a href="#" class="ct-tab<?php echo $first ? ' is-active' : ''; ?>" data-tab="<?php echo esc_attr($key); ?>"><?php echo esc_html($label); ?></a>

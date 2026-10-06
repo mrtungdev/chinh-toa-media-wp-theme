@@ -39,3 +39,10 @@ function ct_flush_post_caches(){
 }
 add_action( 'save_post', 'ct_flush_post_caches' );
 add_action( 'deleted_post', 'ct_flush_post_caches' );
+// Lưu Thiết lập giao diện (đổi chuyên mục, số bài…) → trang chủ cập nhật ngay.
+add_action( 'add_option_ct_settings', 'ct_flush_post_caches' );
+add_action( 'update_option_ct_settings', 'ct_flush_post_caches' );
+// Đổi tên / xoá chuyên mục → khối trang chủ, box 5 phút không hiện danh sách cũ.
+add_action( 'created_category', 'ct_flush_post_caches' );
+add_action( 'edited_category', 'ct_flush_post_caches' );
+add_action( 'delete_category', 'ct_flush_post_caches' );

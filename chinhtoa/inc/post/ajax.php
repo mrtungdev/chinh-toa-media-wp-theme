@@ -55,6 +55,8 @@ function homepage_tabs_template_get($section)
         'temp4' => 'template-parts/homepage/c_post-template4.php',
         'temp5' => 'template-parts/homepage/c_post-template5.php',
         'temp6' => 'template-parts/homepage/c_post-template6.php',
+        'temp7' => 'template-parts/homepage/c_daily-word.php',
+        'temp8' => 'template-parts/homepage/c_post-mosaic.php',
     );
 
     if (!isset($templates[$section['type']])) {

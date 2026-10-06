@@ -2,6 +2,8 @@
 $title = get_the_title($post->ID);
 $link = get_permalink($post->ID);
 $image = getPostImage($post->ID);
+// Bài "Lời Chúa" không có ảnh đại diện → hiện câu Lời Chúa thay ảnh trống.
+$lcThumb = function_exists('ct_loichua_thumb_fallback_html') ? ct_loichua_thumb_fallback_html($post->ID) : '';
 $date = get_the_date('', $post->ID);
 $views = intval(get_post_meta($post->ID, 'views', true));
 
@@ -17,7 +19,11 @@ $isNotThumbClass = $showThumb == 'y' ? 'has-thumb' : '';
   <div class="ct__post-item-image-wrap">
     <?php if ($showThumb == 'y') : ?>
       <figure class="image is-16by9">
+        <?php if ($lcThumb !== '') : ?>
+        <?php echo $lcThumb; // đã escape trong hàm ?>
+        <?php else : ?>
         <img class="image-thumb lazyload" src="<?php echo esc_url(CT_PLACEHOLDER); ?>" data-src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+        <?php endif; ?>
       </figure>
     <?php endif; ?>
     <div class="ct__post-item-data">

@@ -7,8 +7,8 @@
  * ct_loichua_card_render() với block chinhtoa/loichua-card (markup/CSS không lệch).
  * Theo khuôn mẫu CT_PostList_Widget (inc/widget/ct_postlist_widget.php).
  *
- * KHÁC widget "Lời Chúa hôm nay" (CT_LoiChua_Widget, inc/loichua/widget.php): cái đó
- * hiển thị bộ bài đọc theo ngày từ CPT ct_loichua; cái này là thẻ câu ghi nhớ tự do.
+ * KHÁC widget "Lịch Lời Chúa" (CT_LoiChua_Calendar_Widget, inc/loichua/calendar-widget.php):
+ * cái đó là lịch bài theo ngày; cái này là thẻ câu ghi nhớ tự do.
  *
  * @package chinhtoa
  */

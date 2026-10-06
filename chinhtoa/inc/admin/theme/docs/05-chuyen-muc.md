@@ -1,37 +1,57 @@
-## Chuyên mục — phân loại bài viết
+## Chuyên mục
 
-**Chuyên mục** giúp sắp xếp bài viết theo từng nhóm nội dung của giáo xứ, để giáo
-dân dễ tìm và để các khối trên trang chủ lấy đúng bài.
+**Chuyên mục** là nhóm bài cùng chủ đề, ví dụ *Suy niệm*, *Giáo lý*, *Thông báo*. Trong
+trang quản trị, WordPress gọi chuyên mục là **Danh mục**. Hai tên chỉ cùng một thứ.
 
-Quản lý tại [trang Chuyên mục](edit-tags.php?taxonomy=category) (menu
-**Bài viết → Chuyên mục**).
+Chuyên mục dùng để:
 
-### Các chuyên mục thường dùng trong website giáo xứ
+- Gom bài vào đúng **khối trên trang chủ**: mỗi khối lấy bài từ chuyên mục được chọn.
+- Tạo trang danh sách riêng, ví dụ `tenwebsite.com/category/suy-niem/`.
+- Làm mục trên **thanh menu**.
 
-- **Giờ lễ** — lịch các Thánh lễ trong tuần, Chúa Nhật và lễ trọng.
-- **Thông báo** — thông báo của Cha xứ và Hội đồng Mục vụ Giáo xứ.
-- **Bản tin** — bản tin giáo xứ hằng tuần / hằng tháng.
-- **Tin tức – Sự kiện** — hoạt động, sinh hoạt các hội đoàn, ca đoàn, giáo lý.
-- **Suy niệm Lời Chúa** — suy niệm Tin Mừng, *“5 phút Lời Chúa”*.
-- **Phụng vụ** — hướng dẫn phụng vụ theo mùa: Mùa Vọng, Mùa Giáng Sinh, Mùa
-  Chay, Mùa Phục Sinh, Mùa Thường Niên.
+### Thêm chuyên mục mới
 
-### Tạo một chuyên mục mới
+Vào **Bài viết → Danh mục** ([mở](edit-tags.php?taxonomy=category)). Khung **Thêm Danh
+Mục** nằm bên trái:
 
-1. Mở [trang Chuyên mục](edit-tags.php?taxonomy=category).
-2. Ở cột trái, điền **Tên** (ví dụ *“Giờ lễ”*).
-3. **Đường dẫn tĩnh** (slug) nên để trống cho hệ thống tự tạo, hoặc dùng chữ
-   không dấu (ví dụ `gio-le`).
-4. Bấm **Thêm chuyên mục mới**.
+1. **Tên**: tên hiện ra ngoài website, ví dụ *Thông báo giáo xứ*.
+2. **Đường dẫn**: để trống, website tự tạo từ Tên (ví dụ `thong-bao-giao-xu`).
+3. **Danh mục cha**: để **Không có**. Chỉ chọn khi muốn làm chuyên mục con.
+4. **Miêu tả**: không bắt buộc. Một câu giới thiệu ngắn.
+5. Bấm **Thêm Danh Mục**. Chuyên mục mới hiện ở danh sách bên phải.
 
-### Chuyên mục con (cấp 2)
+![Khung Thêm Danh Mục]({{img}}/them-danh-muc.webp)
+*Số trên ảnh trùng với số bước.*
 
-Khi tạo chuyên mục, chọn một **Chuyên mục cha** để tạo cấp con. Ví dụ:
-**Hội đoàn** (cha) → *Ca đoàn*, *Giới Trẻ*, *Legio Mariæ*, *Caritas* (con).
+### Sửa hoặc xoá chuyên mục
 
-### Lưu ý
+- **Sửa:** đưa chuột vào tên chuyên mục trong danh sách, bấm **Chỉnh sửa**. Sửa xong bấm
+  **Cập nhật** ở cuối trang.
+- **Xoá:** đưa chuột vào tên, bấm **Xóa**. Bài trong chuyên mục **không bị xoá**, mà được
+  chuyển sang **chuyên mục mặc định**.
+- Chuyên mục mặc định (trên website mẫu là *Suy niệm*) **không có nút Xóa**.
 
-- Mỗi bài nên thuộc **một chuyên mục chính** để hiển thị nhất quán.
-- Đừng xóa chuyên mục đang có nhiều bài; nếu cần, hãy chuyển bài sang chuyên mục
-  khác trước.
-- Tên chuyên mục dùng **đúng thuật ngữ Công giáo**, viết hoa đầu mỗi từ chính.
+> **Cẩn thận khi đổi Đường dẫn** của chuyên mục đang có trên menu hoặc đã chia sẻ lên
+> Facebook: đường dẫn cũ sẽ không mở được nữa.
+
+### Bố cục riêng cho một chuyên mục *(Quản lý)*
+
+Mặc định mọi chuyên mục dùng chung bố cục trong **Thiết lập giao diện → Trang chủ & Bài
+viết → Trang Chuyên mục & Bài viết**. Muốn một chuyên mục trình bày khác (ví dụ *Hình ảnh*
+xếp 3 cột):
+
+1. Mở chuyên mục đó (**Chỉnh sửa**), kéo xuống **Tuỳ chỉnh giao diện chuyên mục**, bật
+   công tắc **Tuỳ chỉnh riêng chuyên mục này**.
+2. **Số cột danh sách**: bấm ô có số cột mong muốn (1–4 cột).
+3. **Kiểu trình bày**: ảnh trên chữ dưới, hoặc chữ nằm trên ảnh.
+4. **Hiển thị thanh bên (sidebar)**: bật nếu muốn có cột nhỏ bên cạnh, rồi chọn bên trái
+   hoặc bên phải.
+5. Bật hoặc tắt các phần trên mỗi thẻ bài: **Hình đại diện**, **Mô tả ngắn**, **Ngày &
+   lượt xem**.
+6. Bấm **Cập nhật** ở cuối trang.
+
+![Tuỳ chỉnh giao diện chuyên mục]({{img}}/tuy-chinh-chuyen-muc.webp)
+*Số 1–5 trùng với bước 1–5.*
+
+Muốn quay về bố cục chung: tắt công tắc **Tuỳ chỉnh riêng chuyên mục này** rồi bấm
+**Cập nhật**.

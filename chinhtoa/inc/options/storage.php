@@ -183,7 +183,7 @@ function ct_get_post_option($post_id, $key = null, $default = null)
 
 /**
  * Settings keys whose string value may legitimately contain HTML. On save they
- * are run through wp_kses_post(). Single source of truth for the admin
+ * are run through ct_kses_rich_text() (wp_kses_post + iframe). Single source of truth for the admin
  * sanitizer (ct_settings_sanitize_walk) — filterable so child themes can extend.
  *
  * @return string[]
@@ -191,6 +191,32 @@ function ct_get_post_option($post_id, $key = null, $default = null)
 function ct_rich_text_keys()
 {
     return apply_filters('ct_rich_text_keys', array('header_text', 'gen_footer_text', 'content', 'noidung'));
+}
+
+/**
+ * Lọc HTML cho các trường rich text (ct_rich_text_keys): như wp_kses_post() nhưng cho
+ * phép thêm <iframe> với danh sách thuộc tính an toàn — để nhúng video YouTube/Facebook
+ * livestream vào Thanh thông báo hoặc khối "Tĩnh / HTML".
+ *
+ * @param string $value
+ * @return string
+ */
+function ct_kses_rich_text($value)
+{
+    $allowed = wp_kses_allowed_html('post');
+    $allowed['iframe'] = array(
+        'src'             => true,
+        'width'           => true,
+        'height'          => true,
+        'title'           => true,
+        'allow'           => true,
+        'allowfullscreen' => true,
+        'frameborder'     => true,
+        'loading'         => true,
+        'referrerpolicy'  => true,
+        'style'           => true,
+    );
+    return wp_kses($value, apply_filters('ct_rich_text_allowed_html', $allowed));
 }
 
 /**

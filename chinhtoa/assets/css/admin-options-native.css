@@ -72,7 +72,8 @@
 #ct-home-sec .ct-sec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 22px; align-items: start; }
 #ct-home-sec .ct-sec-grid + .ct-sec-grid { margin-top: 12px; }
 #ct-home-sec .ct-sec-field { margin: 0; }
-#ct-home-sec .ct-sec-field > label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; margin-bottom: 4px; }
+#ct-home-sec .ct-sec-field > label,
+#ct-home-sec .ct-sec-field > .ct-sec-field-label { display: block; font-weight: 600; font-size: 12px; color: #1d2327; margin-bottom: 4px; }
 #ct-home-sec .ct-sec-field input[type="text"], #ct-home-sec .ct-sec-field textarea { width: 100%; max-width: 100%; }
 #ct-home-sec .ct-sec-field select { max-width: 100%; }
 #ct-home-sec .ct-sec-field--wide { grid-column: 1 / -1; }

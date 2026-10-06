@@ -15,26 +15,66 @@
   function cssEsc(s) { return s.replace(/(["\\\]\[])/g, '\\$1'); }
 
   // --- Tabs (two-level: top-level groups + per-group sub-tabs) --------------
+  // Vị trí đang mở được ghi vào #group/sub (deep-link từ trang Hướng dẫn, VD
+  // admin.php?page=ct-theme-settings#noidung/homepage) và sessionStorage, để sau khi
+  // bấm "Lưu thay đổi" trang mở lại đúng tab đang làm.
+  var TAB_KEY = 'ctOptionsTab';
+
+  function showGroup($wrap, tab) {
+    var $link = $wrap.find('.ct-tabs > .ct-tab[data-tab="' + tab + '"]');
+    if (!$link.length) return false;
+    $wrap.find('.ct-tabs > .ct-tab').removeClass('is-active');
+    $link.addClass('is-active');
+    $wrap.find('.ct-tab-panel').hide().filter('[data-tab="' + tab + '"]').show();
+    return true;
+  }
+
+  function showSub($panel, sub) {
+    var $link = $panel.find('.ct-subtab[data-subtab="' + sub + '"]');
+    if (!$link.length) return false;
+    $panel.find('.ct-subtab').removeClass('is-active');
+    $link.addClass('is-active');
+    $panel.find('.ct-subtab-panel').hide().filter('[data-subtab="' + sub + '"]').show();
+    return true;
+  }
+
+  function rememberTab($wrap) {
+    var group = $wrap.find('.ct-tabs > .ct-tab.is-active').data('tab') || '';
+    var sub = $wrap.find('.ct-tab-panel:visible .ct-subtab.is-active').data('subtab') || '';
+    var val = group + (sub ? '/' + sub : '');
+    try { window.sessionStorage.setItem(TAB_KEY, val); } catch (err) { /* ignore */ }
+    if (window.history && history.replaceState) { history.replaceState(null, '', '#' + val); }
+  }
+
+  function restoreTab($wrap) {
+    var val = (window.location.hash || '').replace(/^#/, '');
+    if (!val) {
+      try { val = window.sessionStorage.getItem(TAB_KEY) || ''; } catch (err) { val = ''; }
+    }
+    if (!val) return;
+    var parts = val.split('/');
+    if (!showGroup($wrap, parts[0])) return;
+    if (parts[1]) {
+      showSub($wrap.find('.ct-tab-panel[data-tab="' + parts[0] + '"]'), parts[1]);
+    }
+  }
+
   function initTabs() {
     var $wrap = $('.ct-options-wrap');
     if (!$wrap.length) return;
     // Top-level tabs.
     $wrap.on('click', '.ct-tabs > .ct-tab', function (e) {
       e.preventDefault();
-      var tab = $(this).data('tab');
-      $wrap.find('.ct-tabs > .ct-tab').removeClass('is-active');
-      $(this).addClass('is-active');
-      $wrap.find('.ct-tab-panel').hide().filter('[data-tab="' + tab + '"]').show();
+      showGroup($wrap, $(this).data('tab'));
+      rememberTab($wrap);
     });
     // Sub-tabs, scoped to their group panel.
     $wrap.on('click', '.ct-subtab', function (e) {
       e.preventDefault();
-      var $panel = $(this).closest('.ct-tab-panel');
-      var sub = $(this).data('subtab');
-      $panel.find('.ct-subtab').removeClass('is-active');
-      $(this).addClass('is-active');
-      $panel.find('.ct-subtab-panel').hide().filter('[data-subtab="' + sub + '"]').show();
+      showSub($(this).closest('.ct-tab-panel'), $(this).data('subtab'));
+      rememberTab($wrap);
     });
+    restoreTab($wrap);
   }
 
   // --- Conditional rows -----------------------------------------------------

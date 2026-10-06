@@ -33,6 +33,35 @@ if (!defined('CT_LC_CARD_META_QUOTE')) {
 if (!defined('CT_LC_CARD_META_CITATION')) {
     define('CT_LC_CARD_META_CITATION', '_ct_lc_card_citation');
 }
+// Thông tin ngày cho bài "Lời Chúa hôm nay" (box trang chủ + lịch, inc/loichua/daily.php).
+if (!defined('CT_LC_META_DAY_TITLE')) {
+    define('CT_LC_META_DAY_TITLE', '_ct_lc_day_title');
+}
+if (!defined('CT_LC_META_SAINT')) {
+    define('CT_LC_META_SAINT', '_ct_lc_saint');
+}
+if (!defined('CT_LC_META_GOSPEL_REF')) {
+    define('CT_LC_META_GOSPEL_REF', '_ct_lc_gospel_ref');
+}
+
+/** Các ô thông tin ngày: meta key => nhãn. NGUỒN DUY NHẤT cho register/render/save. */
+function ct_post_kind_day_fields()
+{
+    return array(
+        CT_LC_META_DAY_TITLE  => array(
+            'label'       => __('Ngày phụng vụ', 'chinhtoa'),
+            'placeholder' => __('VD: Thứ Hai Tuần 27 TN', 'chinhtoa'),
+        ),
+        CT_LC_META_SAINT      => array(
+            'label'       => __('Lễ / kính thánh', 'chinhtoa'),
+            'placeholder' => __('VD: Th. Faustina, trinh nữ', 'chinhtoa'),
+        ),
+        CT_LC_META_GOSPEL_REF => array(
+            'label'       => __('Đoạn Tin Mừng', 'chinhtoa'),
+            'placeholder' => __('VD: Lc 10,25-37', 'chinhtoa'),
+        ),
+    );
+}
 
 /** Map slug => nhãn cho dropdown loại bài viết. NGUỒN DUY NHẤT. */
 function ct_post_kinds()
@@ -78,6 +107,15 @@ function ct_post_kind_register_meta()
             'sanitize_callback' => 'esc_url_raw',
             'auth_callback'     => $auth,
         ));
+        foreach (array_keys(ct_post_kind_day_fields()) as $key) {
+            register_post_meta($pt, $key, array(
+                'single'            => true,
+                'type'              => 'string',
+                'show_in_rest'      => false,
+                'sanitize_callback' => 'sanitize_text_field',
+                'auth_callback'     => $auth,
+            ));
+        }
     }
 }
 add_action('init', 'ct_post_kind_register_meta');
@@ -152,6 +190,17 @@ function ct_post_kind_render_meta_box($post)
         <p class="description">
             <?php esc_html_e('Hiện thẻ câu ghi nhớ ở đầu bài; cũng làm nguồn cho thẻ/block "Lời Chúa: Câu ghi nhớ" (Dynamic). Để trống = lấy mô tả + tiêu đề.', 'chinhtoa'); ?>
         </p>
+        <?php foreach (ct_post_kind_day_fields() as $key => $field) : ?>
+        <p>
+            <label for="<?php echo esc_attr($key); ?>"><strong><?php echo esc_html($field['label']); ?></strong></label>
+            <input type="text" id="<?php echo esc_attr($key); ?>" name="<?php echo esc_attr($key); ?>"
+                value="<?php echo esc_attr(get_post_meta($post->ID, $key, true)); ?>" class="widefat"
+                placeholder="<?php echo esc_attr($field['placeholder']); ?>">
+        </p>
+        <?php endforeach; ?>
+        <p class="description">
+            <?php esc_html_e('Ngày phụng vụ, lễ thánh và đoạn Tin Mừng hiện trong box "Lời Chúa hôm nay" ở trang chủ. Box lấy bài theo NGÀY ĐĂNG — hẹn giờ đăng đúng ngày để bài tự lên.', 'chinhtoa'); ?>
+        </p>
     </div>
 
     <div class="ct-pk-fields" data-kind="media">
@@ -196,6 +245,10 @@ function ct_post_kind_save_meta($post_id)
     $citation = isset($_POST[CT_LC_CARD_META_CITATION]) ? sanitize_text_field(wp_unslash($_POST[CT_LC_CARD_META_CITATION])) : '';
     ct_set_value_post_meta($quote, $post_id, CT_LC_CARD_META_QUOTE);
     ct_set_value_post_meta($citation, $post_id, CT_LC_CARD_META_CITATION);
+    foreach (array_keys(ct_post_kind_day_fields()) as $key) {
+        $val = isset($_POST[$key]) ? sanitize_text_field(wp_unslash($_POST[$key])) : '';
+        ct_set_value_post_meta($val, $post_id, $key);
+    }
 }
 add_action('save_post', 'ct_post_kind_save_meta');
 
@@ -228,6 +281,40 @@ function ct_post_kind_loichua_html($post_id)
         'sourcePostId' => (int) $post_id,
     ));
 }
+
+/**
+ * Bài loại "Lời Chúa" KHÔNG có ảnh đại diện → khối câu Lời Chúa (câu + trích dẫn) để đặt
+ * vào chỗ ảnh ở thẻ bài / lưới ảnh, thay cho ảnh trống. '' nếu bài có ảnh, khác loại hoặc
+ * chưa có câu ghi nhớ → template giữ nguyên ảnh như cũ. CSS: assets/css/loichua-thumb.css.
+ */
+function ct_loichua_thumb_fallback_html($post_id)
+{
+    $post_id = (int) $post_id;
+    if (has_post_thumbnail($post_id) || ct_post_kind($post_id) !== 'loichua') {
+        return '';
+    }
+    $quote = trim(wp_strip_all_tags((string) get_post_meta($post_id, CT_LC_CARD_META_QUOTE, true)));
+    if ($quote === '') {
+        return '';
+    }
+    $cite = trim((string) get_post_meta($post_id, CT_LC_CARD_META_CITATION, true));
+    $html  = '<div class="ct-lc-thumb">';
+    $html .= '<span class="ct-lc-thumb__mark" aria-hidden="true">&ldquo;</span>';
+    $html .= '<p class="ct-lc-thumb__quote">' . esc_html($quote) . '</p>';
+    if ($cite !== '') {
+        $html .= '<span class="ct-lc-thumb__cite">' . esc_html($cite) . '</span>';
+    }
+    return $html . '</div>';
+}
+
+/** CSS khối câu Lời Chúa thay ảnh — các trang có danh sách bài (trang chủ, chuyên mục, tìm kiếm). */
+function ct_loichua_thumb_enqueue()
+{
+    if (is_front_page() || is_home() || is_archive() || is_search() || is_page_template('page-homepage.php')) {
+        wp_enqueue_style('ct-loichua-thumb', CT_THEME_CSS_URI . '/loichua-thumb.css', array(), THEME_VERSION);
+    }
+}
+add_action('wp_enqueue_scripts', 'ct_loichua_thumb_enqueue', 20);
 
 /** Nạp CSS mặt trước theo loại bài — chỉ trang chi tiết. */
 function ct_post_kind_enqueue()

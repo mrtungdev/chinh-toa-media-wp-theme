@@ -1,27 +1,55 @@
 ## Bắt đầu nhanh
 
-Chào mừng bạn quản trị website giáo xứ! Trang quản trị có **hai khu vực chính**:
+Website có **hai phần**:
 
-- **Hướng dẫn sử dụng** (trang bạn đang xem) — chọn mục ở **menu bên trái** để đọc.
-- **Thiết lập giao diện** — nơi chỉnh hình thức website
-  ([mở tại đây](admin.php?page=ct-theme-settings)).
+- **Ngoài website**: trang mọi người xem (trang chủ, bài viết, chuyên mục).
+- **Trang quản trị**: nơi bạn đăng nhập để viết bài, đổi ảnh, chỉnh giao diện. Trang
+  bạn đang đọc nằm trong trang quản trị.
 
-### Ba việc thường làm nhất
+![Trang chủ ngoài website]({{img}}/website.webp)
+*Ngoài website: (1) đầu trang, (2) thanh menu, (3) các khối bài viết, (4) cột bên phải.*
 
-1. **Đăng tin / thông báo:** vào **Bài viết → Viết bài mới**. Xem mục
-   **Viết & quản lý bài viết**.
-2. **Đăng câu Lời Chúa / video bài giảng:** vẫn là một bài viết, nhưng chọn thêm
-   **Loại bài** ở khung *Phân loại bài viết*. Xem mục
-   **Phân loại bài viết: Lời Chúa & Video**.
-3. **Chỉnh giao diện (màu, header, footer, trang chủ):** vào **Thiết lập giao
-   diện**. Xem các mục trong nhóm *Giao diện & Trang chủ*.
+### Đăng nhập
 
-> **Mẹo:** Mỗi mục ở menu bên trái là một “trang” riêng. Bạn có thể gửi cho người
-> khác đường dẫn kèm dấu `#` ở cuối (ví dụ `…#guide-phan-loai`) để mở thẳng đúng
-> mục đó.
+Mở trình duyệt, gõ địa chỉ website rồi thêm `/wp-admin` vào cuối (ví dụ
+`tenwebsite.com/wp-admin`) và bấm phím Enter. Màn hình đăng nhập hiện ra:
 
-### Quy tắc vàng
+1. Gõ **Tên người dùng hoặc địa chỉ email**.
+2. Gõ **Mật khẩu**. Bấm hình con mắt nếu muốn xem lại mật khẩu vừa gõ.
+3. Chỉ tích **Ghi nhớ đăng nhập** khi dùng máy riêng của bạn.
+4. Bấm **Đăng nhập**.
 
-- Sau khi chỉnh **Thiết lập giao diện**, luôn bấm **Lưu thay đổi**.
-- Sau khi đăng/sửa bài, bấm **Xem** để kiểm tra ngoài website.
-- Nên đặt **Ảnh đại diện** cho mọi bài để trang chủ đẹp và đồng đều.
+![Màn hình đăng nhập]({{img}}/dang-nhap.webp)
+*Số trên ảnh trùng với số bước. Quên mật khẩu thì bấm “Bạn quên mật khẩu?” (số 5).*
+
+### Bảng Điều Khiển
+
+Đăng nhập xong, bạn vào **Bảng Điều Khiển**:
+
+1. **Menu bên trái**: mở từng khu vực (Bài viết, Thư viện, Trang…).
+2. **Các thẻ lối tắt**: mở nhanh việc hay làm (Hướng dẫn, Viết bài mới, Chuyên mục…).
+
+![Bảng Điều Khiển]({{img}}/bang-dieu-khien.webp)
+*Bảng Điều Khiển của Biên tập viên. Mỗi người chỉ thấy những thẻ mình có quyền dùng.*
+
+### Ai được làm gì?
+
+| Việc | Biên tập viên | Quản lý (Quản trị viên) |
+|---|---|---|
+| Viết, sửa, đăng bài; tải ảnh | Có | Có |
+| Thêm, sửa chuyên mục | Có | Có |
+| Sửa trang (Liên hệ, Trang chủ…) | Có | Có |
+| **Thiết lập giao diện**, menu, widget | Không | Có |
+| Thêm người dùng, cài plugin | Không | Có |
+
+### Việc thường làm
+
+- **Đăng bài:** xem mục *Viết & quản lý bài viết*.
+- **Đăng Lời Chúa mỗi ngày:** xem mục *Lời Chúa hôm nay & Lịch*.
+- **Đổi màu, đầu trang, trang chủ:** xem nhóm *Giao diện & Trang chủ* (dành cho Quản lý).
+
+### Ba điều nên nhớ
+
+1. Đổi gì trong trang quản trị cũng phải bấm nút **Lưu** (Lưu thay đổi, Xuất bản, Lưu menu…).
+2. Lưu xong, mở website và **tải lại trang** để kiểm tra.
+3. Gặp chỗ chưa chắc, **dừng lại và hỏi** người phụ trách kỹ thuật (xem mục *Hỗ trợ kỹ thuật*).

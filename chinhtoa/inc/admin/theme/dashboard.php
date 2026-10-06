@@ -33,6 +33,7 @@ $ct_intro_cards = array(
     'url'     => admin_url('admin.php?page=theme-options'),
     'label'   => __('Xem hướng dẫn', 'chinhtoa'),
     'primary' => true,
+    'cap'     => 'edit_posts', // trang Hướng dẫn yêu cầu quyền viết bài
   ),
   array(
     'icon'  => 'dashicons-admin-customizer',
@@ -40,6 +41,7 @@ $ct_intro_cards = array(
     'desc'  => __('Đổi màu, header, footer, trang chủ và các tuỳ chọn khác.', 'chinhtoa'),
     'url'   => admin_url('admin.php?page=ct-theme-settings'),
     'label' => __('Mở thiết lập', 'chinhtoa'),
+    'cap'   => 'manage_options', // Biên tập viên không mở được trang này → ẩn thẻ.
   ),
   array(
     'icon'  => 'dashicons-edit',
@@ -47,6 +49,7 @@ $ct_intro_cards = array(
     'desc'  => __('Soạn và đăng một bài viết mới lên website.', 'chinhtoa'),
     'url'   => admin_url('post-new.php'),
     'label' => __('Viết bài', 'chinhtoa'),
+    'cap'   => 'edit_posts',
   ),
   array(
     'icon'  => 'dashicons-category',
@@ -54,6 +57,7 @@ $ct_intro_cards = array(
     'desc'  => __('Quản lý các chuyên mục phân loại bài viết.', 'chinhtoa'),
     'url'   => admin_url('edit-tags.php?taxonomy=category'),
     'label' => __('Quản lý', 'chinhtoa'),
+    'cap'   => 'manage_categories',
   ),
   array(
     'icon'  => 'dashicons-menu-alt3',
@@ -61,6 +65,7 @@ $ct_intro_cards = array(
     'desc'  => __('Sắp xếp menu hiển thị trên website.', 'chinhtoa'),
     'url'   => admin_url('nav-menus.php'),
     'label' => __('Chỉnh menu', 'chinhtoa'),
+    'cap'   => 'edit_theme_options',
   ),
 );
 $ct_support = ct_brand('support_url');
@@ -86,6 +91,7 @@ if (!empty($ct_support)) {
 </style>
 <div class="ct-intro-cards">
   <?php foreach ($ct_intro_cards as $card) : ?>
+    <?php if (!empty($card['cap']) && !current_user_can($card['cap'])) { continue; } ?>
     <div class="ct-intro-card">
       <span class="dashicons <?php echo esc_attr($card['icon']); ?>"></span>
       <h3><?php echo esc_html($card['title']); ?></h3>

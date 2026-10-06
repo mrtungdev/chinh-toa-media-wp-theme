@@ -70,16 +70,53 @@
 }
 
 /* ---- Kiểu số thứ tự ---- */
+/* Số căn theo dòng đầu của tiêu đề (baseline); cột số hẹp, chữ số đều (lining/tabular). */
+.ct-postlist--numbered .ct-postlist__item {
+  align-items: baseline;
+  padding: 0.8rem 0;
+}
+
+.ct-postlist--numbered .ct-postlist__item:first-child {
+  padding-top: 0.15rem;
+}
+
+.ct-postlist--numbered .ct-postlist__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Có ảnh thu nhỏ: căn đầu dòng để ảnh không bị kéo theo baseline. */
+.ct-postlist--numbered.ct-postlist--with-thumb .ct-postlist__item {
+  align-items: flex-start;
+}
+
 .ct-postlist--numbered .ct-postlist__rank {
-  flex: 0 0 auto;
-  min-width: 1.7em;
-  margin-right: 0.85rem;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.85rem;
-  font-weight: 400;
-  line-height: 1.05;
+  flex: 0 0 1.6rem;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.2;
   color: var(--bs-primary, #b08d57);
-  text-align: left;
+  text-align: center;
+}
+
+/* Top 3 màu nhấn, các hạng sau dịu lại để thấy thứ bậc. */
+.ct-postlist--numbered .ct-postlist__item:nth-child(n + 4) .ct-postlist__rank {
+  color: #b4b8c5;
+}
+
+.ct-postlist--numbered .ct-postlist__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 0.975rem;
+  line-height: 1.45;
+}
+
+.ct-postlist--numbered .ct-postlist__meta {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
 }
 
 /* ---- Kiểu audio ---- */

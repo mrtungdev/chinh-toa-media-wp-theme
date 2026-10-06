@@ -41,6 +41,52 @@ function bb_enqueues()
 }
 add_action('wp_enqueue_scripts', 'bb_enqueues');
 
+/**
+ * Header "Logo + khẩu hiệu" / menu kiểu c4 "thanh chia đều": CSS viết tay, chỉ nạp khi dùng.
+ * Priority 20 để đứng sau theme-{color}.css.
+ */
+function ct_header_brand_enqueue()
+{
+    $hd  = gen_GetHeader();
+    $gen = gen_GetGeneral();
+    if ($hd['type'] === 'c_brand' || $gen['nav_style'] === 'c4') {
+        wp_enqueue_style('ct-header-brand', CT_THEME_CSS_URI . '/header-brand.css', array(), THEME_VERSION);
+    }
+}
+add_action('wp_enqueue_scripts', 'ct_header_brand_enqueue', 20);
+
+/**
+ * Menu chính (mọi kiểu menu): mobile = lớp phủ + thẻ menu + menu con thu/mở, nút ☰/✕;
+ * desktop = mũi tên menu con + mở bằng bàn phím. CSS viết tay, priority 20 để đứng sau
+ * theme-{color}.css. JS (đóng, khoá cuộn, nút menu con) nằm trong ct-media.js.
+ */
+function ct_nav_menu_enqueue()
+{
+    wp_enqueue_style('ct-nav-menu', CT_THEME_CSS_URI . '/nav-menu.css', array(), THEME_VERSION);
+}
+add_action('wp_enqueue_scripts', 'ct_nav_menu_enqueue', 20);
+
+/**
+ * Nhãn "Trực tiếp" của Thanh thông báo (Tiện ích → Thanh thông báo → Đang phát trực tiếp).
+ * CSS nhỏ gắn vào ct-nav-menu (luôn được nạp), chỉ in khi thanh đang hiện và bật trực tiếp.
+ */
+function ct_live_badge_style()
+{
+    if (!function_exists('hot_GetData')) {
+        return;
+    }
+    $hot = hot_GetData();
+    if (empty($hot['is_show']) || $hot['is_show'] !== 'y' || empty($hot['islive']) || $hot['islive'] !== 'y') {
+        return;
+    }
+    $css = '.ct-live-badge{display:inline-flex;align-items:center;gap:6px;margin-right:10px;padding:2px 10px;border-radius:999px;background:#d92d20;color:#fff;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;vertical-align:middle}'
+        . '.ct-live-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:ctLivePulse 1.2s ease-in-out infinite}'
+        . '@keyframes ctLivePulse{50%{opacity:.25}}'
+        . '@media (prefers-reduced-motion:reduce){.ct-live-badge::before{animation:none}}';
+    wp_add_inline_style('ct-nav-menu', $css);
+}
+add_action('wp_enqueue_scripts', 'ct_live_badge_style', 21);
+
 /** Sentinel primary baked into assets/css/theme-custom.css (see theme-custom.scss). */
 function ct_custom_theme_sentinel()
 {

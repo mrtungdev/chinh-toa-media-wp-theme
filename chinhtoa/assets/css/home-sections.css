@@ -32,3 +32,80 @@
 .ct__post.has-ct-sec-colors .bottom-line {
   border-color: var(--ct-sec-accent, currentColor);
 }
+
+/**
+ * Khối temp8 "Lưới ảnh mosaic" (template-parts/homepage/c_post-mosaic.php).
+ * Kế thừa kiểu thẻ ảnh overlay của .ct__post-t5; ở đây chỉ dựng lưới:
+ * bài đầu chiếm 2×2 ô, các bài sau 1 ô. Màn nhỏ: 2 cột, bài đầu chiếm cả hàng.
+ * Selector .ct__post.ct__post-mosaic để thắng các luật flex/cột 50% của .ct__post-t5.
+ */
+.ct__post.ct__post-mosaic .ct__post-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.ct__post.ct__post-mosaic .ct__post-content > .empty-post {
+  grid-column: 1 / -1;
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image {
+  flex: none;
+  max-width: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image:first-child {
+  grid-column: 1 / -1;
+}
+
+/* home-sections.css nạp trước theme-*.css → cần selector cụ thể hơn luật .ct__post-t5. */
+.ct__post.ct__post-mosaic .ct__post-item-image .ct__post-item-image-wrap {
+  border-radius: 6px;
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image .ct__post-item-image-wrap::after {
+  background-image: linear-gradient(0deg, rgba(10, 14, 35, 0.9) 0%, rgba(10, 14, 35, 0.45) 42%, rgba(10, 14, 35, 0) 72%);
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image .ct__post-item-image-wrap:hover::after {
+  background-image: linear-gradient(0deg, rgba(10, 14, 35, 0.92) 0%, rgba(10, 14, 35, 0.6) 55%, rgba(10, 14, 35, 0.1) 100%);
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image .ct__post-item-data {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image .ct__post-item-data .post-title {
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image:first-child .ct__post-item-data {
+  padding: 1.5rem 1.75rem 1.6rem;
+}
+
+.ct__post.ct__post-mosaic .ct__post-item-image:first-child .ct__post-item-data .post-title {
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .ct__post.ct__post-mosaic .ct__post-content {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .ct__post.ct__post-mosaic .ct__post-item-image:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  /* Ô lớn lấp đầy 2 hàng thay vì giữ tỉ lệ 16:9 riêng. */
+  .ct__post.ct__post-mosaic .ct__post-item-image:first-child,
+  .ct__post.ct__post-mosaic .ct__post-item-image:first-child .ct__post-item-image-wrap,
+  .ct__post.ct__post-mosaic .ct__post-item-image:first-child figure.image {
+    height: 100%;
+  }
+}

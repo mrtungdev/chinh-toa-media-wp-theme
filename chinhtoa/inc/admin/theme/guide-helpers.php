@@ -53,6 +53,7 @@ function ct_guide_sections()
         array('slug' => 'bai-viet',     'title' => __('Viết & quản lý bài viết', 'chinhtoa'),              'icon' => 'dashicons-edit',              'file' => '02-viet-bai-viet.md',         'group' => 'noidung'),
         array('slug' => 'phan-loai',    'title' => __('Phân loại bài viết: Lời Chúa & Video', 'chinhtoa'),  'icon' => 'dashicons-tag',               'file' => '03-phan-loai-bai-viet.md',    'group' => 'noidung'),
         array('slug' => 'loichua-card', 'title' => __('Thẻ Lời Chúa & Box “5 phút”', 'chinhtoa'),          'icon' => 'dashicons-format-quote',      'file' => '04-the-loichua-box-5phut.md', 'group' => 'noidung'),
+        array('slug' => 'loichua-hom-nay', 'title' => __('Lời Chúa hôm nay & Lịch', 'chinhtoa'),         'icon' => 'dashicons-calendar-alt',      'file' => '15-loi-chua-hom-nay.md',      'group' => 'noidung'),
         array('slug' => 'chuyen-muc',   'title' => __('Chuyên mục', 'chinhtoa'),                           'icon' => 'dashicons-category',          'file' => '05-chuyen-muc.md',            'group' => 'noidung'),
         array('slug' => 'media',        'title' => __('Thư viện hình ảnh', 'chinhtoa'),                    'icon' => 'dashicons-format-gallery',    'file' => '06-thu-vien-media.md',        'group' => 'noidung'),
         array('slug' => 'giao-dien',    'title' => __('Màu sắc & bố cục chung', 'chinhtoa'),               'icon' => 'dashicons-admin-customizer',  'file' => '07-mau-sac-bo-cuc.md',        'group' => 'giaodien'),
@@ -60,6 +61,7 @@ function ct_guide_sections()
         array('slug' => 'footer',       'title' => __('Footer (cuối trang)', 'chinhtoa'),                  'icon' => 'dashicons-editor-insertmore', 'file' => '09-footer.md',                'group' => 'giaodien'),
         array('slug' => 'trang-chu',    'title' => __('Bố cục Trang chủ', 'chinhtoa'),                     'icon' => 'dashicons-admin-home',        'file' => '10-trang-chu.md',             'group' => 'giaodien'),
         array('slug' => 'menu',         'title' => __('Menu điều hướng', 'chinhtoa'),                      'icon' => 'dashicons-menu-alt3',         'file' => '11-menu-dieu-huong.md',       'group' => 'giaodien'),
+        array('slug' => 'widget',       'title' => __('Thanh bên & Widget', 'chinhtoa'),                   'icon' => 'dashicons-welcome-widgets-menus', 'file' => '16-thanh-ben-widget.md',  'group' => 'giaodien'),
         array('slug' => 'thong-bao',    'title' => __('Thanh thông báo', 'chinhtoa'),                      'icon' => 'dashicons-megaphone',         'file' => '12-thanh-thong-bao.md',       'group' => 'giaodien'),
         array('slug' => 'faq',          'title' => __('Câu hỏi thường gặp', 'chinhtoa'),                   'icon' => 'dashicons-editor-help',       'file' => '13-cau-hoi-thuong-gap.md',    'group' => 'trogiup'),
         array('slug' => 'ho-tro',       'title' => __('Hỗ trợ kỹ thuật', 'chinhtoa'),                      'icon' => 'dashicons-sos',               'file' => '14-ho-tro-ky-thuat.md',       'group' => 'trogiup'),
@@ -99,7 +101,9 @@ function ct_guide_render_markdown($file)
     }
 
     $ver = defined('THEME_VERSION') ? THEME_VERSION : '0';
-    $key = 'ct_guide_html_' . md5($file . '|' . filemtime($path) . '|' . $ver);
+    // 'r2': phiên bản bộ hiển thị (token ảnh, kích thước ảnh). Đổi khi sửa pipeline render
+    // để cache cũ tự hết hiệu lực.
+    $key = 'ct_guide_html_' . md5($file . '|' . filemtime($path) . '|' . $ver . '|r2');
 
     $cached = get_transient($key);
     if ($cached !== false) {
@@ -110,10 +114,51 @@ function ct_guide_render_markdown($file)
     $pd = new Parsedown();
     $pd->setSafeMode(true); // lớp bảo vệ thứ 2 cạnh wp_kses_post
 
-    $html = wp_kses_post($pd->text((string) file_get_contents($path)));
+    $md   = ct_guide_expand_tokens((string) file_get_contents($path));
+    $html = wp_kses_post($pd->text($md));
+    // Ảnh minh hoạ: tải lười + không chặn hiển thị chữ.
+    $html = str_replace('<img ', '<img loading="lazy" decoding="async" ', $html);
+    $html = ct_guide_size_images($html);
     set_transient($key, $html, WEEK_IN_SECONDS);
 
     return $html;
+}
+
+/**
+ * Thay các token trong tệp .md trước khi parse:
+ *  - {{img}} → URL thư mục ảnh hướng dẫn (assets/imgs/guide), VD
+ *    `![Mô tả]({{img}}/bang-dieu-khien.webp)`.
+ *
+ * @param string $md Nội dung Markdown.
+ * @return string
+ */
+function ct_guide_expand_tokens($md)
+{
+    $imgs = defined('CT_THEME_IMGS_URI') ? CT_THEME_IMGS_URI : get_template_directory_uri() . '/assets/imgs';
+    return str_replace('{{img}}', esc_url_raw($imgs . '/guide'), $md);
+}
+
+/**
+ * Ảnh hướng dẫn được chụp ở độ nét gấp đôi (2x). Gắn width/height = một nửa kích thước
+ * thật để ảnh nhỏ (một ô, một nút) không bị phóng to quá cỡ trên màn hình; ảnh lớn vẫn
+ * co theo khung nhờ CSS max-width: 100%.
+ *
+ * @param string $html HTML đã sanitize.
+ * @return string
+ */
+function ct_guide_size_images($html)
+{
+    $dir = CT_THEME_DIR . '/assets/imgs/guide/';
+    return preg_replace_callback('#<img ([^>]*?)src="([^"]+/guide/([a-z0-9-]+\.webp))"#', function ($m) use ($dir) {
+        $file = $dir . $m[3];
+        $size = is_readable($file) ? @getimagesize($file) : false;
+        if (!$size || empty($size[0])) {
+            return $m[0];
+        }
+        $w = (int) round($size[0] / 2);
+        $h = (int) round($size[1] / 2);
+        return '<img ' . $m[1] . 'width="' . $w . '" height="' . $h . '" src="' . $m[2] . '"';
+    }, $html);
 }
 
 /**

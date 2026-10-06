@@ -153,7 +153,7 @@ function home_GetSections()
             $resPost['readmore_blank'] = isset($postData['show_readmore']['y']['readmore_blank']) ? $postData['show_readmore']['y']['readmore_blank'] : 'n';
           }
           $resPost['cats'] = isset($postData['cats']) ? $postData['cats'] : '';
-          $resPost['num_post'] = isset($postData['num_post']) ? $postData['num_post'] : '';
+          $resPost['num_post'] = (isset($postData['num_post']) && absint($postData['num_post']) > 0) ? absint($postData['num_post']) : 6; // 0/trống → 6 bài (mặc định)
           $resPost = array_merge($resPost, ct_home_sec_read_extras($postData));
           array_push($res, $resPost);
         }
@@ -197,6 +197,29 @@ function ct_home_sec_read_extras($postData)
  *
  * @return array{class:string,style:string,drop_bg:bool}
  */
+/**
+ * Nhãn của một tab trong khối "Tabs chuyên mục": tên tab đã nhập; để trống thì dùng tên
+ * chuyên mục đầu tiên của tab.
+ *
+ * @param array $tab Một phần tử tab_list (tab_title, tab_cats).
+ * @return string
+ */
+function ct_home_tab_label($tab)
+{
+  $label = isset($tab['tab_title']) ? trim((string) $tab['tab_title']) : '';
+  if ($label !== '') {
+    return $label;
+  }
+  $cats = isset($tab['tab_cats']) ? ct_cats_str($tab['tab_cats']) : '';
+  if ($cats !== '') {
+    $cat = get_category(absint(explode(',', $cats)[0]));
+    if ($cat && !is_wp_error($cat)) {
+      return $cat->name;
+    }
+  }
+  return __('Tab', 'chinhtoa');
+}
+
 function ct_home_sec_color_attrs($section)
 {
   if (!isset($section['default_style']) || $section['default_style'] !== 'n') {

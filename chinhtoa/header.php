@@ -130,6 +130,8 @@ if ($generalSite['gen_bg_type'] == 'c_color') {
       $CTheader = gen_GetHeader();
       if ($CTheader['type'] == 'c_content') {
         include locate_template('template-parts/header/header-text.php', false, false);
+      } else if ($CTheader['type'] == 'c_brand') {
+        include locate_template('template-parts/header/header-brand.php', false, false);
       } else {
         include locate_template('template-parts/header/header-image.php', false, false);
       }

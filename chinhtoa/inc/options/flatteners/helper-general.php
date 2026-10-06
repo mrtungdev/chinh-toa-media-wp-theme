@@ -47,6 +47,14 @@ function gen_GetHeader()
 	if ($type === 'c_content') {
 		$res['text'] = $opt['c_content']['header_text'];
 		$res['bgcolor'] = $opt['c_content']['bgcolor'];
+	} else if ($type === 'c_brand') {
+		$brand = (isset($opt['c_brand']) && is_array($opt['c_brand'])) ? $opt['c_brand'] : array();
+		$res['logo']         = isset($brand['logo']['url']) ? $brand['logo']['url'] : '';
+		$res['slogan']       = isset($brand['slogan']) ? $brand['slogan'] : '';
+		$res['slogan_ref']   = isset($brand['slogan_ref']) ? $brand['slogan_ref'] : '';
+		$res['bg_from']      = isset($brand['bg_from']) ? $brand['bg_from'] : '';
+		$res['bg_to']        = isset($brand['bg_to']) ? $brand['bg_to'] : '';
+		$res['slogan_color'] = isset($brand['slogan_color']) ? $brand['slogan_color'] : '';
 	} else {
 		$res['desktop'] = '';
 		$res['tablet'] = '';
@@ -60,8 +68,9 @@ function gen_GetHeader()
 		if (isset($opt['c_images']['gen_img_mobile']['url'])) {
 			$res['mobile'] = $opt['c_images']['gen_img_mobile']['url'];
 		}
+		$res['alt'] = isset($opt['c_images']['gen_tieu_de']) ? $opt['c_images']['gen_tieu_de'] : '';
 		$res['link'] = $opt['c_images']['gen_lien_ket'];
-		$res['target'] = $opt['c_images']['gen_is_blank'] == 1 ? '_blank' : 'self';
+		$res['target'] = $opt['c_images']['gen_is_blank'] == 1 ? '_blank' : '_self';
 	}
 
 	return $res;
@@ -101,7 +110,7 @@ function ct_header_set()
 		echo $footer['headscripts'];
 	}
 }
-add_action('wp_header', 'ct_header_set');
+add_action('wp_head', 'ct_header_set');
 
 function ct_footer_set()
 {

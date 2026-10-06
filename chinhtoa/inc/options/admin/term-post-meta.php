@@ -230,7 +230,7 @@ function ct_category_fields($term = null)
         $mName,
         $master,
         __('Tuỳ chỉnh riêng chuyên mục này', 'chinhtoa'),
-        __('Tắt: dùng bố cục chung trong Tuỳ Chọn Giao Diện. Bật để đặt riêng cho chuyên mục này.', 'chinhtoa')
+        __('Tắt: dùng bố cục chung trong Thiết lập giao diện. Bật để đặt riêng cho chuyên mục này.', 'chinhtoa')
     );
 
     ct_mb_image_radio('ct_term[cat_custom][y][columns]', ct_mb_get($y, 'columns', 'c2'), __('Số cột danh sách', 'chinhtoa'), array(
@@ -256,6 +256,10 @@ function ct_category_fields($term = null)
     ct_mb_switch('ct_term[cat_custom][y][post_meta]', ct_mb_get($y, 'post_meta', 'n'), __('Ngày & lượt xem', 'chinhtoa'), '', $showY);
 
     // Icon & colours — category branding, independent of the custom-layout toggle.
+    // Giao diện hiện chưa hiển thị các giá trị này ở đâu (ct_get_terms() không được gọi),
+    // nên nhóm được ẩn để người quản trị không nhập vô ích. Dữ liệu cũ vẫn được giữ khi
+    // lưu (ct_save_category_meta). Child theme dùng tới thì bật lại bằng filter.
+    if (apply_filters('ct_category_icon_fields', false)) {
     ct_mb_section(__('Biểu tượng & màu sắc', 'chinhtoa'));
     ct_mb_select($iName, $icon_type, __('Loại biểu tượng', 'chinhtoa'), array(
         'none'          => __('Không', 'chinhtoa'),
@@ -267,6 +271,7 @@ function ct_category_fields($term = null)
     ct_mb_color('ct_term[iconcolor]', ct_mb_get($meta, 'iconcolor', ''), __('Màu biểu tượng', 'chinhtoa'));
     ct_mb_color('ct_term[backgroundcolor]', ct_mb_get($meta, 'backgroundcolor', ''), __('Màu nền', 'chinhtoa'));
     ct_mb_color('ct_term[textcolor]', ct_mb_get($meta, 'textcolor', ''), __('Màu chữ', 'chinhtoa'));
+    }
 
     echo '</div>'; // .ct-meta-box
 
@@ -298,6 +303,15 @@ function ct_save_category_meta($term_id)
         return;
     }
     $data = isset($_POST['ct_term']) ? ct_meta_sanitize(wp_unslash($_POST['ct_term'])) : array();
+    // Giữ lại biểu tượng/màu đã lưu khi nhóm này đang ẩn (không có trong form gửi lên).
+    $old = get_term_meta($term_id, CT_META_OPTIONS, true);
+    if (is_array($old)) {
+        foreach (array('icon', 'iconcolor', 'backgroundcolor', 'textcolor') as $k) {
+            if (!array_key_exists($k, $data) && array_key_exists($k, $old)) {
+                $data[$k] = $old[$k];
+            }
+        }
+    }
     update_term_meta($term_id, CT_META_OPTIONS, $data);
 }
 add_action('created_category', 'ct_save_category_meta');

@@ -1,32 +1,34 @@
-## Thanh thông báo nổi bật
+## Thanh thông báo
 
-Thanh thông báo là dải chữ nổi bật ở đầu website, **chỉ hiển thị trong khoảng
-thời gian bạn đặt**. Rất hợp để báo tin quan trọng: thay đổi giờ lễ, Thánh lễ
-đại triều, livestream, hay lời chúc dịp đại lễ.
+*Dành cho Quản lý.* **Thanh thông báo** là một ô nổi bật dưới thanh menu, **chỉ hiện
+trong khoảng thời gian bạn đặt**, rồi tự ẩn. Dùng để báo lịch lễ đặc biệt, sự kiện,
+livestream, lời chúc dịp lễ lớn.
 
-Thiết lập tại **Thiết lập giao diện → Thông báo**
-([mở tại đây](admin.php?page=ct-theme-settings)).
+Vào **Thiết lập giao diện → Tiện ích**
+([mở](admin.php?page=ct-theme-settings#tienich)):
 
-### Cách bật và soạn nội dung
+1. Bấm tab **Tiện ích**.
+2. Ở **Bật thanh thông báo**, tích **Bật**. Các ô bên dưới hiện ra.
+3. **Bắt đầu hiển thị** và **Kết thúc hiển thị**: chọn ngày và giờ (theo múi giờ của
+   website, thường là giờ Việt Nam).
+4. **Tiêu đề**: dòng chữ chính, ví dụ *Thánh lễ Giáng Sinh 24/12 lúc 20:00*.
+5. **Nội dung**: chi tiết thêm (không bắt buộc). Có thể dán mã nhúng video YouTube.
+6. **Đang phát trực tiếp**: tích **Bật** khi đang livestream. Cạnh tiêu đề sẽ có nhãn đỏ
+   **● Trực tiếp**.
+7. Bấm **Lưu thay đổi**.
 
-1. Bật công tắc **Bật thanh thông báo**.
-2. Chọn **Bắt đầu hiển thị** và **Kết thúc hiển thị** (ngày giờ). Ngoài khoảng
-   này, thanh sẽ tự ẩn — không cần nhớ tắt thủ công.
-3. Nhập **Tiêu đề** (dòng chữ chính) và **Nội dung** chi tiết (không bắt buộc).
-4. Bấm **Lưu thay đổi**.
+![Thiết lập Thanh thông báo]({{img}}/thanh-thong-bao.webp)
+*Số trên ảnh trùng với số bước.*
 
-### Khi đang phát trực tiếp (livestream)
+### Lưu ý
 
-Bật **Đang phát trực tiếp** để hiển thị nhãn **“Trực tiếp”** — hữu ích khi
-truyền hình trực tiếp Thánh lễ Chúa Nhật hoặc các nghi thức trọng thể.
+- Ngoài khoảng thời gian đã đặt, thanh **không hiện**, kể cả khi đang tích **Bật**. Nếu
+  chưa thấy thanh, kiểm tra lại giờ **Bắt đầu**.
+- Hết dịp thông báo, nên bỏ tích **Bật** cho gọn.
+- Ô **Class CSS (nâng cao)** dành cho người làm kỹ thuật. Để trống.
 
-### Ví dụ dùng theo mùa phụng vụ
+### Nhúng video livestream
 
-- **Mùa Vọng / Mùa Giáng Sinh:** *“Lịch các Thánh lễ Đêm Giáng Sinh — xin xem
-  chi tiết.”*
-- **Mùa Chay / Tuần Thánh:** *“Chương trình Tam Nhật Vượt Qua tại Nhà thờ Chính
-  tòa.”*
-- **Lễ Bổn Mạng Giáo Xứ:** *“Kính mời cộng đoàn hiệp dâng Thánh lễ Bổn Mạng.”*
-
-> **Mẹo:** Giữ tiêu đề ngắn gọn, một ý chính. Thông tin dài nên đăng thành một
-> **bài viết** rồi dẫn link trong nội dung thanh thông báo.
+1. Trên YouTube, mở video, bấm **Chia sẻ → Nhúng**, rồi bấm **Sao chép**.
+2. Dán đoạn mã vừa chép vào ô **Nội dung**.
+3. Tích **Đang phát trực tiếp**, rồi bấm **Lưu thay đổi**.

@@ -7,32 +7,31 @@ if (!isset($loiChuaData['is_show']) || $loiChuaData['is_show'] != 'y') {
   return;
 }
 
-if (is_front_page() && is_page_template()) {
-  $isShowFront = $loiChuaData['showinhomepage'];
-  if (!isset($isShowFront) || $isShowFront != 'y') {
-    return;
-  }
+// Chỉ hiện ở đúng nơi được bật: Trang chủ / trang Chuyên mục (và lưu trữ) / trang Bài viết.
+// Các trang khác (tìm kiếm, danh sách blog…) không hiện box.
+if (is_front_page()) {
+  $showKey = 'showinhomepage';
 } else if (is_archive()) {
-  $isShowCats = $loiChuaData['showincat'];
-  if (!isset($isShowCats) || $isShowCats != 'y') {
-    return;
-  }
-} else if(is_singular()){
-  $isShowSingle = $loiChuaData['showinsingle'];
-  if (!isset($isShowSingle) || $isShowSingle != 'y') {
-    return;
-  }
+  $showKey = 'showincat';
+} else if (is_singular()) {
+  $showKey = 'showinsingle';
+} else {
+  return;
+}
+if (!isset($loiChuaData[$showKey]) || $loiChuaData[$showKey] != 'y') {
+  return;
 }
 
-$cats = $loiChuaData['cats'];
+// Chuyên mục lưu dạng "12,15": lấy đủ ID (trước đây chỉ lấy ký tự đầu nên ID ≥ 10 bị sai).
+$catIds = array_filter(array_map('absint', explode(',', ct_cats_str($loiChuaData['cats']))));
 $loichuaArgs = array(
   'numberposts' => 1,
 );
-if (!empty($cats[0])) {
-  $loichuaArgs['category'] = $cats[0];
+if (!empty($catIds)) {
+  $loichuaArgs['category'] = implode(',', $catIds);
 }
 
-$trans = "trans_loichua";
+$trans = 'trans_loichua_' . md5(wp_json_encode($loichuaArgs));
 $expireEndDate = strtotime('23:59:59') - time() + 1;
 $loichuaQuery = ct_get_posts($loichuaArgs, $trans, $expireEndDate);
 if (empty($loichuaQuery)) {

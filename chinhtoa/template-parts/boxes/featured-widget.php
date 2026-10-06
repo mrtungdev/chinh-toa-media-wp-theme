@@ -3,9 +3,13 @@
   <div id="ct__featured__box" class="ct__featured__box ct-mt">
     <div class="container">
       <div class="ct__featured__box-row bg-white ct-shadow ct-bounding <?php echo esc_attr($featuredData['classes']); ?>">
-        <?php if ($featuredData['title'] != '') : ?>
+        <?php $isLive = isset($featuredData['islive']) && $featuredData['islive'] === 'y'; ?>
+        <?php if ($featuredData['title'] != '' || $isLive) : ?>
           <div class="featured__box-header">
-            <h2 class="ct__featured__box-title"><?php echo esc_html($featuredData['title']); ?></h2>
+            <h2 class="ct__featured__box-title">
+              <?php if ($isLive) : ?><span class="ct-live-badge"><?php esc_html_e('Trực tiếp', 'chinhtoa'); ?></span><?php endif; ?>
+              <?php echo esc_html($featuredData['title']); ?>
+            </h2>
           </div>
         <?php endif; ?>
         <div class="featured__box-content">

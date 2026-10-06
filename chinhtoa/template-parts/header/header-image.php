@@ -7,7 +7,8 @@ $tabletSrcset = '';
 $mobile = $CTheader['mobile'];
 $mobileSrcset = '';
 $link = $CTheader['link'] ?: CT_HOME_URL;
-$target = $CTheader['target'] ?: '_blank';
+$target = $CTheader['target'] ?: '_self';
+$alt = isset($CTheader['alt']) && $CTheader['alt'] !== '' ? $CTheader['alt'] : get_bloginfo('name');
 $defaultSrc = '';
 if (!empty($mobile)) {
   $mobileSrcset = esc_url($mobile) . ' 768w,';
@@ -27,7 +28,7 @@ if (!empty($desktop)) {
 }
 ?>
 <div class="header-image">
-  <a href="<?php echo esc_url($link); ?>" target="<?php echo esc_attr($target); ?>">
-    <img data-sizes="auto" data-src="<?php echo esc_url($defaultSrc); ?>" data-srcset="<?php echo esc_attr($mobileSrcset . $tabletSrcset . $desktopSrcset); ?>" class="lazyload blur-up" />
+  <a href="<?php echo esc_url($link); ?>" target="<?php echo esc_attr($target); ?>"<?php echo $target === '_blank' ? ' rel="noopener"' : ''; ?>>
+    <img data-sizes="auto" data-src="<?php echo esc_url($defaultSrc); ?>" data-srcset="<?php echo esc_attr($mobileSrcset . $tabletSrcset . $desktopSrcset); ?>" alt="<?php echo esc_attr($alt); ?>" class="lazyload blur-up" />
   </a>
 </div>
