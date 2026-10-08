@@ -18,9 +18,8 @@
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="robots" content="all" />
+  <?php // Yoast SEO đã in robots / canonical / Open Graph đầy đủ → không in trùng (og:locale, og:type…). ?>
+  <?php if (!defined('WPSEO_VERSION')) : ?>
   <?php if (ct_brand('keywords')) : ?>
   <meta name="keywords" content="<?php echo esc_attr(ct_brand('keywords')); ?>" />
   <?php endif; ?>
@@ -29,8 +28,9 @@
   <?php endif; ?>
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="<?php echo esc_attr(ct_brand('og_locale', 'en_US')); ?>" />
-  <meta property="og:image:alt" content="<?php echo esc_attr(wp_get_document_title()); ?>" />
-  <?php if (ct_brand('favicon_dir')) : ?>
+  <?php endif; ?>
+  <?php // Site đã đặt Site Icon (Cài đặt → Tổng quan) thì WordPress tự in favicon đó. ?>
+  <?php if (ct_brand('favicon_dir') && !has_site_icon()) : ?>
   <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url(ct_brand_favicon_uri('apple-touch-icon.png')); ?>">
   <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url(ct_brand_favicon_uri('favicon-32x32.png')); ?>">
   <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url(ct_brand_favicon_uri('favicon-16x16.png')); ?>">
@@ -75,6 +75,7 @@ if ($generalSite['gen_bg_type'] == 'c_color') {
 
 <body <?php body_class(); ?> style="<?php echo esc_attr($ctAppStyle); ?>">
   <?php wp_body_open(); ?>
+  <a class="ct-skip-link visually-hidden-focusable" href="#site-content"><?php esc_html_e('Chuyển đến nội dung', 'chinhtoa'); ?></a>
   <div id="ct-app" class="site">
     <?php
     $navStyle = isset($generalSite['nav_style']) ? $generalSite['nav_style'] : 'c1';
@@ -144,5 +145,5 @@ if ($generalSite['gen_bg_type'] == 'c_color') {
     <?php endif; ?>
     <?php include locate_template('template-parts/boxes/featured-widget.php', false, false); ?>
     <?php endif;  ?>
-    <div id="site-content" class="ct-mt">
+    <main id="site-content" class="ct-mt">
       <div class="container">

@@ -12,8 +12,10 @@ get_header();
 <div id="ct-content" class="page-not-found">
 	<div class="page-not-found-content">
 
-		<h2>KHÔNG TÌM THẤY!</h2>
-		<p>Nội dung bạn cần tìm không có.</p>
+		<h1><?php esc_html_e('KHÔNG TÌM THẤY!', 'chinhtoa'); ?></h1>
+		<p><?php esc_html_e('Nội dung bạn cần tìm không có.', 'chinhtoa'); ?></p>
+		<?php get_search_form(); ?>
+		<p><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('« Về trang chủ', 'chinhtoa'); ?></a></p>
 	</div>
 </div>
 <?php

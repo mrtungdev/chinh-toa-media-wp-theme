@@ -27,9 +27,9 @@ $isNotThumbClass = $showThumb == 'y' ? 'has-thumb' : '';
       </figure>
     <?php endif; ?>
     <div class="ct__post-item-data">
-      <div class="post-title">
+      <h3 class="post-title">
         <a href="<?php echo esc_url($link); ?>" rel="bookmark"><?php echo esc_html($title); ?></a>
-      </div>
+      </h3>
       <?php if ($showInfo) : ?>
         <div class="post-info">
           <?php if ($showAuthor === 'y') : ?>

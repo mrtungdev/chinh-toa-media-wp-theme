@@ -337,7 +337,7 @@ function getCountryItem($code)
     return null;
 }
 
-function bootstrap_pagination(\WP_Query $wp_query = null, $echo = true)
+function bootstrap_pagination(?\WP_Query $wp_query = null, $echo = true)
 {
 
     if (null === $wp_query) {
@@ -355,8 +355,8 @@ function bootstrap_pagination(\WP_Query $wp_query = null, $echo = true)
             'end_size'     => 3,
             'mid_size'     => 1,
             'prev_next'    => true,
-            'prev_text'    => __('« Trước'),
-            'next_text'    => __('Tiếp theo »'),
+            'prev_text'    => __('« Trước', 'chinhtoa'),
+            'next_text'    => __('Tiếp theo »', 'chinhtoa'),
             'add_args'     => false,
             'add_fragment' => ''
         ]
@@ -365,13 +365,13 @@ function bootstrap_pagination(\WP_Query $wp_query = null, $echo = true)
     if (is_array($pages)) {
         //$paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
 
-        $pagination = '<div class="pagination"><ul class="pagination">';
+        $pagination = '<nav class="pagination" aria-label="' . esc_attr__('Phân trang', 'chinhtoa') . '"><ul class="pagination">';
 
         foreach ($pages as $page) {
             $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' . str_replace('page-numbers', 'page-link', $page) . '</li>';
         }
 
-        $pagination .= '</ul></div>';
+        $pagination .= '</ul></nav>';
 
         if ($echo) {
             echo $pagination;

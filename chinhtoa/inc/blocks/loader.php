@@ -23,7 +23,7 @@ add_action('init', function () {
     // style nên chỉ tải khi thẻ thực sự xuất hiện (front + editor), không nạp toàn site.
     wp_register_style(
         'ct-loichua-card-fonts',
-        'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap',
+        'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&display=swap', // chỉ 2 kiểu đang dùng (thẻ: nghiêng 500, ảnh thay thế: thường 500)
         array(),
         null
     );

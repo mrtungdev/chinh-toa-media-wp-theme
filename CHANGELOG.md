@@ -9,6 +9,39 @@ Tất cả thay đổi đáng chú ý của theme được ghi tại đây. Đ�
 - Hộp **“Tuỳ chỉnh giao diện trang”** ở màn hình soạn Trang (page): bật/tắt thanh bên và
   vị trí, ảnh đại diện, menu điều hướng (breadcrumb), tiêu đề. Cùng khoá meta
   `ct_options.post_custom` với bài viết; không có ô Tác giả / Ngày & lượt xem.
+- **Khối tiêu đề trang chuyên mục** (`archive.php`): breadcrumb, `<h1>` tên chuyên mục, mô tả
+  chuyên mục. Trang **tìm kiếm**: `<h1>` “Kết quả tìm kiếm cho “…””, số bài tìm thấy, ô tìm kiếm.
+- `template-parts/category/content-none.php`: thông báo tiếng Việt khi chuyên mục chưa có bài
+  hoặc tìm kiếm không có kết quả (trước đây trang trống trơn vì file không tồn tại).
+- Trang 404 có ô tìm kiếm và link về trang chủ; link “Chuyển đến nội dung” cho bàn phím.
+
+### SEO
+- **Khối trang chủ render phía server** (`page-homepage.php` gọi `homepage_tabs_template_get()`)
+  thay vì mỗi khối 1 request admin-ajax: nội dung và link bài có ngay trong HTML cho Google/
+  Facebook/Zalo, không còn lỗi “Có lỗi trong quá trình tải dữ liệu” khi nonce trong trang đã
+  page-cache hết hạn. Endpoint AJAX cũ vẫn giữ để tương thích.
+- Trang chủ có `<h1>` (ẩn: tên site – khẩu hiệu); 404 dùng `<h1>`; tiêu đề thẻ bài là `<h3>`
+  (giao diện giữ nguyên).
+- `header.php`: bỏ `X-UA-Compatible`, Content-Type trùng, `og:image:alt` lẻ; khi Yoast SEO bật
+  thì không in robots/keywords/fb:profile_id/og:type/og:locale của theme (trước bị trùng —
+  VD og:locale vi_VN và en_US cùng lúc). Khôi phục `rel="canonical"` (khi không có Yoast) và
+  link RSS chính.
+- Bỏ tiền tố “Chuyên mục:” khỏi `get_the_archive_title()`. Phân trang dùng `<nav aria-label>`.
+- Nút chia sẻ có `aria-label`; vùng nội dung chính là `<main id="site-content">`.
+
+### Tốc độ
+- **Ảnh đúng cỡ:** `getPostImage($id, $size = 'medium')` — thẻ bài dùng bản 690px, widget 320px,
+  tin nổi bật 960px (trước đây luôn trả ảnh gốc full-size).
+- **Ảnh đầu bài/trang (LCP)** tải ngay với `fetchpriority="high"`, srcset, width/height thay vì
+  lazy-load bằng JS (hết giật trang khi ảnh hiện).
+- JS của theme tải `defer`; Swipebox chỉ nạp ở trang bài/trang; bỏ jQuery Migrate ở trang ngoài;
+  bỏ emoji của WordPress.
+- Trang chủ (template Trang Chủ), chuyên mục, tìm kiếm không nạp CSS khối Gutenberg
+  (`wp-block-library`, ~140 KB).
+- Font: Lobster chỉ nạp khi bật box “5 phút”; Lora chỉ còn 2 kiểu đang dùng và chỉ nạp khi thẻ
+  Lời Chúa thực sự hiển thị (trước nạp mọi trang); preconnect `fonts.gstatic.com`.
+- Danh sách bài đọc từ transient được nạp sẵn cache meta/chuyên mục/ảnh (`ct_prime_post_caches()`)
+  → hết truy vấn lặp cho từng thẻ bài. Video oEmbed (bài loại Media) được cache 1 tuần.
 
 ### Thay đổi
 - **Trang tĩnh (`page.php`)** dùng cùng khung với trang bài viết: thẻ nền trắng bo góc,
@@ -21,6 +54,18 @@ Tất cả thay đổi đáng chú ý của theme được ghi tại đây. Đ�
 ### Sửa
 - `sidebar.php` kiểm tra nhầm sidebar `dynamic_sidebar` (không tồn tại) nên không bao giờ
   hiện widget; nay dùng `ct-widget-homepage` (trang danh sách bài `index.php`).
+- Tin Hot sắp xếp lượt xem theo chuỗi (“9” > “100”); nay `meta_value_num`.
+- `archive.php` lỗi notice ở trang lưu trữ không phải chuyên mục (tác giả, ngày).
+- Ô tìm kiếm dùng `home_url()` (trước `site_url()` — sai khi WordPress cài ở thư mục con) và giữ
+  từ khoá đang tìm.
+- `bootstrap_pagination()`: tham số nullable tường minh (cảnh báo PHP 8.4).
+- Site đã đặt **Site Icon** thì dùng icon đó thay bộ favicon mặc định của theme.
+
+### Công cụ (ngoài gói theme)
+- `tools/setup-site-vi.php`: thiết lập chuẩn cho site Công giáo tiếng Việt — giờ VN, tắt bình
+  luận, Yoast (bỏ `/category/`, tiêu đề/breadcrumb tiếng Việt, tổ chức + logo, ảnh chia sẻ, tiêu
+  đề + mô tả trang chủ, tắt trang tác giả/ngày), chuyển CSS riêng của site lên `<head>`, sửa link
+  cứng `/category/`. Chạy lại được, không xoá nội dung.
 
 ## [1.1.0] — 2026-10-06
 

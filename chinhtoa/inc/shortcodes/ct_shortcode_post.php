@@ -46,9 +46,9 @@ function ct_shortcode_postlist($atts = array()){
             $output .= '&nbsp;&nbsp;-&nbsp;&nbsp;' . esc_html($views) . ' ' . esc_html__('lượt xem', 'chinhtoa');
           $output .= '</div>';
         $output .= '</div>';
-        $output .= '<div class="post-title">';
+        $output .= '<h3 class="post-title">';
           $output .= '<a href="' . esc_url($postLink) . '" rel="bookmark">' . esc_html($postTitle) . '</a>';
-        $output .= '</div>';
+        $output .= '</h3>';
         $output .= '<div class="post-excerpt">';
           $output .= wp_kses_post($postExcerpt);
         $output .= '</div>';

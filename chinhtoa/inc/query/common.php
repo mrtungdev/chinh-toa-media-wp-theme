@@ -19,7 +19,31 @@ function ct_get_posts($args, $trans, $expireIn = DAY_IN_SECONDS){
 		set_transient( $trans , $latest, $expireIn );
 		return $latest;
 	}
+	ct_prime_post_caches( $latest );
 	return $latest;
+}
+
+/**
+ * Bài đọc lại từ transient không kèm cache meta/chuyên mục/ảnh đại diện → mỗi thẻ bài
+ * lại tự truy vấn (lượt xem, loại bài, permalink, ảnh). Nạp sẵn một lần cho cả danh sách.
+ *
+ * @param WP_Post[] $posts
+ */
+function ct_prime_post_caches( $posts ){
+	if ( empty( $posts ) || ! is_array( $posts ) ) {
+		return;
+	}
+	update_post_caches( $posts, 'post', true, true );
+	$thumbIds = array();
+	foreach ( $posts as $p ) {
+		$thumbId = (int) get_post_meta( $p->ID, '_thumbnail_id', true ); // đã có trong cache meta
+		if ( $thumbId ) {
+			$thumbIds[] = $thumbId;
+		}
+	}
+	if ( $thumbIds ) {
+		_prime_post_caches( $thumbIds, false, true );
+	}
 }
 
 /**

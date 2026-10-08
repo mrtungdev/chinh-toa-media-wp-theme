@@ -42,6 +42,7 @@ jQuery(function ($) {
   }
 
   function addLightBoxGallery() {
+    if (!$.fn.swipebox) return; // swipebox chỉ nạp ở trang chi tiết
     $('#ct-content').find('.wp-block-gallery').each(function (g) {
       if ($('a', this).length > 0) {
         $('a', this).attr('rel', function (i, attr) {
@@ -60,6 +61,7 @@ jQuery(function ($) {
   }
   
   function addPhotonicLightBoxGallery() {
+    if (!$.fn.swipebox) return;
     $('#ct-content').find('.photonic-stream').each(function (g) {
       $('a', this).attr('rel', function (i, attr) {
         // console.log("Attr: " + attr + g)

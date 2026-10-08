@@ -114,7 +114,7 @@ class CT_PostList_Widget extends WP_Widget
   /** Ảnh thumbnail của bài (tái dùng getPostImage + lazyload của theme). */
   protected function render_thumb($id, $link)
   {
-    $image = getPostImage($id);
+    $image = getPostImage($id, 'small');
     ?>
     <a class="ct-postlist__thumb" href="<?php echo esc_url($link); ?>" aria-hidden="true" tabindex="-1">
       <img class="lazyload" src="<?php echo esc_url(CT_PLACEHOLDER); ?>" data-src="<?php echo esc_url($image); ?>"

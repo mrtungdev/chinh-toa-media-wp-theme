@@ -11,6 +11,9 @@
  * Tuỳ chọn: CT_DEMO_LOGO=/path/logo.png (mặc định: assets/logo-5phut.png).
  *
  * Không thuộc gói theme (nằm ngoài thư mục chinhtoa/).
+ *
+ * Sau khi seed, chạy tools/setup-site-vi.php (tiếng Việt, SEO, tắt bình luận…) — seed tạo lại
+ * trang chủ nên mất meta Yoast của trang chủ.
  */
 
 if (!defined('ABSPATH') || !defined('WP_CLI')) {
@@ -452,7 +455,7 @@ update_option('ct_settings', array(
     'post_data'   => array('sidebar' => array('action_show' => 'y', 'y' => array('sidebar_pos' => 'right'))),
     'hot_picker'  => array('action_show' => 'n'),
     'tech_data'   => array(
-        'analytics' => '', 'headscripts' => '', 'footerscripts' => $siteCss,
+        'analytics' => '', 'headscripts' => $siteCss, 'footerscripts' => '',
         'template_admin_shortcode' => '', 'template_editor_shortcode' => '', 'template_else_shortcode' => '',
     ),
 ));

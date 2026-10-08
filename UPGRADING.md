@@ -1,10 +1,9 @@
 # Nâng cấp theme Chính Tòa Media
 
-## 1.1.0 → 1.2.0 (Trang tĩnh)
+## 1.1.0 → 1.2.0 (Trang tĩnh, SEO, tốc độ)
 
 **Tóm tắt:** không đổi cấu trúc dữ liệu, không cần migrate, không cần build lại CSS.
-Khác 1.1.0, bản này **thay đổi hiển thị ngay** sau khi chép đè: mọi Trang (page) dùng
-template mặc định có khung thẻ trắng + thanh bên như trang bài viết.
+Khác 1.1.0, bản này **thay đổi hiển thị/hành vi ngay** sau khi chép đè (xem bảng).
 
 ### 1. Hành vi thay đổi khi nâng cấp
 
@@ -13,6 +12,14 @@ template mặc định có khung thẻ trắng + thanh bên như trang bài vi�
 | Trang tĩnh: nội dung nằm thẳng trên nền trang, không lề, không thanh bên | Thẻ nền trắng, breadcrumb, tiêu đề, nội dung cùng CSS bài viết; thanh bên widget **Bài viết** nếu Thiết lập giao diện → Bài viết đang bật thanh bên |
 | Nội dung ngắn: footer dừng giữa màn hình, lộ nền trống bên dưới | Footer sát đáy màn hình |
 | Trang không có hộp tuỳ chỉnh giao diện | Có hộp **“Tuỳ chỉnh giao diện trang”** (thanh bên, ảnh, breadcrumb, tiêu đề) |
+| Khối trang chủ nạp bằng AJAX sau khi trang tải (1 request/khối) | Khối có sẵn trong HTML — trang chủ hiện đủ ngay, tốt cho SEO |
+| Trang chuyên mục chỉ có lưới bài | Thêm khối tiêu đề: breadcrumb, tên + mô tả chuyên mục. Trang tìm kiếm có tiêu đề + ô tìm kiếm |
+| Thẻ bài dùng ảnh gốc full-size | Dùng bản 690px (widget 320px) — WordPress đã tự tạo sẵn khi tải ảnh lên |
+| Theme in robots/og/keywords cạnh Yoast | Có Yoast thì chỉ Yoast in; không có Yoast thì theme in như cũ + canonical |
+| Site có Site Icon vẫn in thêm favicon Chính Tòa | Site Icon được ưu tiên |
+
+**Ảnh cũ thiếu cỡ 690/320/960** (tải lên trước khi theme đăng ký các cỡ này) sẽ rơi về ảnh
+gốc — chạy `wp media regenerate --only-missing` một lần để tạo bù.
 
 **Muốn một trang rộng hết khung (không thanh bên):** mở trang → hộp “Tuỳ chỉnh giao diện
 trang” → bật “Tuỳ chỉnh riêng” → tắt “Thanh bên”.
@@ -22,11 +29,23 @@ trang” → bật “Tuỳ chỉnh riêng” → tắt “Thanh bên”.
 | File | Thay đổi |
 |---|---|
 | `page.php` | khung `#ct-content.ct-single.ct-page` + thanh bên `ct-widget-single` (giống `single.php`) |
-| `template-parts/page/content-page.php` | cấu trúc `.post-header` / `.post-content` như `template-parts/post/content.php` |
+| `template-parts/page/content-page.php` | cấu trúc `.post-header` / `.post-content` như `template-parts/post/content.php`; ảnh đầu trang tải ngay |
 | `inc/options/admin/term-post-meta.php` | đăng ký hộp tuỳ chỉnh cho `page` (ẩn Tác giả / Ngày & lượt xem) |
 | `sidebar.php` | sửa ID sidebar (`ct-widget-homepage`) |
-| `inc/utilities/enqueue.php` | `ct_layout_enqueue()` nạp `assets/css/layout.css` (priority 20) |
-| `assets/css/layout.css` | **mới** — footer sát đáy, link “Sửa trang” |
+| `page-homepage.php` | render khối phía server + `<h1>` ẩn |
+| `archive.php`, `search.php`, `404.php`, `searchform.php` | khối tiêu đề, `<h1>`, ô tìm kiếm; guard queried object |
+| `template-parts/category/content-none.php` | **mới** — thông báo không có bài |
+| `header.php`, `footer.php`, `index.php` | meta không trùng Yoast, favicon theo Site Icon, skip link, `<main>` |
+| `functions.php`, `inc/utilities/action.php` | không gỡ `rel_canonical` và `feed_links` nữa |
+| `inc/utilities/filter.php` | `getPostImage($id, $size)`, bỏ tiền tố tiêu đề archive |
+| `template-parts/homepage/c_post-item*.php`, `featured-post.php`, `inc/shortcodes/ct_shortcode_post.php`, `inc/widget/ct_postlist_widget.php` | tiêu đề `<h3>`, cỡ ảnh, sắp xếp lượt xem dạng số |
+| `template-parts/post/content.php` | ảnh đầu bài `fetchpriority="high"` + srcset |
+| `inc/utilities/enqueue.php` | `ct_layout_enqueue()`; JS `defer`; Swipebox chỉ ở trang chi tiết; font có điều kiện + preconnect; bỏ emoji, jQuery Migrate; `ct_dequeue_unused_styles()` |
+| `inc/blocks/loader.php`, `inc/widget/ct_loichua_card_widget.php`, `inc/post/post-kind.php` | Lora 2 kiểu, CSS thẻ Lời Chúa chỉ khi dùng; cache oEmbed |
+| `inc/query/common.php` | `ct_prime_post_caches()` |
+| `inc/utilities/type.php` | phân trang `<nav>`, tham số nullable |
+| `assets/js/ct-media.js` | chỉ gọi Swipebox khi có |
+| `assets/css/layout.css` | **mới** — footer sát đáy, khối tiêu đề chuyên mục, `h3.post-title`, 404, skip link |
 | `style.css`, `package.json` | `Version: 1.2.0` |
 | `languages/chinhtoa.pot` | sinh lại |
 
@@ -38,6 +57,16 @@ trang” → bật “Tuỳ chỉnh riêng” → tắt “Thanh bên”.
 - Trang chủ dùng template **“Trang Chủ”** (`page-homepage.php`) không bị ảnh hưởng.
 - CSS riêng của site nhắm vào `#primary`, `.site-main`, `.entry-content`, `.entry-header`
   của trang tĩnh sẽ không còn tác dụng — đổi sang `#ct-content.ct-page .post-content`.
+- CSS/JS riêng nhắm vào `.homepage-dynamic-ajax` (khối trang chủ) → đổi sang `.homepage-section`.
+  `div.post-title` của thẻ bài nay là `h3.post-title` (dùng class thì không ảnh hưởng).
+- Plugin cũ cần jQuery Migrate ở trang ngoài (hiếm) sẽ báo lỗi console → bật lại bằng cách gỡ
+  hàm `wp_default_scripts` trong `inc/utilities/enqueue.php`.
+
+### 4. Thiết lập site khuyến nghị (Yoast, tiếng Việt, tắt bình luận)
+
+Chạy `tools/setup-site-vi.php` (ngoài gói theme) cho từng site — xem chú thích đầu file.
+Script bỏ `/category/` khỏi URL (Yoast tự 301 link cũ), Việt hoá tiêu đề/breadcrumb Yoast, đặt
+tổ chức + logo + ảnh chia sẻ, tiêu đề/mô tả trang chủ, tắt bình luận và trang tác giả/ngày.
 
 ---
 

@@ -18,3 +18,96 @@
   margin: 1.5rem 0 0;
   font-size: 0.85rem;
 }
+
+/* Tiêu đề thẻ bài là <h3> (SEO) nhưng giữ nguyên giao diện cũ của <div class="post-title">:
+   bỏ cỡ chữ / lề / màu mặc định của thẻ h3, các luật .post-title cụ thể hơn vẫn áp dụng. */
+h3.post-title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Khối tiêu đề trang chuyên mục / tìm kiếm (archive.php, search.php): chữ nằm thẳng trên nền
+   trang, kẻ mảnh phía dưới — không khung, không bóng. */
+.ct-archive-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ct-archive-header #breadcrumbs {
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.ct-archive-header #breadcrumbs a {
+  color: inherit;
+}
+
+.ct-archive-header__title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.ct-archive-header__desc {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ct-archive-header__desc p:last-child {
+  margin-bottom: 0;
+}
+
+.ct-archive-header .search {
+  max-width: 480px;
+  margin-top: 0.75rem;
+}
+
+/* Điện thoại: khung nội dung không có lề (global.scss) → chừa lề cho chữ. */
+@media (max-width: 575.98px) {
+  .ct-archive-header {
+    padding: 0 1rem 0.85rem;
+  }
+  .ct-archive-header__title {
+    font-size: 1.35rem;
+  }
+}
+
+/* Chuyên mục rỗng / không có kết quả tìm kiếm (template-parts/category/content-none.php). */
+.ct-empty {
+  padding: 2rem;
+  text-align: center;
+}
+
+.ct-empty p:last-child {
+  margin-bottom: 0;
+}
+
+/* 404: tiêu đề nay là <h1> (trước là <h2>). */
+#site-content #ct-content.page-not-found .page-not-found-content h1 {
+  font-size: 3rem;
+}
+
+#ct-content.page-not-found .search {
+  width: 100%;
+  max-width: 420px;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Liên kết "Chuyển đến nội dung" — chỉ hiện khi dùng bàn phím (Tab). */
+.ct-skip-link:focus {
+  position: fixed !important;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100000;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}

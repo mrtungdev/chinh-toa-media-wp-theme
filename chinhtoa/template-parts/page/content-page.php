@@ -20,8 +20,7 @@ $isShowPostTitle = isset($postSettings['post_title']) ? $postSettings['post_titl
   <div class="post-header">
     <?php if ($isShowPostThumb == 'y' && has_post_thumbnail()) : ?>
     <div class="ct-single-thumb">
-      <img class="lazyload" src="<?php echo esc_url(CT_PLACEHOLDER); ?>" data-src="<?php echo esc_url(getPostImage(get_the_ID())); ?>"
-        alt="<?php echo esc_attr($title); ?>">
+      <?php echo get_the_post_thumbnail(get_the_ID(), 'large', array('loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'alt' => $title)); ?>
     </div>
     <?php endif; ?>
     <?php if ($post_breadcrumb == 'y' && function_exists('yoast_breadcrumb')) : ?>

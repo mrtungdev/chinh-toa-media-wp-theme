@@ -262,8 +262,14 @@ function ct_post_kind_video_html($post_id)
     if ($url === '') {
         return '';
     }
-    $embed = wp_oembed_get($url);
-    if (!$embed) {
+    // wp_oembed_get() gọi máy chủ YouTube/Vimeo mỗi lượt xem → cache 1 tuần theo URL.
+    $cacheKey = 'ct_oembed_' . md5($url);
+    $embed    = get_transient($cacheKey);
+    if (false === $embed) {
+        $embed = (string) wp_oembed_get($url);
+        set_transient($cacheKey, $embed, WEEK_IN_SECONDS);
+    }
+    if ($embed === '') {
         return '';
     }
     return '<div class="ct-single-video">' . $embed . '</div>';
@@ -310,8 +316,12 @@ function ct_loichua_thumb_fallback_html($post_id)
 /** CSS khối câu Lời Chúa thay ảnh — các trang có danh sách bài (trang chủ, chuyên mục, tìm kiếm). */
 function ct_loichua_thumb_enqueue()
 {
+    if (!ct_brand_feature('loichua')) {
+        return; // site không dùng tính năng Lời Chúa → không cần CSS + font Lora.
+    }
     if (is_front_page() || is_home() || is_archive() || is_search() || is_page_template('page-homepage.php')) {
-        wp_enqueue_style('ct-loichua-thumb', CT_THEME_CSS_URI . '/loichua-thumb.css', array(), THEME_VERSION);
+        $deps = wp_style_is('ct-loichua-card-fonts', 'registered') ? array('ct-loichua-card-fonts') : array();
+        wp_enqueue_style('ct-loichua-thumb', CT_THEME_CSS_URI . '/loichua-thumb.css', $deps, THEME_VERSION);
     }
 }
 add_action('wp_enqueue_scripts', 'ct_loichua_thumb_enqueue', 20);

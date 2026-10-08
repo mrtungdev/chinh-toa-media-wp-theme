@@ -132,8 +132,18 @@ add_filter('embed_oembed_html', function ($code) {
   return str_replace('<iframe', '<iframe class="embed-responsive-item" ', $code);
 });
 
-function getPostImage($id)
+/**
+ * URL ảnh đại diện theo cỡ (mặc định 'medium' = 690px, xem functions.php). Trước đây trả ảnh
+ * gốc full-size cho mọi thẻ bài → nặng gấp nhiều lần cần thiết.
+ *
+ * @param int    $id   Post ID.
+ * @param string $size 'small' (320) | 'medium' (690) | 'large' (960) | 'full'.
+ */
+function getPostImage($id, $size = 'medium')
 {
-  $image = get_the_post_thumbnail_url($id);
+  $image = get_the_post_thumbnail_url($id, $size);
   return !empty($image) ? $image : CT_NO_IMAGE;
 }
+
+// Tiêu đề trang chuyên mục/thẻ… không kèm tiền tố "Chuyên mục:" / "Category:".
+add_filter('get_the_archive_title_prefix', '__return_empty_string');

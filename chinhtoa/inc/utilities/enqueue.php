@@ -6,14 +6,28 @@ if (!defined('ABSPATH')) {
 
 function bb_enqueues()
 {
+    // JS của theme tải "defer": không chặn hiển thị trang, chạy theo thứ tự sau khi đọc xong HTML.
+    $defer = array('in_footer' => true, 'strategy' => 'defer');
     // Bootstrap 5 bundle (includes Popper) — self-hosted, no jQuery dependency.
-    wp_enqueue_script('bs5', CT_THEME_JS_URI . '/bootstrap.bundle.min.js', array(), '5.3.8', true);
-    wp_enqueue_script('swipeboxjs', CT_THEME_JS_URI . '/jquery.swipebox.min.js', array('jquery'), '1.5.1', true);
-    wp_enqueue_script('ctjs', CT_THEME_JS_URI . '/ct-media.js', array('jquery', 'swipeboxjs'), THEME_VERSION, true);
+    wp_enqueue_script('bs5', CT_THEME_JS_URI . '/bootstrap.bundle.min.js', array(), '5.3.8', $defer);
+    // Lightbox chỉ cần ở trang chi tiết (ảnh/gallery trong nội dung bài) — trang chủ tĩnh cũng là
+    // "singular" nhưng không có nội dung bài.
+    $ctjsDeps = array('jquery');
+    if (is_singular() && !is_page_template('page-homepage.php')) {
+        wp_enqueue_script('swipeboxjs', CT_THEME_JS_URI . '/jquery.swipebox.min.js', array('jquery'), '1.5.1', $defer);
+        $ctjsDeps[] = 'swipeboxjs';
+    }
+    wp_enqueue_script('ctjs', CT_THEME_JS_URI . '/ct-media.js', $ctjsDeps, THEME_VERSION, $defer);
     // lazysizes core auto-inits on the `.lazyload` class. (The blur-up plugin was
     // dropped: nothing in the theme emits the data-lowsrc it needs.)
-    wp_enqueue_script('lazysizes', CT_THEME_JS_URI . '/lazysizes.min.js', array(), THEME_VERSION, true);
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Charm&family=Lobster&display=swap', array(), null);
+    wp_enqueue_script('lazysizes', CT_THEME_JS_URI . '/lazysizes.min.js', array(), THEME_VERSION, $defer);
+    // Charm: khẩu hiệu header + chữ trang trí. Lobster chỉ dùng cho tiêu đề box "5 phút".
+    $fontFamilies = 'family=Charm';
+    $box5phut     = ct_get_option_setting('show_5phutloichua');
+    if (ct_brand_feature('loichua') && is_array($box5phut) && isset($box5phut['action_show']) && $box5phut['action_show'] === 'y') {
+        $fontFamilies .= '&family=Lobster';
+    }
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?' . $fontFamilies . '&display=swap', array(), null);
 
     // Per-color stylesheet: each theme-{color}.css is a full, self-contained
     // build (Bootstrap + theme styles + the scheme's primary color baked in).
@@ -72,6 +86,52 @@ function ct_layout_enqueue()
     wp_enqueue_style('ct-layout', CT_THEME_CSS_URI . '/layout.css', array(), THEME_VERSION);
 }
 add_action('wp_enqueue_scripts', 'ct_layout_enqueue', 20);
+
+/* ------------------------------------------------------------ Tốc độ tải trang */
+
+/** Kết nối sớm tới máy chủ font Google (file .woff2 nằm ở fonts.gstatic.com). */
+add_filter('wp_resource_hints', function ($urls, $relation) {
+    if ($relation === 'preconnect' && !is_admin()) {
+        $urls[] = array('href' => 'https://fonts.gstatic.com', 'crossorigin');
+    }
+    return $urls;
+}, 10, 2);
+
+/** Bỏ emoji của WordPress (script + CSS): trình duyệt hiện emoji sẵn. */
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('wp_enqueue_scripts', 'wp_enqueue_emoji_styles');
+
+/** jQuery Migrate chỉ cần cho code jQuery rất cũ — theme không dùng → bỏ ở trang ngoài. */
+add_action('wp_default_scripts', function ($scripts) {
+    if (!is_admin() && isset($scripts->registered['jquery'])) {
+        $scripts->registered['jquery']->deps = array_diff($scripts->registered['jquery']->deps, array('jquery-migrate'));
+    }
+});
+
+/**
+ * Trang không có nội dung khối (trang chủ dùng template Trang Chủ, chuyên mục, tìm kiếm):
+ * bỏ CSS khối Gutenberg (~140 KB) và CSS thẻ Lời Chúa khi không có gì dùng tới.
+ * Theme cổ điển nên WordPress nạp CSS của mọi khối đã đăng ký trên mọi trang.
+ */
+function ct_dequeue_unused_styles()
+{
+    $hasBlockContent = is_singular() && !is_page_template('page-homepage.php');
+    if (!$hasBlockContent) {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('classic-theme-styles');
+    }
+
+    // Thẻ Lời Chúa: widget đang dùng, bài có khối thẻ, hoặc bài loại "Lời Chúa" (post-kind.php).
+    // Khối "Lời Chúa hôm nay" vẫn kéo CSS này theo dạng dependency của daily-word.css.
+    $postId   = $hasBlockContent ? get_queried_object_id() : 0;
+    $needCard = is_active_widget(false, false, 'ct_loichua_card', true)
+        || ($postId && (has_block('chinhtoa/loichua-card', $postId) || (function_exists('ct_post_kind') && ct_post_kind($postId) === 'loichua')));
+    if (!$needCard) {
+        wp_dequeue_style('ct-loichua-card');
+    }
+}
+add_action('wp_enqueue_scripts', 'ct_dequeue_unused_styles', 100);
 
 /**
  * Nhãn "Trực tiếp" của Thanh thông báo (Tiện ích → Thanh thông báo → Đang phát trực tiếp).

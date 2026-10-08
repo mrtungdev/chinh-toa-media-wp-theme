@@ -192,9 +192,11 @@ add_action('widgets_init', function () {
     register_widget('CT_LoiChua_Card_Widget');
 });
 
-/** CSS front-end của thẻ (handle đăng ký trong inc/blocks/loader.php; kéo theo font Lora). */
+/** CSS front-end của thẻ (handle đăng ký trong inc/blocks/loader.php; kéo theo font Lora) — chỉ khi widget đang dùng. */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('ct-loichua-card');
+    if (is_active_widget(false, false, 'ct_loichua_card', true)) {
+        wp_enqueue_style('ct-loichua-card');
+    }
 });
 
 /** JS khởi tạo wp-color-picker cho 3 ô màu (tái dùng widget-admin.js sẵn có). */

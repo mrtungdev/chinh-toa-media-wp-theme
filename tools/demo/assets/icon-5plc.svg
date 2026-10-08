@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="512" height="512">
+  <!--
+    Biểu tượng (Site Icon / favicon) cho "5 phút cho Lời Chúa": số 5 trên nền xanh chàm,
+    chấm đỏ như quả cầu trong logo. Font Arial Bold Italic (font hệ thống, chỉ để xuất PNG):
+      rsvg-convert -w 512 icon-5plc.svg -o icon-5plc.png
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f4199"/>
+      <stop offset="1" stop-color="#2e3192"/>
+    </linearGradient>
+    <radialGradient id="ball" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#ff6b4a"/>
+      <stop offset="0.45" stop-color="#e3141b"/>
+      <stop offset="1" stop-color="#9b0a12"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="300" rx="64" fill="url(#bg)"/>
+  <text x="138" y="238" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="250" fill="#ffffff">5</text>
+  <circle cx="226" cy="84" r="34" fill="url(#ball)" stroke="#ffffff" stroke-width="6"/>
+</svg>

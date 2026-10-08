@@ -16,7 +16,7 @@ get_header();
 ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<div id="main" class="site-main">
 
 		<?php
 if (have_posts()):
@@ -51,7 +51,7 @@ else:
 endif;
 ?>
 
-		</main><!-- #main -->
+		</div><!-- #main -->
 	</div><!-- #primary -->
 
 <?php

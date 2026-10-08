@@ -50,9 +50,9 @@ $showInfo    = ($showAuthor === 'y' || $showDate === 'y' || $showViews === 'y');
       <?php endif; ?>
     </div>
     <?php endif; ?>
-    <div class="post-title">
+    <h3 class="post-title">
       <a href="<?php echo esc_url($link); ?>" rel="bookmark"><?php echo esc_html($title); ?></a>
-    </div>
+    </h3>
     <?php if ($showExcerpt == 'y') : ?>
     <div class="post-excerpt">
       <?php echo wp_kses_post($excerpt); ?>

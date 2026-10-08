@@ -26,11 +26,17 @@ $isShowPostAuthor = isset($postSettings['post_author']) ? $postSettings['post_au
 		echo $ctVideo; // wp_oembed_get trả HTML từ provider đã biết.
 	} elseif ($isShowPostThumb == 'y' && !($ctKind === 'loichua' && !has_post_thumbnail($post->ID))) {
 		// Bài "Lời Chúa" không có ảnh: thẻ câu ghi nhớ ở trên đã thay ảnh → bỏ ảnh giữ chỗ.
-		$image = getPostImage($post->ID);
 	?>
   <div class="ct-single-thumb">
-    <img class="lazyload" src="<?php echo esc_url(CT_PLACEHOLDER); ?>" data-src="<?php echo esc_url($image); ?>"
-      alt="<?php echo esc_attr($title); ?>">
+    <?php if (has_post_thumbnail($post->ID)) : ?>
+    <?php
+    // Ảnh đầu bài thường là phần tử lớn nhất màn hình đầu (LCP): tải ngay, ưu tiên cao,
+    // có srcset + width/height (không lazy-load bằng JS như thẻ bài bên dưới).
+    echo get_the_post_thumbnail($post->ID, 'large', array('loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'alt' => $title));
+    ?>
+    <?php else : ?>
+    <img src="<?php echo esc_url(CT_NO_IMAGE); ?>" alt="<?php echo esc_attr($title); ?>">
+    <?php endif; ?>
   </div>
   <?php } ?>
   <?php if ($post_breadcrumb == 'y') : ?>

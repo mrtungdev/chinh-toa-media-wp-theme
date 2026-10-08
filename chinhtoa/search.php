@@ -38,6 +38,24 @@ $numberColumn = filter_var($archiveSettings['columns'], FILTER_SANITIZE_NUMBER_I
 
 <div id="ct-content" class="ct-cats <?php echo esc_attr($archiveSettings['columns']); ?>">
 
+  <header class="ct-archive-header">
+    <h1 class="ct-archive-header__title">
+      <?php
+      /* translators: %s: search keywords */
+      printf(esc_html__('Kết quả tìm kiếm cho “%s”', 'chinhtoa'), esc_html(get_search_query(false)));
+      ?>
+    </h1>
+    <?php if (have_posts()) : ?>
+    <p class="ct-archive-header__desc">
+      <?php
+      /* translators: %d: number of posts found */
+      printf(esc_html__('Tìm thấy %d bài viết.', 'chinhtoa'), (int) $GLOBALS['wp_query']->found_posts);
+      ?>
+    </p>
+    <?php endif; ?>
+    <?php get_search_form(); ?>
+  </header>
+
   <?php if (have_posts()) : ?>
   <?php
 	

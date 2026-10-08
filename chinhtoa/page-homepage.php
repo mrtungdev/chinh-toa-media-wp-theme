@@ -21,6 +21,9 @@ $homepageFeatured = home_GetFeatured();
 ?>
 <div id="ct-content">
   <?php
+  // Trang chủ không có tiêu đề hiển thị → <h1> ẩn cho SEO / trình đọc màn hình.
+  $ctTagline = get_bloginfo('description');
+  printf('<h1 class="visually-hidden">%s</h1>', esc_html(get_bloginfo('name') . ($ctTagline !== '' ? ' – ' . $ctTagline : '')));
 
   if($homepageFeatured['is_show'] == 'y'){
     if($homepageFeatured['featured_type'] == 'c1'){
@@ -31,13 +34,13 @@ $homepageFeatured = home_GetFeatured();
       echo '</div>';
     }
   }
-  // ctprint($homepageSection, 'homepageSection');
-  
-  // Each section is rendered over AJAX. We emit only its INDEX; the AJAX
-  // handler re-reads the section config from options server-side (see
-  // inc/post/ajax.php) so no section data round-trips through the browser.
-  foreach (array_keys($homepageSection) as $index) {
-    printf('<div class="homepage-dynamic-ajax" data-ct-section="%d"></div>', (int) $index);
+  // Các khối render ngay phía server (cùng hàm với AJAX ở inc/post/ajax.php) để nội dung
+  // và link bài có sẵn trong HTML (SEO), không tốn 1 request admin-ajax/khối và không lỗi
+  // nonce hết hạn khi trang được page-cache. home_GetSections() đã lọc khối "chỉ admin".
+  foreach ($homepageSection as $index => $section) {
+    printf('<div class="homepage-section" data-ct-section="%d">', (int) $index);
+    echo homepage_tabs_template_get($section); // phpcs:ignore — template output, self-escaping
+    echo '</div>';
   }
   ?>
 </div>

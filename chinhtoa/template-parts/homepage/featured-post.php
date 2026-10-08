@@ -5,7 +5,7 @@ if($homepageFeatured['show_tinhot']=='y'){
   $trendingArgs = array(
     'posts_per_page' => $homepageFeatured['c1_tinhot_num_post'],
     'meta_key'=>'views',
-    'orderby' => 'views',
+    'orderby' => 'meta_value_num', // views lưu dạng chuỗi → phải so sánh số
     'order' => 'DESC',
   );
 
@@ -74,7 +74,7 @@ $tieudiemTrans = 'trans_homepage_featured_tieudiem_' . md5(wp_json_encode($tieud
 
     $headlinetitle = get_the_title($headlinePost->ID);
     $headlinelink = get_permalink($headlinePost->ID);
-    $headlineimage = getPostImage($headlinePost->ID);
+    $headlineimage = getPostImage($headlinePost->ID, 'large');
     $headlineexcerpt = get_the_excerpt($headlinePost->ID);
   ?>
   <div class="breaking-news">

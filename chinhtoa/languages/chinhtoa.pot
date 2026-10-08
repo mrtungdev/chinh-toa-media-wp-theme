@@ -168,6 +168,14 @@ msgstr ""
 msgid "CN"
 msgstr ""
 
+#: template-parts/part/float-social-sharing.php:12
+msgid "Chia sẻ lên Facebook"
+msgstr ""
+
+#: template-parts/part/float-social-sharing.php:15
+msgid "Chia sẻ lên X (Twitter)"
+msgstr ""
+
 #: inc/utilities/sidebar.php:26
 msgid "Chuyên Mục"
 msgstr ""
@@ -200,8 +208,16 @@ msgstr ""
 msgid "Chuyên mục nguồn:"
 msgstr ""
 
+#: template-parts/category/content-none.php:13
+msgid "Chuyên mục này chưa có bài viết."
+msgstr ""
+
 #: inc/widget/ct_postlist_widget.php:243
 msgid "Chuyên mục:"
+msgstr ""
+
+#: header.php:78
+msgid "Chuyển đến nội dung"
 msgstr ""
 
 #: template-parts/loichua/daily-card.php:22
@@ -432,6 +448,10 @@ msgstr ""
 msgid "Gạch chân mục đang chọn (kiểu menu 3 và 4) và màu nền mục đang chọn (kiểu 1, 2). Để trống để dùng màu giao diện."
 msgstr ""
 
+#: template-parts/part/float-social-sharing.php:18
+msgid "Gửi qua email"
+msgstr ""
+
 #: template-parts/loichua/calendar.php:30
 msgid "Hai"
 msgstr ""
@@ -540,12 +560,20 @@ msgstr ""
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
+#: 404.php:15
+msgid "KHÔNG TÌM THẤY!"
+msgstr ""
+
 #: inc/options/admin/term-post-meta.php:265
 msgid "Không"
 msgstr ""
 
 #: inc/options/admin/sections.php:73
 msgid "Không lặp"
+msgstr ""
+
+#: template-parts/category/content-none.php:11
+msgid "Không tìm thấy bài viết phù hợp. Hãy thử từ khoá khác hoặc ngắn hơn."
 msgstr ""
 
 #: inc/options/admin/sections.php:442
@@ -578,6 +606,10 @@ msgstr ""
 
 #: inc/options/admin/sections.php:270
 msgid "Kéo để sắp xếp"
+msgstr ""
+
+#: search.php:45
+msgid "Kết quả tìm kiếm cho “%s”"
 msgstr ""
 
 #: inc/options/admin/sections.php:161
@@ -940,6 +972,10 @@ msgstr ""
 msgid "Nội dung Header"
 msgstr ""
 
+#: 404.php:16
+msgid "Nội dung bạn cần tìm không có."
+msgstr ""
+
 #: inc/options/admin/sections.php:163
 msgid "Nội dung chi tiết (không bắt buộc)."
 msgstr ""
@@ -958,6 +994,10 @@ msgstr ""
 
 #: inc/admin/theme/guide-helpers.php:54
 msgid "Phân loại bài viết: Lời Chúa & Video"
+msgstr ""
+
+#: inc/utilities/type.php:368
+msgid "Phân trang"
 msgstr ""
 
 #: inc/admin/theme/dashboard.php:59
@@ -1048,7 +1088,7 @@ msgstr ""
 msgid "Số thứ tự (1–X)"
 msgstr ""
 
-#: template-parts/page/content-page.php:43
+#: template-parts/page/content-page.php:42
 msgid "Sửa trang"
 msgstr ""
 
@@ -1204,6 +1244,10 @@ msgstr ""
 msgid "Tiêu đề:"
 msgstr ""
 
+#: inc/utilities/type.php:359
+msgid "Tiếp theo »"
+msgstr ""
+
 #: inc/options/admin/admin-page.php:140
 msgid "Tiện ích"
 msgstr ""
@@ -1232,7 +1276,7 @@ msgstr ""
 msgid "Trang chủ & Bài viết"
 msgstr ""
 
-#: template-parts/page/content-page.php:38 template-parts/post/content.php:81
+#: template-parts/page/content-page.php:37 template-parts/post/content.php:87
 msgid "Trang:"
 msgstr ""
 
@@ -1286,6 +1330,10 @@ msgstr ""
 
 #: inc/options/admin/sections.php:298
 msgid "Tên hiển thị ở đầu khối và quyền xem khối này."
+msgstr ""
+
+#: search.php:52
+msgid "Tìm thấy %d bài viết."
 msgstr ""
 
 #: inc/options/admin/sections.php:44
@@ -1436,8 +1484,16 @@ msgstr ""
 msgid "Xoá khối"
 msgstr ""
 
-#: inc/shortcodes/ct_shortcode_post.php:46 template-parts/post/content.php:63 template-parts/homepage/c_post-item-image.php:47 template-parts/homepage/c_post-item.php:48
+#: inc/shortcodes/ct_shortcode_post.php:46 template-parts/post/content.php:69 template-parts/homepage/c_post-item-image.php:47 template-parts/homepage/c_post-item.php:48
 msgid "lượt xem"
+msgstr ""
+
+#: inc/utilities/type.php:358
+msgid "« Trước"
+msgstr ""
+
+#: 404.php:18 template-parts/category/content-none.php:15
+msgid "« Về trang chủ"
 msgstr ""
 
 #: inc/options/admin/sections.php:148
@@ -1488,19 +1544,19 @@ msgstr ""
 msgid "Đọc tiếp"
 msgstr ""
 
-#: template-parts/post/content.php:69
+#: template-parts/post/content.php:75
 msgid "Đọc với cỡ chữ KHÁ LỚN"
 msgstr ""
 
-#: template-parts/post/content.php:70
+#: template-parts/post/content.php:76
 msgid "Đọc với cỡ chữ LỚN"
 msgstr ""
 
-#: template-parts/post/content.php:67
+#: template-parts/post/content.php:73
 msgid "Đọc với cỡ chữ NHỎ"
 msgstr ""
 
-#: template-parts/post/content.php:68
+#: template-parts/post/content.php:74
 msgid "Đọc với cỡ chữ VỪA"
 msgstr ""
 
