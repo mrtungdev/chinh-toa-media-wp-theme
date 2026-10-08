@@ -7,7 +7,9 @@
     "prebuild": "npx rimraf dist",
     "cpcss": "copyfiles -f dist/css/theme-*.css chinhtoa/assets/css/",
     "build": "webpack --config webpack.config.js --mode production && copyfiles -f dist/css/theme-*.css chinhtoa/assets/css/",
-    "start": "webpack --config webpack.config.js --mode development --watch"
+    "start": "webpack --config webpack.config.js --mode development --watch",
+    "pack": "bash tools/pack.sh",
+    "pin": "bash tools/pin-theme.sh"
   },
   "repository": {
     "type": "git",

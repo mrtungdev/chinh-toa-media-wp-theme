@@ -17,6 +17,8 @@ add_filter('ct_brand', function ($brand) {
     $brand['theme_color']      = '#7a1f35';
     $brand['tile_color']       = '#7a1f35';
     $brand['admin_menu_title'] = 'HIỆP HỘI NỮ TỲ THỪA SAI THÁNH GIÁ';
+    // Tên menu theme ở cột trái trang quản trị (cũng là {{menu}} trong trang Hướng dẫn).
+    $brand['admin_menu_label'] = 'Nữ Tỳ Thừa Sai';
     // Bỏ bộ favicon Chính Tòa của theme → WordPress dùng Site Icon (Cài đặt → Tổng quan).
     $brand['favicon_dir']      = '';
     // Box "5 phút Lời Chúa" thuộc site khác — tắt hẳn ở site này.

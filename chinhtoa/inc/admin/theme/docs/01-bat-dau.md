@@ -45,7 +45,10 @@ Mở trình duyệt, gõ địa chỉ website rồi thêm `/wp-admin` vào cuố
 ### Việc thường làm
 
 - **Đăng bài:** xem mục *Viết & quản lý bài viết*.
+<!-- if:loichua -->
 - **Đăng Lời Chúa mỗi ngày:** xem mục *Lời Chúa hôm nay & Lịch*.
+<!-- endif -->
+- **Sửa trang Liên hệ, Giới thiệu…:** xem mục *Trang (Liên hệ, Giới thiệu…)*.
 - **Đổi màu, đầu trang, trang chủ:** xem nhóm *Giao diện & Trang chủ* (dành cho Quản lý).
 
 ### Ba điều nên nhớ

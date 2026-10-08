@@ -62,7 +62,14 @@ trang” → bật “Tuỳ chỉnh riêng” → tắt “Thanh bên”.
 - Plugin cũ cần jQuery Migrate ở trang ngoài (hiếm) sẽ báo lỗi console → bật lại bằng cách gỡ
   hàm `wp_default_scripts` trong `inc/utilities/enqueue.php`.
 
-### 4. Thiết lập site khuyến nghị (Yoast, tiếng Việt, tắt bình luận)
+### 4. Trang Hướng dẫn theo từng site
+
+Trang Hướng dẫn tự ẩn phần Lời Chúa khi site tắt tính năng (`features.loichua = false` qua filter
+`ct_brand`) và dùng tên site / tên menu theme của site. Muốn tên menu theme khác “Chính Tòa
+Media”: đặt `admin_menu_label` trong filter `ct_brand` (mu-plugin của site). Muốn nội dung riêng
+cho một mục: filter `ct_guide_doc_path` trỏ tới file `.md` của site.
+
+### 5. Thiết lập site khuyến nghị (Yoast, tiếng Việt, tắt bình luận)
 
 Chạy `tools/setup-site-vi.php` (ngoài gói theme) cho từng site — xem chú thích đầu file.
 Script bỏ `/category/` khỏi URL (Yoast tự 301 link cũ), Việt hoá tiêu đề/breadcrumb Yoast, đặt

@@ -1,6 +1,6 @@
 ## Màu sắc & bố cục chung
 
-*Dành cho Quản lý.* Các thiết lập giao diện nằm ở **Chính Tòa Media → Thiết lập giao
+*Dành cho Quản lý.* Các thiết lập giao diện nằm ở **{{menu}} → Thiết lập giao
 diện** ([mở](admin.php?page=ct-theme-settings)). Trang có **bốn nhóm** (tab) ở trên cùng:
 
 | Nhóm | Bên trong có |

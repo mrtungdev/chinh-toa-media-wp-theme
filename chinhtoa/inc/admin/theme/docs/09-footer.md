@@ -8,7 +8,7 @@ chỉ, số điện thoại. Vào **Thiết lập giao diện → Giao diện �
 
 1. Bấm tab con **Footer**.
 2. **Nội dung cuối trang**: gõ dòng bản quyền và thông tin liên hệ, ví dụ
-   *© 2026 Giáo xứ Chính Tòa Đà Nẵng · 0236 xxx xxx*.
+   *© 2026 {{site}} · 0236 xxx xxx*.
 3. **Màu nền cuối trang** và **Màu chữ cuối trang**: bấm **Chọn màu**. Nên chọn chữ sáng
    trên nền tối (hoặc ngược lại) để dễ đọc.
 4. Bấm **Lưu thay đổi**.

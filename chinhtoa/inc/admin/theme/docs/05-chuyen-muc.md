@@ -6,7 +6,13 @@ trang quản trị, WordPress gọi chuyên mục là **Danh mục**. Hai tên c
 Chuyên mục dùng để:
 
 - Gom bài vào đúng **khối trên trang chủ**: mỗi khối lấy bài từ chuyên mục được chọn.
-- Tạo trang danh sách riêng, ví dụ `tenwebsite.com/category/suy-niem/`.
+<!-- if:nocatbase -->
+- Tạo trang danh sách riêng, ví dụ `tenwebsite.com/thong-bao/` (đường dẫn không có chữ
+  `/category/`; link cũ có `/category/` vẫn mở được, tự chuyển sang link mới).
+<!-- endif -->
+<!-- if:!nocatbase -->
+- Tạo trang danh sách riêng, ví dụ `tenwebsite.com/category/thong-bao/`.
+<!-- endif -->
 - Làm mục trên **thanh menu**.
 
 ### Thêm chuyên mục mới
@@ -17,7 +23,8 @@ Mục** nằm bên trái:
 1. **Tên**: tên hiện ra ngoài website, ví dụ *Thông báo giáo xứ*.
 2. **Đường dẫn**: để trống, website tự tạo từ Tên (ví dụ `thong-bao-giao-xu`).
 3. **Danh mục cha**: để **Không có**. Chỉ chọn khi muốn làm chuyên mục con.
-4. **Miêu tả**: không bắt buộc. Một câu giới thiệu ngắn.
+4. **Miêu tả**: **nên viết** một câu giới thiệu ngắn. Câu này hiện ngay dưới tên chuyên mục
+   ở đầu trang chuyên mục, và Google dùng làm mô tả khi hiện kết quả tìm kiếm.
 5. Bấm **Thêm Danh Mục**. Chuyên mục mới hiện ở danh sách bên phải.
 
 ![Khung Thêm Danh Mục]({{img}}/them-danh-muc.webp)
@@ -29,7 +36,7 @@ Mục** nằm bên trái:
   **Cập nhật** ở cuối trang.
 - **Xoá:** đưa chuột vào tên, bấm **Xóa**. Bài trong chuyên mục **không bị xoá**, mà được
   chuyển sang **chuyên mục mặc định**.
-- Chuyên mục mặc định (trên website mẫu là *Suy niệm*) **không có nút Xóa**.
+- Chuyên mục mặc định (chọn ở **Cài đặt → Viết**) **không có nút Xóa**.
 
 > **Cẩn thận khi đổi Đường dẫn** của chuyên mục đang có trên menu hoặc đã chia sẻ lên
 > Facebook: đường dẫn cũ sẽ không mở được nữa.

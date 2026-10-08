@@ -11,6 +11,13 @@
  * Parsedown chỉ được nạp khi cache miss (lazy require), nên không ảnh hưởng các
  * trang admin khác hay front-end.
  *
+ * Một bộ tài liệu dùng chung cho mọi site, nhưng mỗi site thấy đúng phần của mình:
+ *  - Mục có 'feature' (VD 'loichua') bị ẩn khi điều kiện đó tắt (ct_guide_conditions()).
+ *  - Trong .md: <!-- if:ten -->…<!-- endif --> / <!-- if:!ten -->…<!-- endif --> giữ hoặc bỏ
+ *    một đoạn; token {{site}}, {{menu}}, {{img}} thay theo site (ct_guide_tokens()).
+ *  - Site thêm/bớt mục bằng filter `ct_guide_sections`, thay nội dung một mục bằng file .md
+ *    riêng qua filter `ct_guide_doc_path` (đặt trong mu-plugin, không sửa theme).
+ *
  * @package chinhtoa
  */
 
@@ -48,13 +55,15 @@ function ct_guide_groups()
  */
 function ct_guide_sections()
 {
-    return array(
+    $loichua = ct_brand_feature('loichua');
+    $sections = array(
         array('slug' => 'bat-dau',      'title' => __('Bắt đầu nhanh', 'chinhtoa'),                        'icon' => 'dashicons-flag',              'file' => '01-bat-dau.md',               'group' => 'batdau'),
         array('slug' => 'bai-viet',     'title' => __('Viết & quản lý bài viết', 'chinhtoa'),              'icon' => 'dashicons-edit',              'file' => '02-viet-bai-viet.md',         'group' => 'noidung'),
-        array('slug' => 'phan-loai',    'title' => __('Phân loại bài viết: Lời Chúa & Video', 'chinhtoa'),  'icon' => 'dashicons-tag',               'file' => '03-phan-loai-bai-viet.md',    'group' => 'noidung'),
-        array('slug' => 'loichua-card', 'title' => __('Thẻ Lời Chúa & Box “5 phút”', 'chinhtoa'),          'icon' => 'dashicons-format-quote',      'file' => '04-the-loichua-box-5phut.md', 'group' => 'noidung'),
-        array('slug' => 'loichua-hom-nay', 'title' => __('Lời Chúa hôm nay & Lịch', 'chinhtoa'),         'icon' => 'dashicons-calendar-alt',      'file' => '15-loi-chua-hom-nay.md',      'group' => 'noidung'),
+        array('slug' => 'phan-loai',    'title' => $loichua ? __('Phân loại bài viết: Lời Chúa & Video', 'chinhtoa') : __('Phân loại bài viết: Video', 'chinhtoa'), 'icon' => 'dashicons-tag', 'file' => '03-phan-loai-bai-viet.md', 'group' => 'noidung'),
+        array('slug' => 'loichua-card', 'title' => __('Thẻ Lời Chúa & Box “5 phút”', 'chinhtoa'),          'icon' => 'dashicons-format-quote',      'file' => '04-the-loichua-box-5phut.md', 'group' => 'noidung', 'feature' => 'loichua'),
+        array('slug' => 'loichua-hom-nay', 'title' => __('Lời Chúa hôm nay & Lịch', 'chinhtoa'),         'icon' => 'dashicons-calendar-alt',      'file' => '15-loi-chua-hom-nay.md',      'group' => 'noidung', 'feature' => 'loichua'),
         array('slug' => 'chuyen-muc',   'title' => __('Chuyên mục', 'chinhtoa'),                           'icon' => 'dashicons-category',          'file' => '05-chuyen-muc.md',            'group' => 'noidung'),
+        array('slug' => 'trang',        'title' => __('Trang (Liên hệ, Giới thiệu…)', 'chinhtoa'),         'icon' => 'dashicons-admin-page',        'file' => '17-trang.md',                 'group' => 'noidung'),
         array('slug' => 'media',        'title' => __('Thư viện hình ảnh', 'chinhtoa'),                    'icon' => 'dashicons-format-gallery',    'file' => '06-thu-vien-media.md',        'group' => 'noidung'),
         array('slug' => 'giao-dien',    'title' => __('Màu sắc & bố cục chung', 'chinhtoa'),               'icon' => 'dashicons-admin-customizer',  'file' => '07-mau-sac-bo-cuc.md',        'group' => 'giaodien'),
         array('slug' => 'header',       'title' => __('Header (đầu trang)', 'chinhtoa'),                   'icon' => 'dashicons-cover-image',       'file' => '08-header.md',                'group' => 'giaodien'),
@@ -66,6 +75,46 @@ function ct_guide_sections()
         array('slug' => 'faq',          'title' => __('Câu hỏi thường gặp', 'chinhtoa'),                   'icon' => 'dashicons-editor-help',       'file' => '13-cau-hoi-thuong-gap.md',    'group' => 'trogiup'),
         array('slug' => 'ho-tro',       'title' => __('Hỗ trợ kỹ thuật', 'chinhtoa'),                      'icon' => 'dashicons-sos',               'file' => '14-ho-tro-ky-thuat.md',       'group' => 'trogiup'),
     );
+
+    /**
+     * Site thêm/bớt/sắp xếp lại mục hướng dẫn (VD mục quy trình riêng của Ban truyền thông).
+     * Mỗi phần tử: slug, title, icon, file, group, (tuỳ chọn) feature.
+     */
+    return apply_filters('ct_guide_sections', $sections);
+}
+
+/**
+ * Điều kiện theo site đang xem, dùng cho 'feature' của mục và khối <!-- if:ten --> trong .md.
+ *
+ * @return array<string,bool>
+ */
+function ct_guide_conditions()
+{
+    $titles = get_option('wpseo_titles');
+    return (array) apply_filters('ct_guide_conditions', array(
+        // Tính năng Lời Chúa (box 5 phút, khối Lời Chúa hôm nay, lịch…) — tắt qua filter ct_brand.
+        'loichua'      => (bool) ct_brand_feature('loichua'),
+        // Yoast SEO đang bỏ /category/ khỏi đường dẫn chuyên mục.
+        'nocatbase'    => defined('WPSEO_VERSION') && is_array($titles) && !empty($titles['stripcategorybase']),
+        // Bài mới mặc định đóng bình luận (Cài đặt → Thảo luận).
+        'comments_off' => get_option('default_comment_status') === 'closed',
+    ));
+}
+
+/**
+ * Token thay trong .md, theo site đang xem.
+ *
+ * @return array<string,string>
+ */
+function ct_guide_tokens()
+{
+    $imgs = defined('CT_THEME_IMGS_URI') ? CT_THEME_IMGS_URI : get_template_directory_uri() . '/assets/imgs';
+    $menu = (string) ct_brand('admin_menu_label');
+    return (array) apply_filters('ct_guide_tokens', array(
+        '{{img}}'  => esc_url_raw($imgs . '/guide'),
+        '{{site}}' => wp_strip_all_tags(get_bloginfo('name')),
+        '{{menu}}' => $menu !== '' ? $menu : __('Giao diện', 'chinhtoa'),
+    ));
 }
 
 /**
@@ -78,7 +127,11 @@ function ct_guide_sections()
  */
 function ct_guide_visible_sections()
 {
-    return array_values(array_filter(ct_guide_sections(), function ($section) {
+    $conds = ct_guide_conditions();
+    return array_values(array_filter(ct_guide_sections(), function ($section) use ($conds) {
+        if (!empty($section['feature']) && empty($conds[$section['feature']])) {
+            return false; // tính năng tắt ở site này → ẩn cả mục
+        }
         return ct_guide_render_markdown($section['file']) !== '';
     }));
 }
@@ -95,15 +148,19 @@ function ct_guide_visible_sections()
 function ct_guide_render_markdown($file)
 {
     // basename() chặn path traversal (dù $file luôn đến từ registry tin cậy).
-    $path = CT_THEME_DIR . '/inc/admin/theme/docs/' . basename($file);
+    $default = CT_THEME_DIR . '/inc/admin/theme/docs/' . basename($file);
+    // Site có thể dùng bản .md riêng cho một mục (đường dẫn tuyệt đối, do mu-plugin cung cấp).
+    $path = (string) apply_filters('ct_guide_doc_path', $default, $file);
     if (!is_readable($path)) {
         return '';
     }
 
     $ver = defined('THEME_VERSION') ? THEME_VERSION : '0';
-    // 'r2': phiên bản bộ hiển thị (token ảnh, kích thước ảnh). Đổi khi sửa pipeline render
-    // để cache cũ tự hết hiệu lực.
-    $key = 'ct_guide_html_' . md5($file . '|' . filemtime($path) . '|' . $ver . '|r2');
+    // 'r3': phiên bản bộ hiển thị (token, khối điều kiện). Đổi khi sửa pipeline render để cache
+    // cũ tự hết hiệu lực. Ngữ cảnh site (token + điều kiện) nằm trong khoá → đổi tên site,
+    // bật/tắt tính năng là hướng dẫn cập nhật ngay.
+    $ctx = md5(wp_json_encode(array(ct_guide_tokens(), ct_guide_conditions())));
+    $key = 'ct_guide_html_' . md5($path . '|' . filemtime($path) . '|' . $ver . '|' . $ctx . '|r3');
 
     $cached = get_transient($key);
     if ($cached !== false) {
@@ -125,17 +182,27 @@ function ct_guide_render_markdown($file)
 }
 
 /**
- * Thay các token trong tệp .md trước khi parse:
- *  - {{img}} → URL thư mục ảnh hướng dẫn (assets/imgs/guide), VD
- *    `![Mô tả]({{img}}/bang-dieu-khien.webp)`.
+ * Xử lý tệp .md trước khi parse (Parsedown safe mode sẽ escape mọi HTML, nên phải làm trước):
+ *  - Khối điều kiện: `<!-- if:loichua -->…<!-- endif -->` giữ khi điều kiện bật,
+ *    `<!-- if:!loichua -->…<!-- endif -->` giữ khi tắt. Khối nhiều dòng: đặt mỗi dấu mốc trên
+ *    một dòng riêng (dùng được cả cho dòng bảng). Dùng giữa dòng: không đặt `<!-- endif -->`
+ *    ở cuối dòng (sẽ nối dòng). Không lồng nhau.
+ *  - Token: {{img}} (thư mục ảnh hướng dẫn), {{site}} (tên website), {{menu}} (tên menu theme).
  *
  * @param string $md Nội dung Markdown.
  * @return string
  */
 function ct_guide_expand_tokens($md)
 {
-    $imgs = defined('CT_THEME_IMGS_URI') ? CT_THEME_IMGS_URI : get_template_directory_uri() . '/assets/imgs';
-    return str_replace('{{img}}', esc_url_raw($imgs . '/guide'), $md);
+    $conds = ct_guide_conditions();
+    $md = preg_replace_callback('#<!--\s*if:(!?)([a-z0-9_]+)\s*-->\n?(.*?)<!--\s*endif\s*-->\n?#s', function ($m) use ($conds) {
+        $on = !empty($conds[$m[2]]);
+        if ($m[1] === '!') {
+            $on = !$on;
+        }
+        return $on ? $m[3] : '';
+    }, $md);
+    return strtr($md, ct_guide_tokens());
 }
 
 /**

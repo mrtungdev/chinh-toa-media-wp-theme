@@ -20,10 +20,25 @@ Kiểm tra lần lượt:
 
 Kiểm tra **Chuyên mục** của hai khối. Hai khối chọn cùng chuyên mục thì sẽ hiện cùng bài.
 
+<!-- if:loichua -->
 ### Bài Lời Chúa hôm nay chưa đổi sang bài mới?
 
 Khối *Lời Chúa hôm nay* lấy bài theo **ngày đăng**. Mở bài của hôm nay, xem mục **Xuất
 bản** ở cột bên phải có đúng ngày hôm nay chưa. Xem thêm mục *Lời Chúa hôm nay & Lịch*.
+<!-- endif -->
+<!-- if:comments_off -->
+### Vì sao bài viết không có ô bình luận?
+
+Website đã **tắt bình luận** để tránh thư rác và đỡ việc duyệt. Muốn mở bình luận cho
+**một bài**: mở bài, ở cột bên phải tìm mục **Bình luận**, tích **Cho phép bình luận**, rồi
+bấm **Lưu thay đổi**. Muốn mở lại cho cả website, xin hỏi người phụ trách kỹ thuật.
+<!-- endif -->
+<!-- if:nocatbase -->
+### Link chuyên mục cũ có chữ /category/ còn dùng được không?
+
+Được. Website đã bỏ chữ `/category/` khỏi đường dẫn chuyên mục cho ngắn gọn. Link cũ (đã
+chia sẻ lên Facebook, Zalo…) vẫn mở được và **tự chuyển** sang link mới.
+<!-- endif -->
 
 ### Ảnh bị mờ, bị méo hoặc không hiện?
 

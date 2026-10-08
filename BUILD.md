@@ -18,7 +18,9 @@ src/theme-*.js   ──(webpack)────────────────
 pnpm install        # cài phụ thuộc (dự án dùng pnpm)
 pnpm run build      # build production + copy CSS vào theme
 pnpm run start      # build dev + watch
-pnpm run pack       # đóng gói theme thành chinh-toa-media-wp-theme.zip
+pnpm run pack       # đóng gói theme thành dist/chinh-toa-media-wp-theme.zip
+pnpm run pack -- v1.2.0   # đóng gói đúng bản đã gắn tag git
+pnpm run pin -- <thư-mục-theme-của-site> [tag]   # ghim site Local vào bản cố định (xem dưới)
 ```
 
 > Dự án chuẩn hóa dùng **pnpm** (có `pnpm-lock.yaml`). Nếu trước đây bạn dùng npm,
@@ -35,6 +37,30 @@ pnpm run pack       # đóng gói theme thành chinh-toa-media-wp-theme.zip
 - Repo GitHub và `package.json` cũng mang tên `chinh-toa-media-wp-theme`.
 
 > File `.zip` đã trong `.gitignore` — không commit; tạo lại bằng `pnpm run pack`.
+>
+> Nâng cấp site đang chạy: chép đè **nội dung** zip vào thư mục theme hiện có (giữ nguyên tên
+> thư mục, VD `chinhtoa/`) — đổi tên thư mục là WordPress coi như theme khác (mất menu, thiết lập).
+
+## Nhiều site dùng chung theme (Local)
+
+Mọi thứ riêng của từng site **nằm ngoài theme** nên thay theme không mất gì: thiết lập
+(`ct_settings`, menu, widget trong DB), thương hiệu (mu-plugin `ct-brand-*.php` lọc `ct_brand`),
+CSS riêng (Thiết lập giao diện → Nâng cao), script `tools/setup-site-vi.php`, `tools/demo/`.
+
+Để sửa theme mà **không ảnh hưởng site đang dùng**:
+
+1. **Một site thử** trỏ thẳng vào repo: `wp-content/themes/<tên> → …/ChinhToa/chinhtoa`
+   (hiện là nutythuasaithanhgia.local).
+2. **Các site còn lại ghim bản cố định**: `pnpm run pin -- "<site>/wp-content/themes/<tên>"`
+   chụp `chinhtoa/` hiện tại (hoặc `… v1.2.0` để xuất đúng tag) vào
+   `~/Local Sites/_theme-releases/` rồi trỏ symlink sang đó (hiện là 5plc.local → `church`).
+3. Sửa và kiểm tra trên site thử: `php tests/*.php`, mở các trang chính, đọc lại trang Hướng
+   dẫn (nội dung tự đổi theo site — xem `inc/admin/theme/guide-helpers.php`).
+4. Ổn rồi: tăng `Version`, ghi `CHANGELOG.md`, commit + gắn tag, chạy `pnpm run pin` cho từng
+   site còn lại. Lỗi thì trỏ lại bản cũ (script in đường dẫn cũ): `ln -sfn "<bản cũ>" "<thư mục theme>"`.
+5. Lên host: `pnpm run pack -- <tag>` rồi chép đè vào thư mục theme trên host.
+
+Script chỉ thay thư mục theme khi nó là **symlink**, không bao giờ xoá thư mục thật.
 
 ## Thêm một bộ màu mới
 

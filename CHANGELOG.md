@@ -61,7 +61,26 @@ Tất cả thay đổi đáng chú ý của theme được ghi tại đây. Đ�
 - `bootstrap_pagination()`: tham số nullable tường minh (cảnh báo PHP 8.4).
 - Site đã đặt **Site Icon** thì dùng icon đó thay bộ favicon mặc định của theme.
 
+### Trang Hướng dẫn (quản trị)
+- Một bộ tài liệu dùng chung nhưng **tự đổi theo từng site**:
+  - Mục Lời Chúa (Thẻ & Box “5 phút”, Lời Chúa hôm nay & Lịch) ẩn khi site tắt tính năng
+    `loichua`; mục Phân loại bài viết chỉ còn phần Video.
+  - Trong `.md`: khối `<!-- if:ten -->…<!-- endif -->` / `<!-- if:!ten -->` (điều kiện:
+    `loichua`, `nocatbase`, `comments_off` — `ct_guide_conditions()`); token `{{site}}`,
+    `{{menu}}` (`ct_guide_tokens()`).
+  - Filter cho site: `ct_guide_sections` (thêm/bớt mục), `ct_guide_doc_path` (dùng file .md
+    riêng), `ct_guide_conditions`, `ct_guide_tokens`. Cache theo ngữ cảnh site.
+- Mục mới **Trang (Liên hệ, Giới thiệu…)** (gồm hộp Tuỳ chỉnh giao diện trang). Cập nhật mục
+  Chuyên mục (đường dẫn không `/category/`, nên viết Miêu tả), Câu hỏi thường gặp (bình luận
+  đã tắt, link `/category/` cũ), Thanh bên (khu vực Bài Viết Chi Tiết dùng cho cả Trang); bỏ
+  ví dụ riêng “Giáo xứ Chính Tòa”, “Chính Tòa Media →” (dùng tên site / tên menu theo site).
+
 ### Công cụ (ngoài gói theme)
+- `pnpm run pack` (`tools/pack.sh`): đóng gói `dist/chinh-toa-media-wp-theme.zip` từ thư mục
+  hiện tại hoặc một tag git.
+- `pnpm run pin` (`tools/pin-theme.sh`): ghim theme của một site Local vào bản cố định trong
+  `~/Local Sites/_theme-releases/` (hoặc `--dev` trỏ lại repo) — sửa theme không ảnh hưởng
+  site đang dùng. Xem BUILD.md → “Nhiều site dùng chung theme”.
 - `tools/setup-site-vi.php`: thiết lập chuẩn cho site Công giáo tiếng Việt — giờ VN, tắt bình
   luận, Yoast (bỏ `/category/`, tiêu đề/breadcrumb tiếng Việt, tổ chức + logo, ảnh chia sẻ, tiêu
   đề + mô tả trang chủ, tắt trang tác giả/ngày), chuyển CSS riêng của site lên `<head>`, sửa link

@@ -35,7 +35,7 @@ Trên điện thoại, logo và khẩu hiệu tự xếp chồng lên nhau, căn
 1. Ở **Kiểu Header**, chọn **Ảnh banner rộng**.
 2. **Ảnh cho Máy tính**: bấm **Chọn ảnh** (ảnh ngang khổ rộng). **Ảnh cho Máy tính bảng**
    và **Ảnh cho Điện thoại** không bắt buộc. Để trống thì dùng ảnh máy tính.
-3. **Mô tả ảnh**: một câu tả banner, ví dụ *Giáo xứ Chính Tòa Đà Nẵng*.
+3. **Mô tả ảnh**: một câu tả banner, ví dụ *{{site}}*.
 4. **Liên kết khi bấm**: trang mở ra khi bấm vào banner. Để trống thì về trang chủ. Tích
    **Mở liên kết ở tab mới** nếu liên kết dẫn sang website khác.
 5. Bấm **Lưu thay đổi**.

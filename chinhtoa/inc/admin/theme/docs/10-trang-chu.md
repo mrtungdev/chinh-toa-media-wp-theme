@@ -29,7 +29,9 @@ diện → Trang chủ & Bài viết → Trang chủ**
 ![Thiết lập khối Nổi bật]({{img}}/khoi-noi-bat.webp)
 *Số trên ảnh trùng với số bước. Giữ phím Ctrl (Windows) hoặc Cmd (Mac) để chọn nhiều chuyên mục.*
 
+<!-- if:loichua -->
 Box **“5 phút”** cũng nằm ở đây. Xem mục *Thẻ Lời Chúa & Box “5 phút”*.
+<!-- endif -->
 
 ### Các nút của một khối nội dung
 
@@ -54,7 +56,9 @@ Kéo xuống phần **Khối nội dung trang chủ**. Mỗi khối là một th
 | **Tĩnh / HTML** | **Nội dung (HTML)**: lời ngỏ, bản đồ, video nhúng. Có thể dán mã nhúng YouTube. |
 | **Danh sách bài 1–5**, **Lưới ảnh mosaic** | **Chuyên mục** và **Số bài hiển thị** |
 | **Tabs chuyên mục** | **Chuyên mục (Tab đầu)**, và **+ Thêm Tab** cho mỗi chuyên mục khác (gõ **Tên Tab**, chọn chuyên mục). Mỗi tab hiện 10 bài. |
+<!-- if:loichua -->
 | **Lời Chúa hôm nay (bài theo ngày)** | **Chuyên mục** chứa bài mỗi ngày. Xem mục *Lời Chúa hôm nay & Lịch*. |
+<!-- endif -->
 
 ### Thêm một khối mới
 
@@ -83,7 +87,7 @@ Bấm **+ Thêm khối**. Khối mới hiện ở cuối danh sách:
    mới** nếu cần.
 
 ![Màu khối và nút Xem thêm]({{img}}/khoi-mau-xem-them.webp)
-*Mẫu “Tabs chuyên mục” và “Lời Chúa hôm nay” không có nút Xem thêm.*
+*Mẫu “Tabs chuyên mục”<!-- if:loichua --> và “Lời Chúa hôm nay”<!-- endif --> không có nút Xem thêm.*
 
 ### Đổi thứ tự hoặc xoá khối
 

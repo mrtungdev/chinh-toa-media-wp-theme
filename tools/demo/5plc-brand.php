@@ -17,6 +17,8 @@ add_filter('ct_brand', function ($brand) {
     $brand['theme_color']      = '#2e3192';
     $brand['tile_color']       = '#2e3192';
     $brand['admin_menu_title'] = '5 PHÚT CHO LỜI CHÚA';
+    // Tên menu theme ở cột trái trang quản trị (cũng là {{menu}} trong trang Hướng dẫn).
+    $brand['admin_menu_label'] = '5 phút Lời Chúa';
     // Giữ features.loichua (box/khối "Lời Chúa hôm nay" là tính năng chính của site).
     return $brand;
 });

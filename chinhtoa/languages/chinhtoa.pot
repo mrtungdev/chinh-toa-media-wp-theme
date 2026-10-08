@@ -64,7 +64,7 @@ msgstr ""
 msgid "Bài Viết Chi Tiết"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:34
+#: inc/admin/theme/guide-helpers.php:41
 msgid "Bài viết & Nội dung"
 msgstr ""
 
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Bật/tắt dải thông báo trên website."
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:33
+#: inc/admin/theme/guide-helpers.php:40
 msgid "Bắt đầu"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Bắt đầu hiển thị"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:52
+#: inc/admin/theme/guide-helpers.php:60
 msgid "Bắt đầu nhanh"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Bắt đầu nhanh và tìm hiểu cách quản trị website."
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:62
+#: inc/admin/theme/guide-helpers.php:71
 msgid "Bố cục Trang chủ"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Chuyên Mục"
 msgstr ""
 
-#: inc/options/admin/sections.php:323 inc/options/admin/sections.php:329 inc/admin/theme/dashboard.php:56 inc/admin/theme/guide-helpers.php:57
+#: inc/options/admin/sections.php:323 inc/options/admin/sections.php:329 inc/admin/theme/dashboard.php:56 inc/admin/theme/guide-helpers.php:65
 msgid "Chuyên mục"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 msgid "Câu hiển thị bên phải logo, VD: Lời Chúa là ngọn đèn soi cho con bước."
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:66
+#: inc/admin/theme/guide-helpers.php:75
 msgid "Câu hỏi thường gặp"
 msgstr ""
 
@@ -424,15 +424,15 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: inc/options/admin/sections.php:119 inc/admin/theme/guide-helpers.php:61
+#: inc/options/admin/sections.php:119 inc/admin/theme/guide-helpers.php:70
 msgid "Footer (cuối trang)"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:138
+#: inc/options/admin/admin-page.php:138 inc/admin/theme/guide-helpers.php:116
 msgid "Giao diện"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:35
+#: inc/admin/theme/guide-helpers.php:42
 msgid "Giao diện & Trang chủ"
 msgstr ""
 
@@ -460,7 +460,7 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: inc/options/admin/sections.php:85 inc/admin/theme/guide-helpers.php:60
+#: inc/options/admin/sections.php:85 inc/admin/theme/guide-helpers.php:69
 msgid "Header (đầu trang)"
 msgstr ""
 
@@ -548,7 +548,7 @@ msgstr ""
 msgid "Hồng"
 msgstr ""
 
-#: inc/admin/theme/dashboard.php:75 inc/admin/theme/guide-helpers.php:67
+#: inc/admin/theme/dashboard.php:75 inc/admin/theme/guide-helpers.php:76
 msgid "Hỗ trợ kỹ thuật"
 msgstr ""
 
@@ -704,7 +704,7 @@ msgstr ""
 msgid "Lời Chúa (câu ghi nhớ)"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:56
+#: inc/admin/theme/guide-helpers.php:64
 msgid "Lời Chúa hôm nay & Lịch"
 msgstr ""
 
@@ -720,7 +720,7 @@ msgstr ""
 msgid "Menu Chính"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:364 inc/admin/theme/dashboard.php:64 inc/admin/theme/guide-helpers.php:63
+#: inc/options/admin/term-post-meta.php:364 inc/admin/theme/dashboard.php:64 inc/admin/theme/guide-helpers.php:72
 msgid "Menu điều hướng"
 msgstr ""
 
@@ -812,7 +812,7 @@ msgstr ""
 msgid "Màu nền:"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:59
+#: inc/admin/theme/guide-helpers.php:68
 msgid "Màu sắc & bố cục chung"
 msgstr ""
 
@@ -992,8 +992,12 @@ msgstr ""
 msgid "Phân loại bài viết"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:54
+#: inc/admin/theme/guide-helpers.php:62
 msgid "Phân loại bài viết: Lời Chúa & Video"
+msgstr ""
+
+#: inc/admin/theme/guide-helpers.php:62
+msgid "Phân loại bài viết: Video"
 msgstr ""
 
 #: inc/utilities/type.php:368
@@ -1104,7 +1108,7 @@ msgstr ""
 msgid "Tabs chuyên mục"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:64
+#: inc/admin/theme/guide-helpers.php:73
 msgid "Thanh bên & Widget"
 msgstr ""
 
@@ -1112,7 +1116,7 @@ msgstr ""
 msgid "Thanh bên (sidebar)"
 msgstr ""
 
-#: inc/options/admin/admin-page.php:153 inc/admin/theme/guide-helpers.php:65
+#: inc/options/admin/admin-page.php:153 inc/admin/theme/guide-helpers.php:74
 msgid "Thanh thông báo"
 msgstr ""
 
@@ -1148,11 +1152,11 @@ msgstr ""
 msgid "Thông tin khối"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:58
+#: inc/admin/theme/guide-helpers.php:67
 msgid "Thư viện hình ảnh"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:55
+#: inc/admin/theme/guide-helpers.php:63
 msgid "Thẻ Lời Chúa & Box “5 phút”"
 msgstr ""
 
@@ -1252,6 +1256,10 @@ msgstr ""
 msgid "Tiện ích"
 msgstr ""
 
+#: inc/admin/theme/guide-helpers.php:66
+msgid "Trang (Liên hệ, Giới thiệu…)"
+msgstr ""
+
 #: inc/options/admin/sections.php:484
 msgid "Trang Bài viết"
 msgstr ""
@@ -1292,7 +1300,7 @@ msgstr ""
 msgid "Trắng"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:36
+#: inc/admin/theme/guide-helpers.php:43
 msgid "Trợ giúp"
 msgstr ""
 
@@ -1420,7 +1428,7 @@ msgstr ""
 msgid "Video (audio) Lời Chúa"
 msgstr ""
 
-#: inc/admin/theme/guide-helpers.php:53
+#: inc/admin/theme/guide-helpers.php:61
 msgid "Viết & quản lý bài viết"
 msgstr ""
 

@@ -1,16 +1,29 @@
+<!-- if:loichua -->
 ## Phân loại bài viết: Lời Chúa & Video
+<!-- endif -->
+<!-- if:!loichua -->
+## Phân loại bài viết: Video
+<!-- endif -->
 
 Mỗi bài có một **Loại bài viết**. Loại bài quyết định phần đầu bài hiện thế nào.
 
 | Loại bài viết | Dùng cho | Đầu bài sẽ hiện |
 |---|---|---|
 | **Mặc định (bài viết thường)** | Tin tức, thông báo, giáo lý… | Ảnh đại diện |
+<!-- if:loichua -->
 | **Lời Chúa (câu ghi nhớ)** | Suy niệm, Lời Chúa mỗi ngày | Thẻ màu có câu Lời Chúa |
+<!-- endif -->
 | **Video (audio) Lời Chúa** | Bài có video YouTube hoặc audio | Trình phát video |
 
 Hộp **Phân loại bài viết** nằm ở **cột bên phải** của trang viết bài. Nếu không thấy, bấm
 nút **Cài đặt** (ô vuông chia đôi, góc phải trên), chọn tab **Bài viết** rồi kéo xuống dưới.
+<!-- if:!loichua -->
 
+> Ô **Loại bài viết** còn có lựa chọn **Lời Chúa (câu ghi nhớ)** — website này không dùng.
+> Bài thường cứ để **Mặc định**.
+<!-- endif -->
+
+<!-- if:loichua -->
 ### Bài Lời Chúa (câu ghi nhớ)
 
 1. Ở ô **Loại bài viết**, chọn **Lời Chúa (câu ghi nhớ)**.
@@ -27,6 +40,7 @@ dùng cho khối *Lời Chúa hôm nay* ở trang chủ (xem mục *Lời Chúa 
 > **Bài Lời Chúa không cần ảnh đại diện.** Khi bài không có ảnh, website tự hiện câu Lời
 > Chúa ở chỗ đặt ảnh (trên trang chủ, trang chuyên mục, kết quả tìm kiếm). Để trống cả
 > hai ô Câu Lời Chúa và Trích dẫn thì thẻ dùng mô tả ngắn và tên bài.
+<!-- endif -->
 
 ### Bài Video (audio) Lời Chúa
 
@@ -43,7 +57,9 @@ Trình phát video hiện ở đầu bài, thay cho ảnh đại diện.
 
 ### Nếu chưa thấy đúng
 
+<!-- if:loichua -->
 - **Không thấy thẻ Lời Chúa:** kiểm tra đã chọn đúng loại **Lời Chúa (câu ghi nhớ)** và đã
   bấm **Lưu thay đổi** chưa.
+<!-- endif -->
 - **Video không phát:** mở thử đường dẫn trên trình duyệt. Video phải ở chế độ **Công
   khai** hoặc **Không công khai** trên YouTube; video **Riêng tư** sẽ không phát được.

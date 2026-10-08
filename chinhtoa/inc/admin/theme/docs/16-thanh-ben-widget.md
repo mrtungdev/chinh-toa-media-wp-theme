@@ -14,7 +14,7 @@ cuối trang: lịch, danh sách bài xem nhiều, liên kết… Vào **Giao di
 | Khu vực | Hiện ở |
 |---|---|
 | **Trang Chủ** | Thanh bên của trang chủ |
-| **Bài Viết Chi Tiết** | Thanh bên khi đọc một bài |
+| **Bài Viết Chi Tiết** | Thanh bên khi đọc một bài, và ở các trang (Liên hệ, Giới thiệu…) |
 | **Chuyên Mục** | Thanh bên trang chuyên mục, trang tìm kiếm |
 | **Cuối Trang - Cột 1…4** | Cuối website (khi đã bật cột widget ở Footer) |
 
@@ -33,13 +33,17 @@ Khu vực đang đóng thì bấm vào tên khu vực để mở ra.
 
 | Widget | Dùng để |
 |---|---|
+<!-- if:loichua -->
 | **Lịch Lời Chúa** | Lịch tháng, bấm ngày để xem bài Lời Chúa của ngày đó. Xem mục *Lời Chúa hôm nay & Lịch*. |
 | **Lời Chúa: Câu ghi nhớ** | Thẻ câu Lời Chúa. Xem mục *Thẻ Lời Chúa & Box “5 phút”*. |
+<!-- endif -->
 | **Danh Sách Bài Viết** | Danh sách bài đánh số (ví dụ *Bài xem nhiều*) hoặc danh sách audio. |
 | **Menu** (có sẵn của WordPress) | Hiện một menu, ví dụ menu *Liên kết*. |
 
+<!-- if:loichua -->
 > Widget **Lịch** có sẵn của WordPress khác với **Lịch Lời Chúa**. Muốn lịch bấm ngày xem
 > bài Lời Chúa thì dùng **Lịch Lời Chúa**.
+<!-- endif -->
 
 ### Widget “Danh Sách Bài Viết”
 

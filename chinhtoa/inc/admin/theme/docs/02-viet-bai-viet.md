@@ -48,7 +48,7 @@ Trang viết bài có một thanh công cụ ở trên cùng. Các nút cần bi
    **Tải lên tệp mới**.
 2. Bấm vào ảnh muốn dùng (ảnh được chọn có dấu tích xanh).
 3. Gõ **Văn bản thay thế**: một câu ngắn tả nội dung ảnh, ví dụ “Thánh lễ Chúa Nhật tại
-   nhà thờ Chính Tòa”.
+   nhà thờ”.
 4. Bấm **Đặt ảnh đại diện**.
 
 ![Chọn ảnh đại diện]({{img}}/anh-dai-dien.webp)
@@ -81,7 +81,7 @@ ngoài để đóng.
 
 ### Hẹn giờ đăng bài
 
-Dùng khi muốn bài tự lên vào một ngày giờ định trước, ví dụ bài Lời Chúa của ngày mai.
+Dùng khi muốn bài tự lên vào một ngày giờ định trước, ví dụ bài thông báo cho ngày mai<!-- if:loichua --> hoặc bài Lời Chúa của ngày mai<!-- endif -->.
 
 1. Ở cột bên phải, bấm vào chữ xanh cạnh **Xuất bản** (lúc đầu là “Ngay lập tức”).
 2. Chọn **giờ**.
