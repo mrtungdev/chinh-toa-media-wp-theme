@@ -377,8 +377,9 @@ $siteCss = <<<'CSS'
 #ct-sidebar .widget_nav_menu li a::before { content: "›"; color: #7a1f35; font-size: 1.2rem; line-height: 1; font-weight: 700; }
 #ct-sidebar .widget_nav_menu li a:hover { color: #7a1f35; padding-left: .25rem; }
 #site-footer a { color: inherit; }
-/* Khẩu hiệu header: theme để màu navy cố định → đổi sang đỏ rượu đậm. */
-.header-brand__slogan-ref { color: #5a1526; }
+/* Khẩu hiệu header: theme để màu navy cố định → đổi sang đỏ rượu đậm; câu dài (Lc 1,48) → chữ nhỏ gọn hơn mặc định. */
+.header-brand__slogan-ref { color: #5a1526; font-size: .75rem; }
+.header-brand__slogan-text { font-size: clamp(1.2rem, 2.2vw, 1.8rem); }
 /* Menu con (kiểu c4): theme để nền hover xanh nhạt + chữ navy cố định → đổi sang tông đỏ rượu. */
 @media (min-width: 992px) {
   #site-nav.navbar.nav-style-c4 #siteNavbar .ct-main-menu ul li a { color: #3a1a22; }

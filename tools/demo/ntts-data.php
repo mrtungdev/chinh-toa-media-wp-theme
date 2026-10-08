@@ -15,8 +15,8 @@ return array(
     'site' => array(
         'name'       => 'Hiệp Hội Nữ Tỳ Thừa Sai Thánh Giá',
         'desc'       => 'Đà Nẵng',
-        'slogan'     => 'Tôi chỉ hãnh diện về thập giá Đức Kitô',
-        'slogan_ref' => 'x. Gl 6,14',
+        'slogan'     => 'Phận nữ tỳ hèn mọn, Người đoái thương nhìn tới',
+        'slogan_ref' => 'Lc 1,48',
         'email'      => 'lienlac@example.com',
     ),
 
