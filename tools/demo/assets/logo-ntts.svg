@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300">
+  <!--
+    Logo TẠM cho "Hiệp Hội Nữ Tỳ Thừa Sai Thánh Giá" (bản mẫu, thay bằng logo chính thức khi có).
+    Biểu tượng tròn đỏ rượu viền vàng kim + Thánh Giá trắng; chữ Times New Roman Bold
+    (font hệ thống, chỉ dùng để xuất PNG):
+      rsvg-convert -w 900 logo-ntts.svg -o logo-ntts.png
+  -->
+  <defs>
+    <radialGradient id="disc" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#a3334f"/>
+      <stop offset="0.6" stop-color="#7a1f35"/>
+      <stop offset="1" stop-color="#5a1526"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0cf7f"/>
+      <stop offset="0.5" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#a87a26"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.5">
+      <stop offset="0" stop-color="#f6d98f" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f6d98f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3a0d18" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- ===================== Biểu tượng ===================== -->
+  <g filter="url(#soft)">
+    <circle cx="150" cy="150" r="136" fill="url(#gold)"/>
+    <circle cx="150" cy="150" r="124" fill="url(#disc)"/>
+    <circle cx="150" cy="150" r="114" fill="none" stroke="#d9a441" stroke-width="2" stroke-opacity="0.7"/>
+  </g>
+  <circle cx="150" cy="140" r="92" fill="url(#glow)"/>
+  <!-- tia sáng mảnh quanh Thánh Giá -->
+  <g stroke="#e8c27a" stroke-width="2" stroke-linecap="round" stroke-opacity="0.55">
+    <line x1="150" y1="122" x2="150" y2="44"/>
+    <line x1="150" y1="122" x2="214" y2="78"/>
+    <line x1="150" y1="122" x2="86" y2="78"/>
+    <line x1="150" y1="122" x2="232" y2="122"/>
+    <line x1="150" y1="122" x2="68" y2="122"/>
+  </g>
+  <!-- Thánh Giá -->
+  <g fill="#ffffff">
+    <rect x="137" y="58" width="26" height="186" rx="3"/>
+    <rect x="94" y="106" width="112" height="25" rx="3"/>
+  </g>
+  <!-- chân đế vàng -->
+  <path d="M110 244 h80 l-10 -12 h-60 z" fill="url(#gold)"/>
+
+  <!-- ===================== Chữ ===================== -->
+  <g font-family="Times New Roman, Times, serif" font-weight="700">
+    <text x="312" y="86" font-size="38" letter-spacing="9" fill="#a87a26">HIỆP HỘI</text>
+    <rect x="312" y="102" width="88" height="3" fill="#d9a441"/>
+    <text x="310" y="174" font-size="66" fill="#6b1a2e">NỮ TỲ THỪA SAI</text>
+    <text x="310" y="258" font-size="66" fill="#7a1f35">THÁNH GIÁ</text>
+  </g>
+</svg>

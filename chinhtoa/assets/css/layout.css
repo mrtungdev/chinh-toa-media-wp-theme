@@ -1,0 +1,20 @@
+/**
+ * Bố cục chung — CSS viết tay (không qua webpack), nạp trên mọi trang
+ * (xem inc/utilities/enqueue.php).
+ */
+
+/* Nội dung ngắn (VD trang Liên hệ, 404): footer vẫn nằm sát đáy màn hình thay vì để lộ
+   khoảng nền trống bên dưới. #ct-app đã là flex dọc (global.scss). */
+#ct-app {
+  min-height: 100vh;
+}
+
+#site-footer {
+  margin-top: auto;
+}
+
+/* Trang tĩnh (page.php): link "Sửa trang" cho người quản trị. */
+#ct-content.ct-page .ct-edit-link {
+  margin: 1.5rem 0 0;
+  font-size: 0.85rem;
+}

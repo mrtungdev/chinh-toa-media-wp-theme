@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="512" height="512">
+  <!--
+    Biểu tượng (Site Icon / favicon) TẠM — cùng hình với logo-ntts.svg.
+      rsvg-convert -w 512 icon-ntts.svg -o icon-ntts.png
+  -->
+  <defs>
+    <radialGradient id="disc" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#a3334f"/>
+      <stop offset="0.6" stop-color="#7a1f35"/>
+      <stop offset="1" stop-color="#5a1526"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0cf7f"/>
+      <stop offset="0.5" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#a87a26"/>
+    </linearGradient>
+  </defs>
+  <circle cx="150" cy="150" r="148" fill="url(#gold)"/>
+  <circle cx="150" cy="150" r="134" fill="url(#disc)"/>
+  <g fill="#ffffff">
+    <rect x="134" y="48" width="32" height="204" rx="4"/>
+    <rect x="84" y="102" width="132" height="31" rx="4"/>
+  </g>
+</svg>

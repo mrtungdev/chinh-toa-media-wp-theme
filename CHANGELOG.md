@@ -3,7 +3,26 @@
 Tất cả thay đổi đáng chú ý của theme được ghi tại đây. Định dạng theo
 [Keep a Changelog](https://keepachangelog.com/), phiên bản theo [SemVer](https://semver.org/lang/vi/).
 
-## [1.1.0] — chưa phát hành
+## [1.2.0] — chưa phát hành
+
+### Thêm
+- Hộp **“Tuỳ chỉnh giao diện trang”** ở màn hình soạn Trang (page): bật/tắt thanh bên và
+  vị trí, ảnh đại diện, menu điều hướng (breadcrumb), tiêu đề. Cùng khoá meta
+  `ct_options.post_custom` với bài viết; không có ô Tác giả / Ngày & lượt xem.
+
+### Thay đổi
+- **Trang tĩnh (`page.php`)** dùng cùng khung với trang bài viết: thẻ nền trắng bo góc,
+  breadcrumb, tiêu đề, nội dung dùng chung CSS `.post-content` (trích dẫn, danh sách, ảnh…),
+  thanh bên widget “Bài viết” (`ct-widget-single`) theo Thiết lập giao diện → Bài viết, link
+  “Sửa trang”. Trước đây nội dung nằm thẳng trên nền trang, không lề, không thanh bên.
+- Footer luôn nằm sát đáy màn hình khi nội dung ngắn (trang Liên hệ, 404…), không còn lộ
+  khoảng nền trống bên dưới. CSS mới `assets/css/layout.css` (luôn nạp).
+
+### Sửa
+- `sidebar.php` kiểm tra nhầm sidebar `dynamic_sidebar` (không tồn tại) nên không bao giờ
+  hiện widget; nay dùng `ct-widget-homepage` (trang danh sách bài `index.php`).
+
+## [1.1.0] — 2026-10-06
 
 ### Thêm
 - **Header kiểu “Logo + khẩu hiệu”** (`header_data.c_brand`): logo trái, câu khẩu

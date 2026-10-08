@@ -1,5 +1,46 @@
 # Nâng cấp theme Chính Tòa Media
 
+## 1.1.0 → 1.2.0 (Trang tĩnh)
+
+**Tóm tắt:** không đổi cấu trúc dữ liệu, không cần migrate, không cần build lại CSS.
+Khác 1.1.0, bản này **thay đổi hiển thị ngay** sau khi chép đè: mọi Trang (page) dùng
+template mặc định có khung thẻ trắng + thanh bên như trang bài viết.
+
+### 1. Hành vi thay đổi khi nâng cấp
+
+| Trước (1.1.0) | Sau (1.2.0) |
+|---|---|
+| Trang tĩnh: nội dung nằm thẳng trên nền trang, không lề, không thanh bên | Thẻ nền trắng, breadcrumb, tiêu đề, nội dung cùng CSS bài viết; thanh bên widget **Bài viết** nếu Thiết lập giao diện → Bài viết đang bật thanh bên |
+| Nội dung ngắn: footer dừng giữa màn hình, lộ nền trống bên dưới | Footer sát đáy màn hình |
+| Trang không có hộp tuỳ chỉnh giao diện | Có hộp **“Tuỳ chỉnh giao diện trang”** (thanh bên, ảnh, breadcrumb, tiêu đề) |
+
+**Muốn một trang rộng hết khung (không thanh bên):** mở trang → hộp “Tuỳ chỉnh giao diện
+trang” → bật “Tuỳ chỉnh riêng” → tắt “Thanh bên”.
+
+### 2. Danh sách file thay đổi
+
+| File | Thay đổi |
+|---|---|
+| `page.php` | khung `#ct-content.ct-single.ct-page` + thanh bên `ct-widget-single` (giống `single.php`) |
+| `template-parts/page/content-page.php` | cấu trúc `.post-header` / `.post-content` như `template-parts/post/content.php` |
+| `inc/options/admin/term-post-meta.php` | đăng ký hộp tuỳ chỉnh cho `page` (ẩn Tác giả / Ngày & lượt xem) |
+| `sidebar.php` | sửa ID sidebar (`ct-widget-homepage`) |
+| `inc/utilities/enqueue.php` | `ct_layout_enqueue()` nạp `assets/css/layout.css` (priority 20) |
+| `assets/css/layout.css` | **mới** — footer sát đáy, link “Sửa trang” |
+| `style.css`, `package.json` | `Version: 1.2.0` |
+| `languages/chinhtoa.pot` | sinh lại |
+
+### 3. Rủi ro
+
+- Trang dựng bằng **Elementor** nhưng để template **“Mặc định”** sẽ nằm trong thẻ trắng +
+  thanh bên → bố cục có thể chật. Chọn template **Elementor Full Width / Canvas** cho trang
+  đó (không đi qua `page.php`), hoặc tắt thanh bên trong hộp tuỳ chỉnh của trang.
+- Trang chủ dùng template **“Trang Chủ”** (`page-homepage.php`) không bị ảnh hưởng.
+- CSS riêng của site nhắm vào `#primary`, `.site-main`, `.entry-content`, `.entry-header`
+  của trang tĩnh sẽ không còn tác dụng — đổi sang `#ct-content.ct-page .post-content`.
+
+---
+
 ## 1.0.0 → 1.1.0 (“Lời Chúa hôm nay”)
 
 **Tóm tắt:** bản 1.1.0 chỉ **thêm** tính năng, không đổi cấu trúc dữ liệu, không cần

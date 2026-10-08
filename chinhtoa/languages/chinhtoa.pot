@@ -404,10 +404,6 @@ msgstr ""
 msgid "Dải thông báo hiển thị nổi bật trên đầu website, chỉ xuất hiện trong khoảng thời gian bạn đặt. Phù hợp để báo sự kiện, thánh lễ, tin khẩn."
 msgstr ""
 
-#: template-parts/page/content-page.php:37
-msgid "Edit <span class=\"screen-reader-text\">%s</span>"
-msgstr ""
-
 #: inc/options/admin/admin-page.php:147
 msgid "Footer"
 msgstr ""
@@ -520,7 +516,7 @@ msgstr ""
 msgid "Hình nền"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:254 inc/options/admin/term-post-meta.php:361
+#: inc/options/admin/term-post-meta.php:254 inc/options/admin/term-post-meta.php:363
 msgid "Hình đại diện"
 msgstr ""
 
@@ -692,7 +688,7 @@ msgstr ""
 msgid "Menu Chính"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:362 inc/admin/theme/dashboard.php:64 inc/admin/theme/guide-helpers.php:63
+#: inc/options/admin/term-post-meta.php:364 inc/admin/theme/dashboard.php:64 inc/admin/theme/guide-helpers.php:63
 msgid "Menu điều hướng"
 msgstr ""
 
@@ -868,7 +864,7 @@ msgstr ""
 msgid "Nguồn bài viết"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:256 inc/options/admin/term-post-meta.php:365
+#: inc/options/admin/term-post-meta.php:256 inc/options/admin/term-post-meta.php:368
 msgid "Ngày & lượt xem"
 msgstr ""
 
@@ -954,10 +950,6 @@ msgstr ""
 
 #: comments.php:36
 msgid "One thought on &ldquo;%1$s&rdquo;"
-msgstr ""
-
-#: template-parts/page/content-page.php:24
-msgid "Pages:"
 msgstr ""
 
 #: inc/post/post-kind.php:148
@@ -1056,6 +1048,10 @@ msgstr ""
 msgid "Số thứ tự (1–X)"
 msgstr ""
 
+#: template-parts/page/content-page.php:43
+msgid "Sửa trang"
+msgstr ""
+
 #: inc/options/flatteners/helper-homepage.php:220
 msgid "Tab"
 msgstr ""
@@ -1072,7 +1068,7 @@ msgstr ""
 msgid "Thanh bên & Widget"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:355
+#: inc/options/admin/term-post-meta.php:357
 msgid "Thanh bên (sidebar)"
 msgstr ""
 
@@ -1196,7 +1192,7 @@ msgstr ""
 msgid "Tiêu đề box"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:363
+#: inc/options/admin/term-post-meta.php:365
 msgid "Tiêu đề bài viết"
 msgstr ""
 
@@ -1236,7 +1232,7 @@ msgstr ""
 msgid "Trang chủ & Bài viết"
 msgstr ""
 
-#: template-parts/post/content.php:81
+#: template-parts/page/content-page.php:38 template-parts/post/content.php:81
 msgid "Trang:"
 msgstr ""
 
@@ -1268,7 +1264,11 @@ msgstr ""
 msgid "Tuỳ chỉnh giao diện chuyên mục"
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:351
+#: inc/options/admin/term-post-meta.php:326
+msgid "Tuỳ chỉnh giao diện trang"
+msgstr ""
+
+#: inc/options/admin/term-post-meta.php:353
 msgid "Tuỳ chỉnh riêng bài này"
 msgstr ""
 
@@ -1276,7 +1276,7 @@ msgstr ""
 msgid "Tuỳ chỉnh riêng chuyên mục này"
 msgstr ""
 
-#: inc/options/admin/sections.php:343 inc/options/admin/term-post-meta.php:364
+#: inc/options/admin/sections.php:343 inc/options/admin/term-post-meta.php:367
 msgid "Tác giả"
 msgstr ""
 
@@ -1324,7 +1324,7 @@ msgstr ""
 msgid "Tắt: dùng bố cục chung trong Thiết lập giao diện. Bật để đặt riêng cho chuyên mục này."
 msgstr ""
 
-#: inc/options/admin/term-post-meta.php:352
+#: inc/options/admin/term-post-meta.php:354
 msgid "Tắt: dùng thiết lập chung. Bật để đặt riêng cho bài này."
 msgstr ""
 
@@ -1396,7 +1396,7 @@ msgstr ""
 msgid "Văn bản thay thế (alt) cho banner — tốt cho SEO."
 msgstr ""
 
-#: inc/options/admin/sections.php:178 inc/options/admin/sections.php:479 inc/options/admin/sections.php:488 inc/options/admin/term-post-meta.php:249 inc/options/admin/term-post-meta.php:356
+#: inc/options/admin/sections.php:178 inc/options/admin/sections.php:479 inc/options/admin/sections.php:488 inc/options/admin/term-post-meta.php:249 inc/options/admin/term-post-meta.php:358
 msgid "Vị trí thanh bên"
 msgstr ""
 

@@ -66,6 +66,13 @@ function ct_nav_menu_enqueue()
 }
 add_action('wp_enqueue_scripts', 'ct_nav_menu_enqueue', 20);
 
+/** Bố cục chung (footer sát đáy, trang tĩnh): CSS viết tay, priority 20 để đứng sau theme-{color}.css. */
+function ct_layout_enqueue()
+{
+    wp_enqueue_style('ct-layout', CT_THEME_CSS_URI . '/layout.css', array(), THEME_VERSION);
+}
+add_action('wp_enqueue_scripts', 'ct_layout_enqueue', 20);
+
 /**
  * Nhãn "Trực tiếp" của Thanh thông báo (Tiện ích → Thanh thông báo → Đang phát trực tiếp).
  * CSS nhỏ gắn vào ct-nav-menu (luôn được nạp), chỉ in khi thanh đang hiện và bật trực tiếp.

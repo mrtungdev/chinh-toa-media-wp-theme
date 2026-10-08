@@ -9,7 +9,7 @@
  */
 ?>
 <div id="ct-sidebar" class="sidebar-right">
-  <?php if (is_active_sidebar('dynamic_sidebar')) : ?>
+  <?php if (is_active_sidebar('ct-widget-homepage')) : ?>
   <div class="sidebar-content">
     <?php dynamic_sidebar('ct-widget-homepage'); ?>
   </div>

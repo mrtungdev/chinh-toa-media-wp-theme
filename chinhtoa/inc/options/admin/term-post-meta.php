@@ -322,6 +322,8 @@ add_action('edited_category', 'ct_save_category_meta');
 function ct_post_meta_box()
 {
     add_meta_box('ct_post_options', __('Tuỳ chỉnh giao diện bài viết', 'chinhtoa'), 'ct_render_post_meta_box', 'post', 'side', 'default');
+    // Trang tĩnh dùng chung khung với bài viết (page.php) → cùng hộp tuỳ chỉnh, bỏ tác giả/ngày.
+    add_meta_box('ct_post_options', __('Tuỳ chỉnh giao diện trang', 'chinhtoa'), 'ct_render_post_meta_box', 'page', 'side', 'default');
 }
 add_action('add_meta_boxes', 'ct_post_meta_box');
 
@@ -361,8 +363,10 @@ function ct_render_post_meta_box($post)
     ct_mb_switch('ct_post[post_custom][y][post_thumb]', ct_mb_get($y, 'post_thumb', 'y'), __('Hình đại diện', 'chinhtoa'), '', $showY);
     ct_mb_switch('ct_post[post_custom][y][post_breadcrumb]', ct_mb_get($y, 'post_breadcrumb', 'n'), __('Menu điều hướng', 'chinhtoa'), '', $showY);
     ct_mb_switch('ct_post[post_custom][y][post_title]', ct_mb_get($y, 'post_title', 'y'), __('Tiêu đề bài viết', 'chinhtoa'), '', $showY);
-    ct_mb_switch('ct_post[post_custom][y][post_author]', ct_mb_get($y, 'post_author', 'y'), __('Tác giả', 'chinhtoa'), '', $showY);
-    ct_mb_switch('ct_post[post_custom][y][post_info]', ct_mb_get($y, 'post_info', 'y'), __('Ngày & lượt xem', 'chinhtoa'), '', $showY);
+    if ($post->post_type !== 'page') {
+        ct_mb_switch('ct_post[post_custom][y][post_author]', ct_mb_get($y, 'post_author', 'y'), __('Tác giả', 'chinhtoa'), '', $showY);
+        ct_mb_switch('ct_post[post_custom][y][post_info]', ct_mb_get($y, 'post_info', 'y'), __('Ngày & lượt xem', 'chinhtoa'), '', $showY);
+    }
 
     echo '</div>';
 }
